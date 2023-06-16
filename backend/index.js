@@ -11,8 +11,9 @@ app.use(cors({ origin: 'http://localhost:4200' }));
 app.use('/api/gestor', require('./routes/gestor.route.js'));
 app.use('/api/usuario', require('./routes/usuario.route'));
 //app.use('/api/resenia', require('./routes/resenia.route.js'));
+//app.use('/api/reserva', require('./routes/reserva.route.js'));
+app.use('/api/servicio', require('./routes/servicio.route.js'));
 app.use('/api/reserva', require('./routes/reserva.route.js'));
-//app.use('/api/servicio', require('./routes/servicio.route.js'));
 
 app.set('port', process.env.PORT || 3000);
 
