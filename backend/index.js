@@ -10,7 +10,7 @@ app.use(cors({ origin: 'http://localhost:4200' }));
 //app.use('/api/admin', require('./routes/admin.route.js'));
 //app.use('/api/gestor', require('./routes/gestor.route.js'));
 //app.use('/api/usuario', require('./routes/usuario.route.js'));
-//app.use('/api/resenia', require('./routes/resenia.route.js'));
+app.use('/api/resenia', require('./routes/resenia.route.js'));
 //app.use('/api/reserva', require('./routes/reserva.route.js'));
 //app.use('/api/servicio', require('./routes/servicio.route.js'));
 
