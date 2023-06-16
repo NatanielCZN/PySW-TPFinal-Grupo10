@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const URI = "mongodb://0.0.0.0/TPfinal-Backend";
+const URI = 'mongodb://0.0.0.0/proyectodb';
 
 mongoose.connect(URI)
     .then(db => console.log('DB is connected'))
