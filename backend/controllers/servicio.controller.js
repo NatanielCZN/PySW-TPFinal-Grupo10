@@ -2,7 +2,7 @@ const Servicio = require('../models/servicio');
 const servicioCtrl = {}
 
 servicioCtrl.getServicio = async (req, res) => { //se define una funcion asincrona
-    var servicios = await Servicio.find().populate('espectador');
+    var servicios = await Servicio.find();
     res.json(servicios);
 }
 
