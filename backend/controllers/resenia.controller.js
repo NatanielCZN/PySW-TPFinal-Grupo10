@@ -1,10 +1,15 @@
 const Resenia = require('../models/resenia');
+const Usuario = require('../models/usuario')
 const reseniaCtrl = {}
 
 reseniaCtrl.createResenia= async (req, res) => {
-    var resenia = new Resenia(req.body);
+
     try {
+        var resenia = new Resenia(req.body);
+        const usuario = await Usuario.findById({_id:req.body.usuario})
         await resenia.save();
+        usuario.resenias.push(resenia._id);
+        await Usuario.updateOne({_id:req.body.usuario},usuario);
         res.status(200).json({
         'status': '1',
         'msg': 'Resenia guardado.'})
@@ -32,10 +37,17 @@ reseniaCtrl.getResenias = async (req, res) => {
     var resenias = await Resenia.find();
     res.json(resenias);
 }
-/*
+
 reseniaCtrl.deleteResenia= async (req, res)=>{
     try {
-    await Resenia.deleteOne({_id: req.params.id});
+        const resenia = await Resenia.findById({_id:req.params.id});
+        const usuario = await Usuario.findById({_id:resenia.usuario});
+        const index = usuario.resenias.findIndex(rese=>rese.equals(resenia._id));
+        if(index !== -1){
+            usuario.resenias.splice(index,1);
+        }
+       await Usuario.updateOne({_id:resenia.usuario},usuario);
+       await Resenia.deleteOne({_id: req.params.id});
     res.json({
     status: '1',
     msg: 'Resenia removed'
@@ -43,10 +55,10 @@ reseniaCtrl.deleteResenia= async (req, res)=>{
     } catch (error) {
     res.status(400).json({
     'status': '0',
-    'msg': 'Error procesando la operacion'
+    'msg': 'Error procesando la operacion: '+error
     })
   }
-}*/
+}
 
 /*
 reseniaCtrl.modificarResenia = async (req, res) => {
