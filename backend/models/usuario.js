@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const login = require('./login');
 const Reserva = require('./reserva');
+const Resenia = require('./resenia');
 
 const {Schema} = mongoose;
 const UsuarioSchema=new Schema({
@@ -13,7 +14,7 @@ const UsuarioSchema=new Schema({
     fechaNacimiento:{type:String,required:true},
     edad:{type:Number,required:true},
     reservas:[{type:mongoose.Schema.Types.ObjectId,ref:Reserva,required:false}],
-    resenias:[{type:mongoose.Schema.Types.ObjectId,ref:'Resenia',required:false}]
+    resenias:[{type:mongoose.Schema.Types.ObjectId,ref:Resenia,required:false}]
 })
 
 module.exports= mongoose.models.Usuario || mongoose.model("Usuario",UsuarioSchema);
