@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 
+const Login = require('./login');
 
 const { Schema } = mongoose;
+
 const ReservaSchema = new Schema({
     numeroReserva: { type: Number, require: true },
     categoria: { type: String, require: true },
@@ -11,7 +13,7 @@ const ReservaSchema = new Schema({
     fechaEgreso: { type: String, require: true },
     precio: { type: Number, require: true },
     reservado:{ type:Boolean,require:true },
-    usuario:{type:mongoose.Schema.Types.ObjectId,ref:'Usuario',require:true}
+    usuario:{type:mongoose.Schema.Types.ObjectId,ref: Login,require:true}
 })
 
 module.exports = mongoose.models.Reserva || mongoose.model('Reserva', ReservaSchema);
