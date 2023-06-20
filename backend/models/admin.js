@@ -12,7 +12,6 @@ const AdminSchema = new Schema({
     dni: { type: String, require: true },
     fechaNacimiento: { type: String, require: true },
     edad: { type: Number, require: true },
-   
-})
+});
 
 module.exports = mongoose.models.Admin || mongoose.model('Admin', AdminSchema);

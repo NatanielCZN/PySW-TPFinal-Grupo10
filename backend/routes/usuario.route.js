@@ -1,10 +1,16 @@
-const usuarioCtl = require('./../controllers/usuario.controller')
+// Defino controlador para el manejo de CRUD
+const usuarioCtrl = require('./../controllers/usuario.controller');
 
-const express = require('express')
-const route = express.Router();
+// Creamos el manejador de rutas
+const express = require('express');
+const router = express.Router();
 
-route.post("/",usuarioCtl.createUsuario);
-route.post("/login",usuarioCtl.loginUsuario);
+// Definimos las rutas para la gestion de producto
+router.get('/', usuarioCtrl.getUsuarios);
+router.get('/:id', usuarioCtrl.getUsuario);
+router.post('/', usuarioCtrl.createUsuario);
+router.delete('/:id', usuarioCtrl.deleteUsuario);
+router.put('/:id', usuarioCtrl.editUsuario);
 
-module.exports=route;
-
+// Exportamos el modulo de rutas
+module.exports = router;
