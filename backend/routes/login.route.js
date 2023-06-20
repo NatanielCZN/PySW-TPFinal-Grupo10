@@ -6,4 +6,3 @@ const route = express.Router();
 route.post("/login",loginCtl.loginUsuario);
 
 module.exports=route;
-

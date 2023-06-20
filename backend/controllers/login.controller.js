@@ -1,3 +1,4 @@
+
 const Usuario= require('../models/usuario');
 const Gestor= require('../models/gestor');
 const Admin = require('../models/admin');
@@ -57,3 +58,4 @@ loginCtl.loginUsuario = async (req, res) => {
   }; 
 
 module.exports = loginCtl;
+
