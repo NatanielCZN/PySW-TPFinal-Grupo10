@@ -1,9 +1,7 @@
 const Usuario= require('../models/usuario');
-
 const usuarioCtl={};
 
 usuarioCtl.createUsuario = async(req,res)=>{
-  
   try{
     const usuario = new Usuario(req.body);
        await usuario.save();
@@ -14,41 +12,52 @@ usuarioCtl.createUsuario = async(req,res)=>{
   }catch (error){
      res.status(400).json({
         "status":"0",
-        "msg":"No se guardo el usuario"
+        "msg":"No se guardo el usuario: "+error
      })
   }
 }
-  
-usuarioCtl.loginUsuario = async (req, res) => {
-    const criteria = {
-      userName: req.body.userName,
-      password: req.body.password
-    };
-  
-    try {
-      const user = await Usuario.findOne(criteria);
-      if (!user) {
-        res.json({
-          status: "0",
-          msg: "Usuario no encontrado"
+
+usuarioCtl.getUsuarios = async(req,res)=>{
+    const usuarios = await Usuario.find();
+    res.json(usuarios);
+}
+
+usuarioCtl.getUsuario= async(req,res )=>{
+    const user = await Usuario.findById(req.params.id);
+
+    res.json(user);
+}
+
+usuarioCtl.edidUsuario= async(req,res)=>{
+   const user = new Usuario(req.body);
+   try{
+          await Usuario.updateOne({_id:req.body._id},user);
+          res.json({
+            status: "1",
+            msg: "Usuario Actualizado",
         });
-      } else {
-        res.json({
+   }catch(error){
+    res.status(400).json({
+      status: "0",
+      msg: "Error en la actualizacion de usuario",
+    })
+   }
+}
+
+usuarioCtl.deleteUsuario=async(req,res)=>{
+    try{
+         await Usuario.deleteOne({_id:req.params.id});
+         res.json({
           status: "1",
-          msg: "Encontrado",
-          userName: user.userName,
-          password: user.password,
-          userId: user._id
-        });
-      }
-    } catch (err) {
+             msg: "usuario Eliminado",
+         })
+    }catch(erro){
       res.json({
         status: "0",
-        msg: "error"
-      });
+           msg: "Error al eliminar usuario",
+       })
     }
-  };
+}
 
- 
 
 module.exports = usuarioCtl;
