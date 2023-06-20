@@ -5,12 +5,13 @@ const usuarioCtrl = require('./../controllers/usuario.controller');
 const express = require('express');
 const router = express.Router();
 
-// Definimos las rutas para la gestion de producto
-router.get('/', usuarioCtrl.getUsuarios);
-router.get('/:id', usuarioCtrl.getUsuario);
-router.post('/', usuarioCtrl.createUsuario);
-router.delete('/:id', usuarioCtrl.deleteUsuario);
-router.put('/:id', usuarioCtrl.editUsuario);
+route.get("/",usuarioCtl.getUsuarios);
+route.post("/",usuarioCtl.createUsuario);
+route.get("/:id",usuarioCtl.getUsuario);
+route.put("/:id",usuarioCtl.edidUsuario);
+route.delete("/:id",usuarioCtl.deleteUsuario);
+
+module.exports=route;
 
 // Exportamos el modulo de rutas
 module.exports = router;

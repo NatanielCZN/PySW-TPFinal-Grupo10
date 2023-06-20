@@ -1,10 +1,8 @@
-const loginCtrl = require('./../controllers/login.controller')
+const loginCtl = require('../controllers/login.controller');
 
 const express = require('express')
 const route = express.Router();
 
-route.post("/", loginCtrl.createUser);
-route.post("/login", loginCtrl.loginUser);
+route.post("/login",loginCtl.loginUsuario);
 
-module.exports = route;
-
+module.exports=route;
