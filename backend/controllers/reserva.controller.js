@@ -1,5 +1,6 @@
 const Reserva = require('../models/reserva');
-const Usuario = require('../models/usuario')
+const Usuario = require('../models/usuario');
+const Servicio = require('../models/servicio');
 const reservaCtrl = {};
 
 /**
@@ -22,9 +23,12 @@ reservaCtrl.createReserva = async (req, res) => {
     try {
         const reserva = new Reserva(req.body);
         const usuario = await Usuario.findById(req.body.usuario);
+        const servicio = await Servicio.findById(req.body.servicio);
         await reserva.save();
         usuario.reservas.push(reserva._id);
-        await Usuario.updateOne({ _id: req.body.usuario }, usuario)
+        await Usuario.updateOne({ _id: req.body.usuario }, usuario);
+        servicio.reservas.push(reserva._id);
+        await Servicio.updateOne({_id: req.body.servicio},servicio);
         res.status(200).json({
             "status": "1",
             "msg": "reserva guardada"
@@ -82,6 +86,12 @@ reservaCtrl.deleteReserva = async (req, res) => {
             usuario.reservas.splice(index,1);
         }
         await Usuario.updateOne({_id:reserva.usuario},usuario);
+        const servicio = await Servicio.findById({_id:reserva.servicio});
+        const indexServicio= servicio.reservas.findIndex(serv=>serv.equals(reserva._id));
+        if(indexServicio!==-1){
+            servicio.reservas.splice(indexServicio,1);
+        }
+        await Servicio.updateOne({_id:reserva.servicio},servicio);
         await Reserva.deleteOne({ _id: req.params.id });
         res.json({
             status: "1",
