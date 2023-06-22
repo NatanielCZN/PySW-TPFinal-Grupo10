@@ -13,7 +13,8 @@ const ReservaSchema = new Schema({
     fechaEgreso: { type: String, require: true },
     precio: { type: Number, require: true },
     reservado:{ type:Boolean,require:true },
-    usuario:{type:mongoose.Schema.Types.ObjectId,ref: Login,require:true}
+    usuario:{type:mongoose.Schema.Types.ObjectId,ref: Login,require:true},
+    servicio:{type:mongoose.Schema.Types.ObjectId,ref: 'Servicio', require:true}
 })
 
 module.exports = mongoose.models.Reserva || mongoose.model('Reserva', ReservaSchema);

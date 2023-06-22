@@ -1,5 +1,6 @@
 const Resenia = require('../models/resenia');
-const Usuario = require('../models/usuario')
+const Usuario = require('../models/usuario');
+const Servicio = require('../models/servicio');
 const reseniaCtrl = {}
 
 reseniaCtrl.createResenia= async (req, res) => {
@@ -10,6 +11,11 @@ reseniaCtrl.createResenia= async (req, res) => {
         await resenia.save();
         usuario.resenias.push(resenia._id);
         await Usuario.updateOne({_id:req.body.usuario},usuario);
+        
+        const servicio = await Servicio.findById({_id:req.body.servicio});
+        servicio.resenia.push(resenia._id);
+        await Servicio.updateOne({_id:req.body.servicio},servicio);
+
         res.status(200).json({
         'status': '1',
         'msg': 'Resenia guardado.'})
@@ -22,7 +28,7 @@ reseniaCtrl.createResenia= async (req, res) => {
 ///mostrar uno solo
  
 reseniaCtrl.getResenia = async (req, res) => {
-    const resenia = await Resenia.findById(req.params.id).populate("reseniaServicio");
+    const resenia = await Resenia.findById(req.params.id).populate("servicio");
     //const resenia = await Resenia.findById(req.params.id).populate("reseniaUsuario");
     res.json(resenia);
 }
@@ -47,6 +53,14 @@ reseniaCtrl.deleteResenia= async (req, res)=>{
             usuario.resenias.splice(index,1);
         }
        await Usuario.updateOne({_id:resenia.usuario},usuario);
+       
+       const servicio = await Servicio.findById({_id:resenia.servicio});
+       const indexServicio = servicio.resenia.findIndex(serv=>serv.equals(resenia._id))
+       if(indexServicio !== -1){
+           servicio.resenia.splice(indexServicio,1);
+       }
+      await Servicio.updateOne({_id:resenia.servicio},servicio);
+      
        await Resenia.deleteOne({_id: req.params.id});
     res.json({
     status: '1',
