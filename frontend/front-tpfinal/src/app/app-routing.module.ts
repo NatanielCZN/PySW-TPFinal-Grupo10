@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ReservaComponent } from './components/reserva/reserva.component';
-import { ReservaformComponent } from './components/reservaform/reservaform.component';
+import { LoginComponent } from './components/login/login.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { GestorComponent } from './components/gestor/gestor.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
-  {path: 'reserva', component:ReservaComponent},
-  {path: 'reservaForm/:id', component:ReservaformComponent}
+  {path:"login",component:LoginComponent},
+  {path:"usuario",component:UsuarioComponent},
+  {path:"gestor",component:GestorComponent},
+  {path:"admin",component:AdminComponent}
 ];
 
 @NgModule({

@@ -5,11 +5,11 @@ const usuarioCtl = require('./../controllers/usuario.controller');
 const express = require('express');
 const route = express.Router();
 
-route.get("/",usuarioCtrl.getUsuarios);
-route.post("/",usuarioCtrl.createUsuario);
-route.get("/:id",usuarioCtrl.getUsuario);
-route.put("/:id",usuarioCtrl.edidUsuario);
-route.delete("/:id",usuarioCtrl.deleteUsuario);
+route.get("/",usuarioCtl.getUsuarios);
+route.post("/",usuarioCtl.createUsuario);
+route.get("/:id",usuarioCtl.getUsuario);
+route.put("/:id",usuarioCtl.edidUsuario);
+route.delete("/:id",usuarioCtl.deleteUsuario);
 
 module.exports=route;
 
