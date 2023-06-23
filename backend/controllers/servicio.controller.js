@@ -1,8 +1,9 @@
 const Servicio = require('../models/servicio');
+const Gestor = require('../models/gestor');
 const servicioCtrl = {}
 
 servicioCtrl.getServicio = async (req, res) => { //se define una funcion asincrona
-    var servicios = await Servicio.find().populate('espectador');
+    var servicios = await Servicio.find();
     res.json(servicios);
 }
 
@@ -10,6 +11,9 @@ servicioCtrl.createServicio = async (req, res) => {
     var servicio = new Servicio(req.body);
     try {
         await servicio.save();
+        const gestor= await Gestor.findById({_id:req.body.gestor});
+        gestor.servicio.push(servicio._id);
+        await Gestor.updateOne({_id:req.body.gestor},gestor);
         res.json({
             'status': '1',
             'msg': 'Servicio guardado.'
