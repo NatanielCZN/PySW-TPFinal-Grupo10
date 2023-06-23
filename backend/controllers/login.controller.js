@@ -19,6 +19,7 @@ loginCtl.loginUsuario = async (req, res) => {
           msg: "Encontrado",
           userName: user.username,
           password: user.password,
+          tipo:"user",
           userId: user._id
         });
       }else{
@@ -29,6 +30,7 @@ loginCtl.loginUsuario = async (req, res) => {
             msg: "Encontrado",
             userName: gest.username,
             password: gest.password,
+            tipo:"gest",
             userId: gest._id
           });
         }else{
@@ -39,6 +41,7 @@ loginCtl.loginUsuario = async (req, res) => {
               msg: "Encontrado",
               userName: admin.username,
               password: admin.password,
+              tipo:"admin",
               userId: admin._id
             });
           }else{
