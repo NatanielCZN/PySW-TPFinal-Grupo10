@@ -8,23 +8,23 @@ import { Reserva } from '../models/reserva';
 })
 export class ReservaService {
 
-  Url:string="http://localhost:3000/api/";
+  urlBase: string = "http://localhost:3000/api/";
 
   constructor(private _http:HttpClient) { }
 
   getReservas(): Observable<any>{
-    let httpOptions={
+    const httpOptions={
       headers:new HttpHeaders(
         {
 
         }
       ),params: new HttpParams()
     }
-    return this._http.get(this.Url+"reserva",httpOptions);
+    return this._http.get(this.urlBase+"reserva",httpOptions);
   }
 
   crearReserva(reserva:Reserva) : Observable<any>{
-    let httpOptions = {
+    const httpOptions = {
        headers : new HttpHeaders(
         {
           "Content-Type": "application/json"
@@ -32,7 +32,43 @@ export class ReservaService {
       ),
       params:new HttpParams()
     }
-    let body= JSON.stringify(reserva);
-    return this._http.post(this.Url+"reserva/",body, httpOptions);
+    const body= JSON.stringify(reserva);
+    return this._http.post(this.urlBase+"reserva/",body, httpOptions);
   }
+
+  getReserva(_id:string) : Observable<any>{
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+
+        }
+      ),params: new HttpParams().append("id",_id)
+    }
+    return this._http.get(this.urlBase+"reserva/"+_id,httpOptions);
+  }
+
+  modificarReserva(reserva:Reserva):Observable<any>{
+    const httpOptions = {
+      headers : new HttpHeaders(
+       {
+         "Content-Type": "application/json"
+       }
+     ),
+     params:new HttpParams()
+   }
+   let body= JSON.stringify(reserva);
+   return this._http.post(this.urlBase+"reserva/",body, httpOptions);
+  }
+
+  deleteReserva(_id:string):Observable<any>{
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+
+        }
+      ),params: new HttpParams().append("id",_id)
+    }
+    return this._http.get(this.urlBase+"reserva/"+_id,httpOptions);
+  }
+
 }
