@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -6,21 +6,20 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsuarioService {
+  hostBD:string;
+  constructor(private http:HttpClient) {
+    this.hostBD='http://localhost:3000/api/usuario';
+   }
 
-  
-  Url:string="http://localhost:3000/api/";
+  public getusuario(id:string):Observable<any>{
+      const httpOptions={
+        headers:new HttpHeaders(
+          {
 
-  constructor(private _http:HttpClient) { }
+          }
+        )
+      }
 
-  getUsuarios(): Observable<any>{
-    let httpOptions={
-      headers:new HttpHeaders(
-        {
-
-        }
-      ),params: new HttpParams()
-    }
-    return this._http.get(this.Url+"usuario",httpOptions);
+      return this.http.get(this.hostBD+"/"+id,httpOptions);
   }
-
 }

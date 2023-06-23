@@ -1,26 +1,40 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { ReservaformComponent } from './components/reservaform/reservaform.component';
 
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { LoginService } from './services/login.service';
+import {HttpClientModule} from '@angular/common/http';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { GestorComponent } from './components/gestor/gestor.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    ReservaComponent,
-    ReservaformComponent
+    HeaderComponent,
+    FooterComponent,
+    LoginComponent,
+    UsuarioComponent,
+    GestorComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
-    FormsModule
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
