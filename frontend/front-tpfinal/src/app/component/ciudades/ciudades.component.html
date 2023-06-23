@@ -1,0 +1,34 @@
+<p>ciudades works!</p>
+<form>
+<select class="form-control" [(ngModel)]="seleccion" name="seleccion" id="exampleFormControlSelect1"
+required>
+<option *ngFor="let c of provincias" [value]="c.name">{{c.name}}</option>
+</select>
+
+<button type="button" class="form-control" (click)="consultarProvincia(seleccion)"
+>Buscar</button>
+</form>
+<br>
+
+nombre : {{provincia.nombre}} , id: {{provincia._id}}  , {{provincia.lat}}  ,  {{provincia.long}}
+
+
+<div class="row card-group ">
+    <div class="col-xxl-4 col-lg-6 col-md-6 col-sm-6 col-xl-12" *ngFor="let s of localidades">
+        <div class="card" style="height: auto;  width: auto; background-color: slategray ; border-color: black;">
+            <div class="row">
+                <img src="" class="card-img-bottom col-6 "
+                    style="height: 150px; width: 150px; margin-left: auto;margin-right: auto; margin-top: 20px;">
+                <div class="">
+                    <h4 class="card-title " style="text-align:center; color: white;">
+                        {{s.nombre}}</h4>
+                    <h6 class="text-center" style="color: white;">{{s._id}}</h6>
+                    <h6 class="text-center" style="color: white;">{{s.lat}}</h6>
+                    <h6 class="text-center" style="color: white;">{{s.long}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
