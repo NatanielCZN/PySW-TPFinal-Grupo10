@@ -1,0 +1,32 @@
+<div class="container">
+    <form>
+        <div class="mb-3">
+          <label for="numeroReserva" class="form-label">Numero de Reserva</label>
+          <input type="number" class="form-control" id="numeroReserva" aria-describedby="numeroReserva" name="numeroReserva" [(ngModel)]="reserva.numeroReserva" >
+        </div>
+        <div class="mb-3">
+            <label for="categoria" class="form-label">categoria</label>
+          <select class="form-select" aria-label="Default select example" id="categoria" name="categoria" [(ngModel)]="reserva.categoria">
+            <option selected>Categoria</option>
+            <option value="e">extranjero</option>
+            <option value="l">local</option>
+          </select>
+          <div class="mb-3">
+            <label for="forCantidad" class="form-label">cantidad</label>
+            <input type="number" class="form-control" id="cantidad" aria-describedby="cantidad" name="cantidad" [(ngModel)]="reserva.cantidad" >
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+
+
+<!-- numeroReserva!:string;
+categoria!:string;
+cantidad!: number;
+fechaAlta!: string;
+fechaIngreso!: string;
+fechaEgreso!: string;
+precio!: number;
+reservado!:boolean;
+usuario!:Usuario; -->

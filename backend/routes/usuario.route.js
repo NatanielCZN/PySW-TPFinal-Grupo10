@@ -3,15 +3,15 @@ const usuarioCtrl = require('./../controllers/usuario.controller');
 
 // Creamos el manejador de rutas
 const express = require('express');
-const router = express.Router();
+const route = express.Router();
 
-route.get("/",usuarioCtl.getUsuarios);
-route.post("/",usuarioCtl.createUsuario);
-route.get("/:id",usuarioCtl.getUsuario);
-route.put("/:id",usuarioCtl.edidUsuario);
-route.delete("/:id",usuarioCtl.deleteUsuario);
+route.get("/",usuarioCtrl.getUsuarios);
+route.post("/",usuarioCtrl.createUsuario);
+route.get("/:id",usuarioCtrl.getUsuario);
+route.put("/:id",usuarioCtrl.edidUsuario);
+route.delete("/:id",usuarioCtrl.deleteUsuario);
 
 module.exports=route;
 
 // Exportamos el modulo de rutas
-module.exports = router;
+module.exports = route;
