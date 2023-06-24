@@ -18,6 +18,7 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { GestorComponent } from './components/gestor/gestor.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UsuarioComponent,
     GestorComponent,
     AdminComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
