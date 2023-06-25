@@ -13,6 +13,7 @@ import { GestorComponent } from './components/gestor/gestor.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
+import { ReseniaComponent } from './components/resenia/resenia.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { HomeComponent } from './components/home/home.component';
     GestorComponent,
     AdminComponent,
     HomeComponent,
-    CiudadesComponent
+    CiudadesComponent,
+    ReseniaComponent
   ],
   imports: [
     BrowserModule,
