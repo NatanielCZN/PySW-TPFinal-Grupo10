@@ -14,6 +14,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { ReseniaComponent } from './components/resenia/resenia.component';
+import { ReseniaFormComponent } from './components/resenia-form/resenia-form.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ReseniaComponent } from './components/resenia/resenia.component';
     AdminComponent,
     HomeComponent,
     CiudadesComponent,
-    ReseniaComponent
+    ReseniaComponent,
+    ReseniaFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,33 @@
-<p>resenia works!</p>
+<div class="container-fluid">
+
+
+    <!--*****lista desplegable****-->
+    <table>
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
+            aria-expanded="false" aria-controls="multiCollapseExample1">comentarios</a>
+
+    </table>
+
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
+        <table *ngFor="let resenia of resenias">
+            servicio: {{resenia.servicio}}
+            <thead>
+                <div class="card-header bg-success">
+                    <td>UserName {{resenia.usuario}}</td>
+                    <td>Fecha {{resenia.fechaAlta}}</td>
+                    <td>calificacion {{resenia.valoracion}}</td>
+                </div>
+            </thead>
+            <tbody>
+                <td>
+                    <div class="card-body text-success">
+                        <h5 class="card-title">Comentario {{resenia.comentario}}</h5>
+                    </div>
+                </td>
+                <td>imagen {{resenia.imagen}}</td>
+            </tbody>
+        </table>
+        <br>
+    </div>
+    <br>
+</div>

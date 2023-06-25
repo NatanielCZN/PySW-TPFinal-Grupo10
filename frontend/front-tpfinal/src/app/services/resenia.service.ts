@@ -23,7 +23,7 @@ export class ReseniaService {
       params: new HttpParams()
     }
     var body = JSON.stringify(resenia);
-    return this._http.post(this.urlbase + "resenia/",body, httpOption)
+    return this._http.post(this.urlbase + "resenia/", body, httpOption)
   }
   // mostrar todos de un serv
   getMostarResenia(): Observable<any> {

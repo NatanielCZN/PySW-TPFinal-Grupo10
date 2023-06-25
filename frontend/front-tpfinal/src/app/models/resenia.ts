@@ -1,5 +1,5 @@
-import { Usuario } from "./usuario.model";
-//import { Servicio } from "./Ssrvicio.model";
+import { Servicio } from "./servicio";
+import { Usuario } from "./usuario.model"; 
 
 
 export class Resenia {
@@ -10,5 +10,5 @@ export class Resenia {
     comentario!: string;
 
     usuario!: Usuario;
-    //servicio!: Servicio;
+    servicio!: Servicio;
 }

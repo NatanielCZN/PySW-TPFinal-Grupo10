@@ -3,11 +3,12 @@ import { Resenia } from 'src/app/models/resenia';
 import { ReseniaService } from 'src/app/services/resenia.service';
 
 @Component({
-  selector: 'app-resenia',
-  templateUrl: './resenia.component.html',
-  styleUrls: ['./resenia.component.css']
+  selector: 'app-resenia-form',
+  templateUrl: './resenia-form.component.html',
+  styleUrls: ['./resenia-form.component.css']
 })
-export class ReseniaComponent implements OnInit {
+export class ReseniaFormComponent implements OnInit {
+
   fecha: Date;
   action: string = "";
   indice: number = 0;
@@ -18,13 +19,13 @@ export class ReseniaComponent implements OnInit {
     this.resenias = new Array<Resenia>();
     this.resenia = new Resenia();
     this.fecha = new Date();
-    this.mostrarResenias();
   }
 
   ngOnInit(): void {
   }
   ////////////
   cargar() {//produ:NgForm){
+    this.resenia.fechaAlta = this.fechaHoy();
     this.reseniaService.postResenia(this.resenia).subscribe(
       (result) => {
 
@@ -33,23 +34,6 @@ export class ReseniaComponent implements OnInit {
         alert(error.msg);
       }
     )
-  }
-  ////////////
-  mostrarResenias() {
-    this.resenia.fechaAlta=this.fechaHoy();
-    this, this.reseniaService.getMostarResenia().subscribe(
-      result => {
-        this.resenias = new Array<Resenia>();
-        result.forEach((element: any) => {
-          this.resenia = new Resenia();
-          Object.assign(this.resenia, element);
-          this.resenias.push(this.resenia);
-        });
-        console.log(result);
-      },
-      error => {
-        console.log("error")
-      });
   }
   ///////
   fechaHoy() {

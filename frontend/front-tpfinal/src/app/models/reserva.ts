@@ -1,4 +1,4 @@
-import { Usuario } from "./usuario";
+import { Usuario } from "./usuario.model";
 
 export class Reserva {
     _id!: string;
