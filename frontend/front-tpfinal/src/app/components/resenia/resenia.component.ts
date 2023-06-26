@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { Resenia } from 'src/app/models/resenia';
 import { ReseniaService } from 'src/app/services/resenia.service';
 
@@ -14,7 +16,9 @@ export class ReseniaComponent implements OnInit {
 
   resenia!: Resenia;
   resenias!: Array<Resenia>;
-  constructor(private reseniaService: ReseniaService) {
+  constructor(private reseniaService: ReseniaService,
+    private appCom:AppComponent, private router: Router) {
+      this.appCom.logeado=true;
     this.resenias = new Array<Resenia>();
     this.resenia = new Resenia();
     this.fecha = new Date();
@@ -25,14 +29,7 @@ export class ReseniaComponent implements OnInit {
   }
   ////////////
   cargar() {//produ:NgForm){
-    this.reseniaService.postResenia(this.resenia).subscribe(
-      (result) => {
-
-      },
-      (error) => {
-        alert(error.msg);
-      }
-    )
+    this.router.navigate(['reseniaForm',0]);
   }
   ////////////
   mostrarResenias() {

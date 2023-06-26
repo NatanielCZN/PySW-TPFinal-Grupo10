@@ -1,16 +1,29 @@
 <p>resenia-form works!</p>
 <!--***** formulario ****-->
 
-<div class="container card">
+<div id="tab" class="container card">
     <div class="row  justify-content-center mt-3">
         <h2 class="col-md-12">comentar</h2>
         <form class="col-9 col-md-6 " #formregistro="ngForm">
             <br>
-            <div class="form-group row justify-content-center">
-                <label class="col-12 col-md-3" for="valoracion">calificar</label>
-                <input type="number" class="form-control" id="valoracion" [(ngModel)]="resenia.valoracion"
-                    name="valoracion" placeholder="seleccionar valoracion">
+            <div class="form-group   justify-content-center">
+                <label class="col-12 col-md-3" for="valoracion">calificar </label>
+                <!--input type="number" class="form-control" id="valoracion" [(ngModel)]="resenia.valoracion"
+                    name="valoracion" placeholder="seleccionar valoracion"-->
+                
 
+                <input [(ngModel)]="resenia.valoracion" type="radio" id="valoracion" name="valoracion" value="1">
+                1
+                <input [(ngModel)]="resenia.valoracion" type="radio" id="valoracion" name="valoracion" value="2">
+                2
+                <input [(ngModel)]="resenia.valoracion" type="radio" id="valoracion" name="valoracion" value="3">
+                3
+                <input [(ngModel)]="resenia.valoracion" type="radio" id="valoracion" name="valoracion" value="4">
+                4
+                <input [(ngModel)]="resenia.valoracion" type="radio" id="valoracion" name="valoracion" value="5">
+                5
+                 
+            
             </div>
             <!--div class="form-group row justify-content-center">
           <label class="col-12 col-md-3" for="fechaAlta">fecha</label>
@@ -19,18 +32,25 @@
             placeholder="seleccionar fechaAlta">
   
         </div-->
-            <div class="form-group row justify-content-center">
+            <div class="form-group   justify-content-center">
                 <label class="col-12 col-md-3" for="comentar">comentar</label>
-                <textarea class="form-control" id="Comentario" name="Comentario" rows="3"
-                    [(ngModel)]="resenia.comentario" name="comentario" placeholder="Ingrese el comentario" required
-                    #comentario="ngModel"></textarea>
-
-
+                <div>
+                    <textarea class="form-control" id="Comentario" name="Comentario" [(ngModel)]="resenia.comentario"
+                        name="comentario" placeholder="Ingrese el comentario" required #comentario="ngModel"></textarea>
+                </div>
             </div>
 
-            <div class="form-group row justify-content-center">
-                <label class="col-12 col-md-3" for="imagen" class="form-label">Imagen</label>
-                <input class="form-control col-12 col-md-7" type="text" name="imagen" [(ngModel)]="resenia.imagen" />
+            <div class="mb-3">
+                <label for="urlimagen" class="form-label fw-semibold">* Imagen</label>
+                <div>
+                    <input type="file" name="urlimagen" id="urlimagen" accept="image/*"
+                        class="form-control-file d-block" (change)="onFileSelected($event)" ngModel #urlimagen="ngModel"
+                        required />
+                </div>
+                <div *ngIf="urlimagen.invalid && (urlimagen.dirty || urlimagen.touched)"
+                    class="alert alert-danger rounded-0 mt-1">
+
+                </div>
             </div>
 
 

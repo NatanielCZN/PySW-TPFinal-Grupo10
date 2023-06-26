@@ -1,6 +1,9 @@
 <div class="container-fluid">
 
-
+    <div class="container justify-content-start align-content-start text-start">
+        <button type="button" class="btn btn-success mt-2 mb-3 fw-bold" (click)="cargar()">comentar <i
+                class="bi bi-clipboard2-plus"></i></button>
+    </div>
     <!--*****lista desplegable****-->
     <table>
         <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
@@ -8,23 +11,28 @@
 
     </table>
 
-    <div class="collapse multi-collapse" id="multiCollapseExample1">
+    <div><!--class="collapse multi-collapse" id="multiCollapseExample1"-->
         <table *ngFor="let resenia of resenias">
-            servicio: {{resenia.servicio}}
-            <thead>
-                <div class="card-header bg-success">
-                    <td>UserName {{resenia.usuario}}</td>
-                    <td>Fecha {{resenia.fechaAlta}}</td>
-                    <td>calificacion {{resenia.valoracion}}</td>
-                </div>
-            </thead>
+            <!--servicio: {{resenia.servicio}}   servicio que corresponde-->
             <tbody>
-                <td>
-                    <div class="card-body text-success">
-                        <h5 class="card-title">Comentario {{resenia.comentario}}</h5>
+                <thead>
+                    <div class="card-header bg-success">
+                        <td>Ussuario: {{resenia.usuario}}</td>
+                        <td> {{resenia.fechaAlta}}</td>
+                        <td>calificacion {{resenia.valoracion}}</td>
                     </div>
-                </td>
-                <td>imagen {{resenia.imagen}}</td>
+                </thead>
+                <thead>
+                    <td>
+                        <div class="card-body text-success">
+                            <h5 class="card-title"> {{resenia.comentario}}</h5>
+
+                        </div>
+                        <img src="{{resenia.imagen}}" class="card-img-top" alt="..." width="300px" height="300px">
+
+                    </td>
+                </thead>
+
             </tbody>
         </table>
         <br>

@@ -18,8 +18,10 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   //{ path: '**', pathMatch: 'full', redirectTo: 'home' },
   { path: 'ciudad', component: CiudadesComponent },
+
   { path: 'resenia', component: ReseniaComponent },
-  {path: 'reseniaForm', component: ReseniaFormComponent}
+  {path: 'reseniaForm/:id', component: ReseniaFormComponent},
+  {path:"", redirectTo:"resenia", pathMatch:"full"}
 ];
 
 @NgModule({
