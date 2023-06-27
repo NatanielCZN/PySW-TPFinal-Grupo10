@@ -16,6 +16,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ReseniaComponent } from './components/resenia/resenia.component';
 import { ReseniaFormComponent } from './components/resenia-form/resenia-form.component';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,13 @@ import { ReseniaFormComponent } from './components/resenia-form/resenia-form.com
     ReactiveFormsModule
 
   ],
-  providers: [LoginService],
+  providers: [LoginService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptorService,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

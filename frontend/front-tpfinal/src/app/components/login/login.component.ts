@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
            sessionStorage.setItem("user",res.userName);
            sessionStorage.setItem("userId",res.userId);
            sessionStorage.setItem("tipo",res.tipo);
+           sessionStorage.setItem("token",res.token);
             if(res.tipo==='user') 
                  this.router.navigateByUrl(this.userUrl);
             if(res.tipo==='gest')
