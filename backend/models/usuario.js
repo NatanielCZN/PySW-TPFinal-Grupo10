@@ -15,6 +15,6 @@ const UsuarioSchema = new Schema({
     edad: { type: Number, required: true },
     reservas: [{ type: mongoose.Schema.Types.ObjectId, ref: Reserva, required: false }],
     resenias: [{ type: mongoose.Schema.Types.ObjectId, ref: Resenia, required: false }]
-})
+})  
 
 module.exports = mongoose.models.Usuario || mongoose.model("Usuario", UsuarioSchema);

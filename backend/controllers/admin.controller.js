@@ -69,7 +69,7 @@ AdminCtrl.deleteAdmin = async (req, res) => {
  * @param {*} req 
  * @param {*} res 
  */
-AdminCtrl.editAdmin = async (req, res) => {
+AdminCtrl.editAdmin = async (req, res) => { 
     const admin = new Admin(req.body);
     try {
         await Admin.updateOne({ _id: req.body._id }, admin);

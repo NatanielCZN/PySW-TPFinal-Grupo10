@@ -7,7 +7,7 @@ const gestorCtrl = {}
  * @param {*} res 
  */
 gestorCtrl.getGestores = async (req, res) => {
-    var gestores = await Gestor.find().populate("servicio");
+    var gestores = await Gestor.find();
 
     res.json(gestores);
 }
@@ -18,7 +18,7 @@ gestorCtrl.getGestores = async (req, res) => {
  * @param {*} res 
  */
 gestorCtrl.getGestor = async (req, res) => {
-    var gestor = await Gestor.find({_id: req.params._id}).populate("servicio");
+    var gestor = await Gestor.find({_id: req.params._id});
 
     res.json(gestor);
 }

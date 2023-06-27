@@ -1,5 +1,6 @@
 //defino controlador para el manejo de CRUD
 const servicioCtrl = require('../controllers/servicio.controller');
+const authCtl = require('../controllers/auth.controller');
 //creamos el manejador de rutas
 const express = require('express');
 const router = express.Router();
