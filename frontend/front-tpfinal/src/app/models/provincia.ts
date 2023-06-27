@@ -4,5 +4,7 @@ export class Provincia {
     nombre!:string;
     lat!:string;
     long!:string;
+    imagenes!:Array<string>;
+    clima!:string;
 }
 
