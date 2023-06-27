@@ -6,7 +6,7 @@ const express = require('express');
 const route = express.Router();
 
 route.get("/",authCtl.verifyToken,usuarioCtl.getUsuarios);
-route.post("/",authCtl.verifyToken,usuarioCtl.createUsuario);
+route.post("/",usuarioCtl.createUsuario);
 route.get("/:id",authCtl.verifyToken,usuarioCtl.getUsuario);
 route.put("/:id",authCtl.verifyToken,usuarioCtl.edidUsuario);
 route.delete("/:id",authCtl.verifyToken,usuarioCtl.deleteUsuario);
