@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'ciudad', component: CiudadesComponent },
   { path: 'resenia', component: ReseniaComponent },
   { path: 'reseniaForm/:id', component: ReseniaFormComponent },
-  { path: "", redirectTo: "resenia", pathMatch: "full" }
+  //{ path: "", redirectTo: "resenia", pathMatch: "full" }
 ];
 
 @NgModule({

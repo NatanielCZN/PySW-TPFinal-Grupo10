@@ -24,14 +24,14 @@ reseniaCtrl.createResenia= async (req, res) => {
         'status': '0',
         'msg': 'Error procesando operacion.'})
     }
-}
+};
 ///mostrar uno solo
  
 reseniaCtrl.getResenia = async (req, res) => {
     const resenia = await Resenia.findById(req.params.id).populate("servicio");
     //const resenia = await Resenia.findById(req.params.id).populate("reseniaUsuario");
     res.json(resenia);
-}
+};
  
 /*reseniaCtrl.getResenias = async (req, res) => {//recupera todo
     var resenias = await Resenia.find().populate("reseniaServicio");
@@ -42,7 +42,7 @@ reseniaCtrl.getResenia = async (req, res) => {
 reseniaCtrl.getResenias = async (req, res) => {
     var resenias = await Resenia.find();
     res.json(resenias);
-}
+};
 
 reseniaCtrl.deleteResenia= async (req, res)=>{
     try {
@@ -72,7 +72,7 @@ reseniaCtrl.deleteResenia= async (req, res)=>{
     'msg': 'Error procesando la operacion: '+error
     })
   }
-}
+};
 
 /*
 reseniaCtrl.modificarResenia = async (req, res) => {
@@ -94,7 +94,26 @@ reseniaCtrl.modificarResenia = async (req, res) => {
  
  
 
-
+reseniaCtrl.getReseniasUsuario = async (req, res) => {
+    try {
+      const { usuarioId } = req.params;
+      const resenias = await Resenia.find({ usuario: usuarioId }).populate('servicio').populate('usuario');
+      res.json(resenias);
+    } catch (error) {
+      console.error('Error al obtener las reseñas del usuario:', error);
+      res.status(500).json({ error: 'Error al obtener las reseñas del usuario' });
+    }
+  };
+  reseniaCtrl.getReseniasServicio = async (req, res) => {
+    try {
+      const { servicioId } = req.params;
+      const resenias = await Resenia.find({ servicio: servicioId }).populate('usuario');
+      res.json(resenias);
+    } catch (error) {
+      console.error('Error al obtener las reseñas del servicio:', error);
+      res.status(500).json({ error: 'Error al obtener las reseñas del servicio' });
+    }
+  };
  
 
 

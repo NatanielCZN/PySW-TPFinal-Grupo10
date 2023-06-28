@@ -1,3 +1,12 @@
+<!--
+<input class="form-control" placeholder="Ingrese el idusuario"
+  name="txt1"  [(ngModel)]="txt1" id="txt1">
+<button class="btn btn-primary" (click)="obtenerReseniasUs()">Obtener Reseñas usuario</button>
+<input class="form-control" placeholder="Ingrese el idservicio"
+  name="txt"  [(ngModel)]="txt" id="txt">
+<button class="btn btn-primary" (click)="obtenerReseniaServ()">Obtener Reseñas servicio</button>
+--><!-- descomentar para usarlo -->
+
 <div class="container-fluid">
 
     <div class="container justify-content-start align-content-start text-start">
@@ -13,11 +22,11 @@
 
     <div><!--class="collapse multi-collapse" id="multiCollapseExample1"-->
         <table *ngFor="let resenia of resenias">
-            <!--servicio: {{resenia.servicio}}   servicio que corresponde-->
+            servicio: {{resenia.servicio.nombre}} 
             <tbody>
                 <thead>
                     <div class="card-header bg-success">
-                        <td>Ussuario: {{resenia.usuario}}</td>
+                        <td>Ussuario: {{resenia.usuario.username}}</td>
                         <td> {{resenia.fechaAlta}}</td>
                         <td>calificacion {{resenia.valoracion}}</td>
                     </div>
