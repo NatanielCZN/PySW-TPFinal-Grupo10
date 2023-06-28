@@ -9,19 +9,20 @@ import { HomeComponent } from './components/home/home.component';
 import { CiudadesComponent } from './components/ciudades/ciudades.component';
 import { ReseniaComponent } from './components/resenia/resenia.component';
 import { ReseniaFormComponent } from './components/resenia-form/resenia-form.component';
+import { GestorFormComponent } from './components/gestor-form/gestor-form.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "usuario", component: UsuarioComponent },
   { path: "gestor", component: GestorComponent },
+  { path: "gestor-form/:id", component: GestorFormComponent },
   { path: "admin", component: AdminComponent },
   { path: 'home', component: HomeComponent },
   //{ path: '**', pathMatch: 'full', redirectTo: 'home' },
   { path: 'ciudad', component: CiudadesComponent },
-
   { path: 'resenia', component: ReseniaComponent },
-  {path: 'reseniaForm/:id', component: ReseniaFormComponent},
-  {path:"", redirectTo:"resenia", pathMatch:"full"}
+  { path: 'reseniaForm/:id', component: ReseniaFormComponent },
+  { path: "", redirectTo: "resenia", pathMatch: "full" }
 ];
 
 @NgModule({
