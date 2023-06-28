@@ -2,8 +2,15 @@
   <app-header></app-header>
 </div>-->
 <app-header></app-header>
+
 <body>
-  <router-outlet></router-outlet>
+  <div class="wrapper">
+    <div class="content">
+      <div class="container pb-4">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
 </body>
 
 <div *ngIf="logeado">
