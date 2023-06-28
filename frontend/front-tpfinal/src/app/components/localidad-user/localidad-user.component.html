@@ -1,0 +1,22 @@
+
+<div class="container-fluid">
+<h1 style="background-color: wheat;">{{nombre}}</h1>
+
+<div class="card" style="width: 18rem;" >
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body" *ngFor="let s of servicios">
+    <h5 class="card-title">{{s.nombre}}</h5>
+    <p class="card-text"> Colocar algo sobre el servicio </p>
+ 
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">categoria : {{s.categoria}}</li>
+    <li class="list-group-item">calificacion : {{s.calificacionTotal}}</li>
+    <li class="list-group-item">resenias</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Reservar</a>
+  </div>
+</div>
+</div>
+
+</div>
