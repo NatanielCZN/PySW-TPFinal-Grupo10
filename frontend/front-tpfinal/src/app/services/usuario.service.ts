@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -21,5 +21,17 @@ export class UsuarioService {
       }
 
       return this.http.get(this.hostBD+"/"+id,httpOptions);
+  }
+
+  deleteUsuario(_id: string): Observable<any> {
+    const httOptions = {
+      headers: new HttpHeaders({
+
+      }),
+
+      params: new HttpParams()
+        .append('_id', _id)
+    }
+    return this.http.delete(this.hostBD+"/"+ _id, httOptions);
   }
 }
