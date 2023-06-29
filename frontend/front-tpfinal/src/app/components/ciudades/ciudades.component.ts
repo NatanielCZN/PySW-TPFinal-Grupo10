@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CiudadesService } from 'src/app/services/ciudades.service';
 import { HttpClient } from '@angular/common/http';
 import { Provincia } from 'src/app/models/provincia';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ciudades',
@@ -26,7 +27,7 @@ export class CiudadesComponent implements OnInit {
   ];
 
 
-  constructor(private _http: HttpClient, private ciudadService: CiudadesService) {
+  constructor(private _http: HttpClient, private ciudadService: CiudadesService, private router: Router) {
     this.provincia = new Provincia();
     this.localidades = new Array<Provincia>();
   }
@@ -98,6 +99,9 @@ export class CiudadesComponent implements OnInit {
   }
 
 
+  seleccionarLocalidad(localidad:Provincia){
+    this.router.navigate(['localidad-user',localidad.nombre,localidad._id]);
+  }
   
 
   ngOnInit(): void {

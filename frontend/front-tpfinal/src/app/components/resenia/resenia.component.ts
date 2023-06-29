@@ -52,4 +52,40 @@ export class ReseniaComponent implements OnInit {
   fechaHoy() {
     return new Date().toISOString().substring(0, 10);
   }
+  //// para mostrar por usuario
+txt1!:string; 
+  obtenerReseniasUs() {
+    this.reseniaService.getReseniaUsuario(this.txt1).subscribe(
+      result => {
+        this.resenias = new Array<Resenia>();
+        result.forEach((element: any) => {
+          this.resenia = new Resenia();
+          Object.assign(this.resenia, element);
+          this.resenias.push(this.resenia);
+        });
+        console.log(result);
+      },
+      error => {
+        console.log("error")
+      } 
+    );
+  }
+  //// para mostrar por servicio
+  txt!:string; 
+  obtenerReseniaServ() {
+    this.reseniaService.getReseniaServicio(this.txt).subscribe(
+      result => {
+        this.resenias = new Array<Resenia>();
+        result.forEach((element: any) => {
+          this.resenia = new Resenia();
+          Object.assign(this.resenia, element);
+          this.resenias.push(this.resenia);
+        });
+        console.log(result);
+      },
+      error => {
+        console.log("error")
+      } 
+    );
+  }
 }
