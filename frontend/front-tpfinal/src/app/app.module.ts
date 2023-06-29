@@ -38,7 +38,7 @@ import { LocalidadUserComponent } from './components/localidad-user/localidad-us
     CiudadesComponent,
     ReseniaComponent,
     ReseniaFormComponent,
-    FormUsuarioComponent
+    FormUsuarioComponent,
     GestorFormComponent,
     LocalidadUserComponent
   ],
