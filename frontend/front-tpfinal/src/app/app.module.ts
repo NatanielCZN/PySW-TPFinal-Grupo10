@@ -20,6 +20,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { GestorFormComponent } from './components/gestor-form/gestor-form.component';
 import { LocalidadUserComponent } from './components/localidad-user/localidad-user.component';
+import { ReservaComponent } from './components/reserva/reserva.component';
+import { ReservaFormComponent } from './components/reserva-form/reserva-form.component';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +38,9 @@ import { LocalidadUserComponent } from './components/localidad-user/localidad-us
     ReseniaComponent,
     ReseniaFormComponent,
     GestorFormComponent,
-    LocalidadUserComponent
+    LocalidadUserComponent,
+    ReservaComponent,
+    ReservaFormComponent,
   ],
   imports: [
     BrowserModule,
