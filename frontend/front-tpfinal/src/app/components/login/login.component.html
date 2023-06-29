@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="login-form">
+          <h2 class="text-center">Inicio de sesión turismo</h2>
+          <form>
+            <div class="form-group">
+              <input type="username" name="username" class="form-control" [(ngModel)]="log.username" placeholder="Nombre de Usario">
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" class="form-control" [(ngModel)]="log.password" placeholder="Contraseña">
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block" (click)="login()">Iniciar sesión</button>
+            </div>
+            <div class="text-left">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Crear Cuenta</a>
+            </div>
+            <div class="text-left">
+              <a href="#">¿Olvidaste tu contraseña?</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="staticBackdropLabel">Registro</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <a href="#" aria-current="usuarioForm" [routerLink]="['/usuarioForm']"
+          routerLinkActive="active" data-bs-dismiss="modal">Registrarse como Usuario</a><br>
+          <a>Registrarse como Gestor</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+  </div>
