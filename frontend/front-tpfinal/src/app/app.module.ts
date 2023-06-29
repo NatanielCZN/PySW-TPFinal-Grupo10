@@ -18,6 +18,7 @@ import { ReseniaFormComponent } from './components/resenia-form/resenia-form.com
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { FormUsuarioComponent } from './components/form-usuario/form-usuario.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     HomeComponent,
     CiudadesComponent,
     ReseniaComponent,
-    ReseniaFormComponent
+    ReseniaFormComponent,
+    FormUsuarioComponent
   ],
   imports: [
     BrowserModule,

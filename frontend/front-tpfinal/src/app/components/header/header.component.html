@@ -2,11 +2,11 @@
   <label class="logo">PaginaTurismo</label>
   <ul>
     <li>
-      <a  class="nav-link active" aria-current="home" [routerLink]="['home']"
+      <a  class="nav-link " aria-current="home" [routerLink]="['home']"
       routerLinkActive="active">Home</a>
     </li>
     <li>
-      <a  class="nav-link active" aria-current="home" [routerLink]="['home']"
+      <a  class="nav-link " aria-current="home" [routerLink]="['home']"
       routerLinkActive="active">Sobre Nosotros</a>
     </li>
     <li *ngIf="loginService.usuarioLoggedIn()">
@@ -53,11 +53,11 @@
     </li>
   
     <li *ngIf="!loginService.usuarioLoggedIn()">
-      <a class="nav-link active" aria-current="login" [routerLink]="['login']"
+      <a class="nav-link" aria-current="login" [routerLink]="['login']"
       routerLinkActive="active">Iniciar Sesion </a>
   </li>
   <li *ngIf="loginService.usuarioLoggedIn()">
-    <a class="nav-link active" aria-current="home" [routerLink]="['home']"
+    <a class="nav-link" aria-current="home" [routerLink]="['home']"
         routerLinkActive="active" (click)="logout()"> Cerrar Secion </a>
   </li>
   </ul>
