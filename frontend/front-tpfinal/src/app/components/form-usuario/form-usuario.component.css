@@ -1,0 +1,32 @@
+#tab {
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid #d4d4d4;
+    
+    background: #b4b4b4a4;
+    width: auto;
+    height: auto;
+}
+
+.btn{
+    margin-top: 6px;
+    margin-left: 6px;
+}
+
+.form{
+    border: 1px solid #d4d4d4 ;
+    padding:5px;
+    border-radius: 5px;
+    background: #b4b4b4a4;
+}
+
+.form h2{
+    text-align: center;
+    text-decoration:underline;
+    color:#444141a4;
+}
+
+.form label{
+    font-weight: bold;
+}

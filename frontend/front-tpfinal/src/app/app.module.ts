@@ -18,8 +18,12 @@ import { ReseniaFormComponent } from './components/resenia-form/resenia-form.com
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+
+import { FormUsuarioComponent } from './components/form-usuario/form-usuario.component';
+
 import { GestorFormComponent } from './components/gestor-form/gestor-form.component';
 import { LocalidadUserComponent } from './components/localidad-user/localidad-user.component';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +38,7 @@ import { LocalidadUserComponent } from './components/localidad-user/localidad-us
     CiudadesComponent,
     ReseniaComponent,
     ReseniaFormComponent,
+    FormUsuarioComponent
     GestorFormComponent,
     LocalidadUserComponent
   ],
