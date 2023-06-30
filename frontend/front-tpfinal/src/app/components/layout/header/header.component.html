@@ -54,6 +54,16 @@
             </ul>
         </li>
 
+        <li *ngIf="loginService.usuarioLoggedIn()">
+          <a href="#">Reservas<i class="fas fa-caret-down"></i></a>
+          <ul>
+              <li><a class="nav-link active" aria-current="reserva" [routerLink]="['reserva']"
+                      routerLinkActive="active">Reserva</a></li>
+              <li><a class="nav-link active" aria-current="reseniaForm" [routerLink]="['reservaForm/:id']"
+                      routerLinkActive="active">Alta Reserva</a></li>
+          </ul>
+      </li>
+
         <li *ngIf="!loginService.usuarioLoggedIn()">
             <a class="nav-link" aria-current="login" [routerLink]="['login']" routerLinkActive="active">Iniciar Sesion
             </a>

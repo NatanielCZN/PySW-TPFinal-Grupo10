@@ -39,7 +39,7 @@ export class ReservaComponent implements OnInit {
       (res:any)=>{
         Object.assign(this.usuario,res);
         console.log(this.usuario);
-        this.listaReservas= this.usuario.reservas;
+        this.listaReservas=this.usuario.reservas;
       },
       err=>{
         console.log(err);
