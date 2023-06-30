@@ -18,7 +18,7 @@ gestorCtrl.getGestores = async (req, res) => {
  * @param {*} res 
  */
 gestorCtrl.getGestor = async (req, res) => {
-    var gestor = await Gestor.find({_id: req.params._id});
+    var gestor = await Gestor.findById(req.params._id);
 
     res.json(gestor);
 }

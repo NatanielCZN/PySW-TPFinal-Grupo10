@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { Gestor } from 'src/app/models/gestor';
+import { Servicio } from 'src/app/models/servicio';
 import { GestorService } from 'src/app/services/gestor.service';
+import { ServiciosService } from 'src/app/services/servicios.service';
 
 @Component({
   selector: 'app-gestor',
@@ -12,10 +14,17 @@ import { GestorService } from 'src/app/services/gestor.service';
 export class GestorComponent implements OnInit {
 
   id: any;
-  tipo: any
+  tipo: any;
 
-  constructor(private appCom: AppComponent, private gestorService: GestorService, private router: Router) {
-    this.appCom.logeado = true;    
+  gestor!: Gestor;
+  servicios!: Array<Servicio>;
+
+  constructor(private appCom: AppComponent, private servicioService: ServiciosService, private gestorService: GestorService, private router: Router) {
+    this.appCom.logeado = true;
+
+    this.servicios = new Array<Servicio>();
+
+    this.cargarGestor(this.id);
   }
 
   ngOnInit(): void {
@@ -23,7 +32,39 @@ export class GestorComponent implements OnInit {
     this.tipo = sessionStorage.getItem("tipo");
   }
 
-  irFormularioGestor(): void {
-    this.router.navigate(['gestor-form', 0]);
+  cargarGestor(id: string): void {
+    this.gestor = new Gestor();
+
+    this.gestorService.getGestor(id).subscribe(
+      result => {
+        Object.assign(this.gestor, result);
+      },
+      error => {
+      }
+    )
+  }
+
+  cargarServicios(id: string): void {
+    this.servicios = new Array<Servicio>();
+
+    this.servicioService.getServicios(id).subscribe(
+      result => {
+        let servicio: Servicio = new Servicio();
+
+        result.forEach((element: any) => {
+          Object.assign(servicio, element)
+
+          this.servicios.push(servicio)
+
+          servicio = new Servicio();
+        });
+      },
+      error => {
+      }
+    )
+  }
+
+  irFormularioServicio(): void {
+    this.router.navigate(['servicio-form', 0, this.id]);
   }
 }

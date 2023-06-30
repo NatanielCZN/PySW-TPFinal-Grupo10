@@ -13,6 +13,8 @@ import { LocalidadUserComponent } from './components/localidad-user/localidad-us
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { UsuarioFormComponent } from './components/roles/usuario-form/usuario-form.component';
+import { ServicioComponent } from './components/servicio/servicio.component';
+import { ServicioFormComponent } from './components/servicio-form/servicio-form.component';
 
 const routes: Routes = [
   { path: 'header', component: HeaderComponent },
@@ -31,11 +33,11 @@ const routes: Routes = [
   { path: 'resenia', component: ReseniaComponent },
   { path: 'reseniaForm/:id', component: ReseniaFormComponent },
   { path: "", redirectTo: "resenia", pathMatch: "full" },
-
   { path: 'localidad-user/:nombre/:id', component: LocalidadUserComponent },
-  { path: 'resenia', component: ReseniaComponent },
-  { path: 'reseniaForm/:id', component: ReseniaFormComponent },
   //{ path: "", redirectTo: "resenia", pathMatch: "full" }
+
+  { path: 'servicio', component: ServicioComponent },
+  { path: 'servicio-form/:id/:idGestor', component: ServicioFormComponent }
 ];
 
 @NgModule({
