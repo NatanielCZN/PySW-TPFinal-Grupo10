@@ -13,7 +13,7 @@ export class GestorFormComponent implements OnInit {
 
   gestor!: Gestor;
 
-  constructor(private gestorService: GestorService, private router: Router) { 
+  constructor(private gestorService: GestorService, private router: Router) {
     this.gestor = new Gestor();
   }
 
@@ -21,6 +21,6 @@ export class GestorFormComponent implements OnInit {
   }
 
   agregarGestor(gestorForm: NgForm): void {
-    this.router.navigate(['g']);
+
   }
 }
