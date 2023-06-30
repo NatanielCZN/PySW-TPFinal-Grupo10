@@ -7,6 +7,20 @@ servicioCtrl.getServicio = async (req, res) => { //se define una funcion asincro
     res.json(servicios);
 }
 
+servicioCtrl.getServiciosLocalidad = async (req, res) => {
+    try {
+        let criteria = {};
+        if ((req.query.ubicacion != null) && (req.query.ubicacion != "")) {
+            criteria.ubicacion = req.query.ubicacion;
+        }
+        var servicios = await Servicio.find(criteria);
+        res.json(servicios);
+    } catch (error) {
+      res.status(500).json({ message: 'Error al obtener los servicios.', error });
+    }
+  };
+
+
 servicioCtrl.createServicio = async (req, res) => {
     var servicio = new Servicio(req.body);
     try {

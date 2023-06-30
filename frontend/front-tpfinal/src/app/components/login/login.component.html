@@ -13,11 +13,31 @@
             <div class="form-group">
               <button type="submit" class="btn btn-primary btn-block" (click)="login()">Iniciar sesión</button>
             </div>
-            <div class="text-center">
+            <div class="text-left">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Crear Cuenta</a>
+            </div>
+            <div class="text-left">
               <a href="#">¿Olvidaste tu contraseña?</a>
             </div>
           </form>
         </div>
       </div>
     </div>
+    <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="staticBackdropLabel">Registro</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <a href="#" aria-current="usuarioForm" [routerLink]="['/usuarioForm']"
+          routerLinkActive="active" data-bs-dismiss="modal">Registrarse como Usuario</a><br>
+          <a>Registrarse como Gestor</a>
+      </div>
+    </div>
+  </div>
+
+</div>
   </div>

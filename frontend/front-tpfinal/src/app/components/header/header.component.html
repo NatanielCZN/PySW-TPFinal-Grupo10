@@ -1,36 +1,62 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" routerLink="/login" aria-current="page" >Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" >Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav>
+<nav>
+  <label class="logo">PaginaTurismo</label>
+  <ul>
+    <li>
+      <a class="nav-link " aria-current="home" [routerLink]="['home']" routerLinkActive="active"><i class="bi bi-house"></i> Home</a>
+    </li>
+    <li>
+      <a class="nav-link " aria-current="home" [routerLink]="['home']" routerLinkActive="active">Sobre Nosotros</a>
+    </li>
+    <li *ngIf="loginService.usuarioLoggedIn()">
+      <a href="#">Servicios
+        <i class="fas fa-caret-down"></i>
+      </a>
+      <ul>
+        <li><a href="#">ejemplo</a></li>
+      </ul>
+    </li>
+    <li *ngIf="loginService.usuarioLoggedIn()">
+      <a href="#">Resenias
+        <i class="fas fa-caret-down"></i>
+      </a>
+      <ul>
+        <li><a class="nav-link active" aria-current="resenia" [routerLink]="['resenia']" routerLinkActive="active">lista
+            de resenia</a></li>
+        <li><a class="nav-link active" aria-current="reseniaForm" [routerLink]="['reseniaForm/:id']"
+            routerLinkActive="active">formulario resenia</a></li>
+        <li>
+          <a href="#">Desplegable
+            <i class="fas fa-caret-right"></i>
+          </a>
+          <ul>
+            <li><a href="#">ejemplo1</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li *ngIf="loginService.usuarioLoggedIn()">
+      <a href="#">Mi Perfil<i class="fas fa-caret-down"></i></a>
+      <ul>
+        <li><a class="nav-link active" aria-current="resenia" [routerLink]="['resenia']" routerLinkActive="active">Mis
+            Datos</a></li>
+        <li><a class="nav-link active" aria-current="reseniaForm" [routerLink]="['reseniaForm/:id']"
+            routerLinkActive="active">Mis Recervas</a></li>
+        <li>
+          <a href="#">Mis Resenias<i class="fas fa-caret-right"></i></a>
+          <ul>
+            <li><a href="#">ejemplo1</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li *ngIf="!loginService.usuarioLoggedIn()">
+      <a class="nav-link" aria-current="login" [routerLink]="['login']" routerLinkActive="active">Iniciar Sesion </a>
+    </li>
+    <li *ngIf="loginService.usuarioLoggedIn()">
+      <a class="nav-link" aria-current="home" [routerLink]="['home']" routerLinkActive="active" (click)="logout()">
+        Cerrar Secion </a>
+    </li>
+  </ul>
+</nav>
+<section></section>
