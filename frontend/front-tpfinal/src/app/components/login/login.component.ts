@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { Login } from 'src/app/models/login.model';
 import { Usuario } from 'src/app/models/usuario.model';
 import { LoginService } from 'src/app/services/login.service';
+
+declare var $: any;
+
 
 @Component({
   selector: 'app-login',
@@ -12,6 +15,8 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
   
+  @ViewChild('staticBackdrop') staticBackdrop!:ElementRef;
+
   log:Login=new Login();
   userUrl!:string;
   gestUrl!:string;
@@ -25,6 +30,16 @@ export class LoginComponent implements OnInit {
     this.userUrl=this.route.snapshot.queryParams['returnUrl'] || '/usuario';
     this.gestUrl=this.route.snapshot.queryParams['returnUrl'] || '/gestor';
     this.adminUrl=this.route.snapshot.queryParams['returnUrl'] || '/admin';
+  }
+
+  cerr(){
+    this.router.events.subscribe(event=>{
+      if(event instanceof NavigationEnd){
+        //Cerrando el modal usando bootstrap
+         console.log("comavio")
+        $("#staticBackdrop").modal('hide');
+      }
+    })
   }
 
   login(){
