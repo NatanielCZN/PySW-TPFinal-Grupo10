@@ -4,26 +4,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CiudadesComponent } from './components/ciudades/ciudades.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/roles/login/login.component';
 import { LoginService } from './services/login.service';
-import { UsuarioComponent } from './components/usuario/usuario.component';
-import { GestorComponent } from './components/gestor/gestor.component';
-import { AdminComponent } from './components/admin/admin.component';
+import { UsuarioComponent } from './components/roles/usuario/usuario.component';
+import { GestorComponent } from './components/roles/gestor/gestor.component';
+import { AdminComponent } from './components/roles/admin/admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { ReseniaComponent } from './components/resenia/resenia.component';
 import { ReseniaFormComponent } from './components/resenia-form/resenia-form.component';
-
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-
-import { FormUsuarioComponent } from './components/form-usuario/form-usuario.component';
-
-import { GestorFormComponent } from './components/gestor-form/gestor-form.component';
+import { GestorFormComponent } from './components/roles/gestor-form/gestor-form.component';
 import { LocalidadUserComponent } from './components/localidad-user/localidad-user.component';
-
+import { FooterComponent } from './components/layout/footer/footer.component';
+import { HeaderComponent } from './components/layout/header/header.component';
+import { UsuarioFormComponent } from './components/roles/usuario-form/usuario-form.component';
+import { ServicioComponent } from './components/servicio/servicio.component';
+import { ServicioFormComponent } from './components/servicio-form/servicio-form.component';
 
 @NgModule({
   declarations: [
@@ -38,9 +36,12 @@ import { LocalidadUserComponent } from './components/localidad-user/localidad-us
     CiudadesComponent,
     ReseniaComponent,
     ReseniaFormComponent,
-    FormUsuarioComponent,
+    UsuarioFormComponent,
     GestorFormComponent,
-    LocalidadUserComponent
+    LocalidadUserComponent,
+    UsuarioFormComponent,
+    ServicioComponent,
+    ServicioFormComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +49,6 @@ import { LocalidadUserComponent } from './components/localidad-user/localidad-us
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule
-
   ],
   providers: [LoginService,
     {

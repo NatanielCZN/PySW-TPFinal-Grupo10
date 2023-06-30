@@ -1,0 +1,11 @@
+@media only screen and (min-width: 576px) {
+    .formulario-gestor {
+        width: 500px;
+
+        margin: 0 auto;
+    }
+}
+
+.opacidad{
+    background-color: white;
+}
