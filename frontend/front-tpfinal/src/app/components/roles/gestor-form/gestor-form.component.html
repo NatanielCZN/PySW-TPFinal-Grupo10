@@ -81,7 +81,7 @@
                             class="text-danger fw-bold">*</span>)</label>
 
                     <input type="date" class="form-control bg-light" id="idFechaNacimientoGestor"
-                        name="fechaNacimientoGestor" [(ngModel)]="gestor.dni" required
+                        name="fechaNacimientoGestor" [(ngModel)]="gestor.fechaNacimiento" required
                         #fechaNacimientoGestor="ngModel" />
 
                     <!-- Validar Fecha Nacimiento -->
@@ -110,11 +110,47 @@
                     </div>
                 </div>
 
+                <!-- Username -->
+                <div class="mb-4">
+                    <label for="idUsername" class="form-label">Username (<span
+                            class="text-danger fw-bold">*</span>)</label>
+
+                    <input type="text" class="form-control bg-light" id="idUsername" name="username"
+                        placeholder="Ingrese un nombre de usuario" [(ngModel)]="gestor.username" required
+                        #usernameGestor="ngModel" />
+
+                    <!-- Validar Username -->
+                    <div *ngIf="usernameGestor.invalid && (usernameGestor.dirty || usernameGestor.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="usernameGestor.errors?.['required']">
+                            Debe ingresar un username.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-4">
+                    <label for="idPassword" class="form-label">Password (<span
+                            class="text-danger fw-bold">*</span>)</label>
+
+                    <input type="text" class="form-control bg-light" id="idPassword" name="password"
+                        placeholder="Ingrese una contraseña" [(ngModel)]="gestor.password" required
+                        #passwordGestor="ngModel" />
+
+                    <!-- Validar Apellido -->
+                    <div *ngIf="passwordGestor.invalid && (passwordGestor.dirty || passwordGestor.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="passwordGestor.errors?.['required']">
+                            Debe ingresar una contraseña.
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Button Conversion -->
                 <div class="mb-4 d-grid">
-                    <button type="submit" class="btn btn-warning fw-bold mt-2"
-                        (click)="agregarGestor(gestorForm)" [disabled]="gestorForm.invalid">Crear Gestor
-                        <i class="fa-solid fa-cash-register"></i></button>
+                    <button type="submit" class="btn btn-warning fw-bold mt-2" (click)="guardarGestor(gestorForm)"
+                        [disabled]="gestorForm.invalid">Crear Gestor
+                    </button>
                 </div>
             </fieldset>
         </form>
