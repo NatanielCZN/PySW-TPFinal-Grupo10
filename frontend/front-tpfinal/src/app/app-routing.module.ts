@@ -21,9 +21,9 @@ const routes: Routes = [
   { path: 'footer', component: FooterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'usuario', component: UsuarioComponent },
-  { path: 'usuario-form/:id', component: UsuarioFormComponent },
+  { path: 'usuario-form', component: UsuarioFormComponent },
   { path: "gestor", component: GestorComponent },
-  { path: "gestor-form/:id", component: GestorFormComponent },
+  { path: "gestor-form", component: GestorFormComponent },
   { path: "admin", component: AdminComponent },
 
   { path: 'home', component: HomeComponent },

@@ -1,7 +1,7 @@
+import { Login } from "./login.model";
 import { Servicio } from "./servicio";
 
-export class Gestor {
-
+export class Gestor extends Login {
     _id!: string;
     nombre!: string;
     apellido!: string;
@@ -12,6 +12,13 @@ export class Gestor {
     servicio!: Array<Servicio>;
 
     constructor() {
-
+        super();
+        this.nombre = '';
+        this.apellido = '';
+        this.email = '';
+        this.dni = '';
+        this.fechaNacimiento = '';
+        this.edad = 0;
+        this.servicio = [];
     }
 }

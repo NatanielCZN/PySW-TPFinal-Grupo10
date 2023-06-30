@@ -20,7 +20,15 @@ export class GestorFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  agregarGestor(gestorForm: NgForm): void {
-
+  guardarGestor(gestorForm: NgForm): void {
+    this.gestorService.postGestor(this.gestor)
+      .subscribe(
+        (res: any) => {
+          console.log(res);
+        },
+        err => {
+          console.log(err);
+        }
+      )
   }
 }

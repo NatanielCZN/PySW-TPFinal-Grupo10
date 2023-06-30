@@ -1,2 +1,49 @@
 <h1>ID: {{id}}</h1>
 <h3>Tipo: {{tipo}}</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Gestor</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Email</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let s of gestores">
+        <tr>
+          <th scope="row" >1</th>
+          
+          <td>{{s.nombre}} {{s.apellido}}</td>
+          <td>{{s.dni}}</td>
+          <td>{{s.email}}</td>
+          <button type="button" class="form-control bg-danger"
+          >Eliminar</button>
+        </tr>
+      </tbody>
+  </table>
+
+  
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Usuario</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Email</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let s of usuarios">
+        <tr>
+          <th scope="row" >1</th>
+          
+          <td>{{s.nombre}} {{s.apellido}}</td>
+          <td>{{s.dni}}</td>
+          <td>{{s.email}}</td>
+          <button type="button" class="form-control bg-danger"
+          >Eliminar</button>
+        </tr>
+      </tbody>
+  </table>
