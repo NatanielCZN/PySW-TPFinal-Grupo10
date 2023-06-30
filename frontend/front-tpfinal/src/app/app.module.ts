@@ -20,6 +20,8 @@ import { LocalidadUserComponent } from './components/localidad-user/localidad-us
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { UsuarioFormComponent } from './components/roles/usuario-form/usuario-form.component';
+import { ServicioComponent } from './components/servicio/servicio.component';
+import { ServicioFormComponent } from './components/servicio-form/servicio-form.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { UsuarioFormComponent } from './components/roles/usuario-form/usuario-fo
     UsuarioFormComponent,
     GestorFormComponent,
     LocalidadUserComponent,
-    UsuarioFormComponent
+    UsuarioFormComponent,
+    ServicioComponent,
+    ServicioFormComponent
   ],
   imports: [
     BrowserModule,
