@@ -26,6 +26,7 @@ export class ReservaComponent implements OnInit {
     this.usuario=new Usuario();
     this.appComponent.logeado = true;
     this.getUsuario();
+    console.log(this.listaReservas);
   }
 
   ngOnInit(): void {
