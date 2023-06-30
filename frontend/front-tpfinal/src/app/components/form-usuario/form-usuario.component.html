@@ -4,33 +4,33 @@
             <h2>Ingrese sus Datos</h2>          
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
+                <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="usuario.nombre"  placeholder="Nombre">
             </div> 
             <div class="form-group">
                 <label for="apellido">Apellido:</label>
-                <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido">
+                <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="usuario.apellido"  placeholder="Apellido">
             </div>
             <div class="form-group">
                 <label for="nombreUsu">Nombre de Usuario:</label>
-                <input type="text" class="form-control" id="nombreUsu" name="nombreUsu" placeholder="Nombre Usuario">
+                <input type="text" class="form-control" id="nombreUsu" name="nombreUsu" [(ngModel)]="usuario.username" placeholder="Nombre Usuario">
             </div>
             <div class="form-group">
                 <label for="contra">Contraseña: </label>
-                <input type="text" class="form-control" id="contra" name="contra" placeholder="Contraseña">
+                <input type="text" class="form-control" id="contra" name="contra" [(ngModel)]="usuario.password" placeholder="Contraseña">
             </div>
             <div class="form-group">
                 <label for="email">Email: </label>
-                <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                <input type="text" class="form-control" id="email" name="email" [(ngModel)]="usuario.email" placeholder="Email">
             </div>
             <div class="form-group">
                 <label for="dni">DNI: </label>
-                <input type="number" class="form-control" id="dni" name="dni" placeholder="Dni">
+                <input type="number" class="form-control" id="dni" name="dni" [(ngModel)]="usuario.dni" placeholder="Dni">
             </div>
             <div class="form-group">
                 <label for="fecha">Fecha de Nacimiento: </label>
-                <input type="date" class="form-control" id="fecha" name="fecha" placeholder="fecha">
+                <input type="date" class="form-control" id="fecha" name="fecha" [(ngModel)]="usuario.fechaNacimiento" placeholder="fecha" max="2003-12-31">
             </div>
-            <button class="btn btn-primary">Guardar</button>
+            <button class="btn btn-primary" (click)="guardarUsuario()">Guardar</button>
             <button class="btn btn-danger" routerLink="/home">Cancelar</button>
         </form>
     </div>
