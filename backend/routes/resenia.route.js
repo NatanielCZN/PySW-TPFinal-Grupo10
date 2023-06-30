@@ -11,5 +11,8 @@ router.get('/', reseniaCtrl.getResenias);//Recuperar TODOS los  (GET) incluyendo
 router.delete('/:id', reseniaCtrl.deleteResenia);//Eliminar un  
 //router.put('/:id', reseniaCtrl.modificarResenia);//Modificar un 
 
-router.get('/:id', reseniaCtrl.getResenia)//recupera solo por id
+router.get('/:id', reseniaCtrl.getResenia);//recupera solo por id
+
+router.get('/usuario/:usuarioId', reseniaCtrl.getReseniasUsuario);
+router.get('/servicio/:servicioId', reseniaCtrl.getReseniasServicio);
 module.exports = router;
