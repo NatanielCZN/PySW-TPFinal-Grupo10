@@ -10,10 +10,9 @@ const ServicioSchema = new Schema({
     categoria: { type: String, required: true },
     ubicacion: { type: String, required: true },
     calificacionTotal: { type: Number, required: true },
-    usernameGestor: { type: String, required: true },
-    gestor:{type:mongoose.Schema.Types.ObjectId,ref:Gestor,required:true},   
-    resenia: [{type:mongoose.Schema.Types.ObjectId, ref: Resenia, required: false }],
-    reservas:[{type:mongoose.Schema.Types.ObjectId, ref:Recerva, required:false}]
+    gestor: { type: mongoose.Schema.Types.ObjectId, ref: Gestor, required: true },
+    resenia: [{ type: mongoose.Schema.Types.ObjectId, ref: Resenia, required: false }],
+    reservas: [{ type: mongoose.Schema.Types.ObjectId, ref: Recerva, required: false }]
 })
 
 module.exports = mongoose.models.Servicio || mongoose.model('Servicio', ServicioSchema);

@@ -1,3 +1,5 @@
+import { Servicio } from "./servicio";
+
 export class Gestor {
 
     _id!: string;
@@ -7,7 +9,7 @@ export class Gestor {
     dni!: string;
     fechaNacimiento!: string;
     edad!: number;
-    servicio!: string; // Cargar Service
+    servicio!: Array<Servicio>;
 
     constructor() {
 
