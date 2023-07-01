@@ -22,6 +22,8 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { UsuarioFormComponent } from './components/roles/usuario-form/usuario-form.component';
 import { ServicioComponent } from './components/servicio/servicio.component';
 import { ServicioFormComponent } from './components/servicio-form/servicio-form.component';
+import { ReservaComponent } from './components/reserva/reserva.component';
+import { ReservaFormComponent } from './components/reserva-form/reserva-form.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { ServicioFormComponent } from './components/servicio-form/servicio-form.
     LocalidadUserComponent,
     UsuarioFormComponent,
     ServicioComponent,
-    ServicioFormComponent
+    ServicioFormComponent,
+    ReservaComponent,
+    ReservaFormComponent
   ],
   imports: [
     BrowserModule,

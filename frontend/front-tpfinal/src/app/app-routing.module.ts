@@ -15,6 +15,8 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { UsuarioFormComponent } from './components/roles/usuario-form/usuario-form.component';
 import { ServicioComponent } from './components/servicio/servicio.component';
 import { ServicioFormComponent } from './components/servicio-form/servicio-form.component';
+import { ReservaFormComponent } from './components/reserva-form/reserva-form.component';
+import { ReservaComponent } from './components/reserva/reserva.component';
 
 const routes: Routes = [
   { path: 'header', component: HeaderComponent },
@@ -37,7 +39,9 @@ const routes: Routes = [
   //{ path: "", redirectTo: "resenia", pathMatch: "full" }
 
   { path: 'servicio', component: ServicioComponent },
-  { path: 'servicio-form/:id/:idGestor', component: ServicioFormComponent }
+  { path: 'servicio-form/:id/:idGestor', component: ServicioFormComponent },
+  { path: 'reserva',component: ReservaComponent },
+  { path: 'reservaForm/:id', component: ReservaFormComponent }
 ];
 
 @NgModule({

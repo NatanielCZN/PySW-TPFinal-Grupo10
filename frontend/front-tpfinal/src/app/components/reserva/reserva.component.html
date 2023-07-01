@@ -1,0 +1,35 @@
+<div class="container mt-4">
+  <div class="text-center">
+      <legend>Lista De Reservas</legend>
+  </div>
+  <div>
+      <button class="btn btn-success" (click)="agregarReserva()">Agregar Reserva</button>
+  </div>
+  <table class="table table-light mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Nro de reserva</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Fecha Alta</th>
+        <th scope="col">Fecha Ingreso</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Reservado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of listaReservas">
+        <td>{{r.numeroReserva}}</td>
+        <td>{{r.categoria}}</td>
+        <td>{{r.cantidad}}</td>
+        <td>{{r.fechaAlta}}</td>
+        <td>{{r.fechaIngreso}}</td>
+        <td>{{r.fechaEgreso}}</td>
+        <td>{{r.precio}}</td>
+        <td>{{r.reservado}}</td>
+        <button class="btn btn-info">Modificar</button>
+        <button class="btn btn-danger">Eliminar</button>
+      </tr>
+    </tbody>
+  </table>
+</div>
