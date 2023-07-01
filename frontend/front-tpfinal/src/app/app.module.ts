@@ -24,6 +24,7 @@ import { ServicioComponent } from './components/servicio/servicio.component';
 import { ServicioFormComponent } from './components/servicio-form/servicio-form.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { ReservaFormComponent } from './components/reserva-form/reserva-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ReservaFormComponent } from './components/reserva-form/reserva-form.com
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [LoginService,
     {
