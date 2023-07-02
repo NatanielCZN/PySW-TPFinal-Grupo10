@@ -29,12 +29,12 @@ const routes: Routes = [
   { path: "admin", component: AdminComponent },
 
   { path: 'home', component: HomeComponent },
-  //{ path: '**', pathMatch: 'full', redirectTo: 'home' },
+  { path: '**', pathMatch: 'full', redirectTo: 'home' },
   { path: 'ciudad', component: CiudadesComponent },
 
   { path: 'resenia', component: ReseniaComponent },
   { path: 'reseniaForm/:id', component: ReseniaFormComponent },
-  { path: "", redirectTo: "resenia", pathMatch: "full" },
+  //{ path: "", redirectTo: "resenia", pathMatch: "full" },
   { path: 'localidad-user/:nombre/:id', component: LocalidadUserComponent },
   //{ path: "", redirectTo: "resenia", pathMatch: "full" }
 

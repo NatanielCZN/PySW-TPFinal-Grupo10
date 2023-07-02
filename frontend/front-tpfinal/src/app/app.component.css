@@ -1,20 +1,4 @@
 body {
-  background: url(https://cdn4.gttwl.net/attachments/global/1470924557_original.jpeg?w=original&h=&fit=crop&crop=entropy&auto=format,enhance&q=60#tatid:978676);
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
-  padding-top: 20px;
-
-}
-
-.wrapper {
-  display: grid;
-  grid-template-rows: 1fr auto;
-  min-height: 80vh;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-
+  padding: 0;
+  margin: 0;  
 }
