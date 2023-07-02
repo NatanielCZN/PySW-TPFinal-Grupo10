@@ -20,8 +20,9 @@ export class ReservaComponent implements OnInit {
               private router:Router,
               private appComponent:AppComponent,
               private usuarioService:UsuarioService) {
-
+    //id del usuario en sesion
     this.id=sessionStorage.getItem('userId');
+
     this.listaReservas= new Array<Reserva>();
     this.usuario=new Usuario();
     this.appComponent.logeado = true;
@@ -33,12 +34,14 @@ export class ReservaComponent implements OnInit {
 
   }
 
+  //Trae al usuario en sesión
   getUsuario(){
     this.usuarioService.getusuario(this.id)
     .subscribe(
       (res:any)=>{
         Object.assign(this.usuario,res);
         console.log(this.usuario);
+        //cargar reservas
         this.listaReservas=this.usuario.reservas;
       },
       err=>{
@@ -47,10 +50,24 @@ export class ReservaComponent implements OnInit {
     )
 }
 
+deleteReserva(id:string){
+  this.reservaService.deleteReserva(id).subscribe(
+    res=>{
+        console.log(res);
+        this.recargar();
+      },error=>{
+        console.log(error);
+      }
+  )
+}
 
 agregarReserva(){
   this.router.navigate(['reservaForm',0]);
 }
 
+
+recargar(){
+  location.reload();
+}
 
 }

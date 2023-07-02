@@ -23,7 +23,7 @@ usuarioCtl.getUsuarios = async(req,res)=>{
 }
 
 usuarioCtl.getUsuario= async(req,res )=>{
-    const user = await Usuario.findById(req.params.id);
+    const user = await Usuario.findById(req.params.id).populate("reservas");
 
     res.json(user);
 }
