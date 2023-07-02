@@ -3,7 +3,7 @@ import { Usuario } from "./usuario.model";
 
 export class Reserva {
     _id!: string;
-    numeroReserva!: string;
+    numeroReserva!: number;
     categoria!: string;
     cantidad!: number;
     fechaAlta!: string;
@@ -14,7 +14,7 @@ export class Reserva {
     usuario!: Usuario;
     servicio!: Servicio;
 
-    constructor() { 
-        
+    constructor() {
+
     }
 }
