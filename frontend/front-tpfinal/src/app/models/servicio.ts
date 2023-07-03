@@ -1,5 +1,6 @@
 import { Gestor } from "./gestor";
 import { Resenia } from "./resenia";
+import { Reserva } from "./reserva";
 
 export class Servicio {
     _id!: string;
@@ -7,8 +8,10 @@ export class Servicio {
     categoria!: string;
     ubicacion!: string;
     calificacionTotal!: number;
+    gestor!:string
     resenia!:Array<Resenia>; 
-    gestor!: Gestor;
+    reservas!:Array<Reserva>; 
+    //gestor!: Gestor;
 
     constructor() {
 

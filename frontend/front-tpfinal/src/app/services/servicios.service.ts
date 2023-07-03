@@ -33,8 +33,8 @@ export class ServiciosService {
       ),
       params:new HttpParams()
     }
-    const body= JSON.stringify(servicio);
-    return this._http.post(this.urlBase+"servicio/",body, httpOptions);
+    let body= JSON.stringify(servicio);
+    return this._http.post(this.urlBase+"servicio",body, httpOptions);
   }
 
   getServicio(_id:string) : Observable<any>{

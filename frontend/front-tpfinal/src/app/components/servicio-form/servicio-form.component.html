@@ -1,3 +1,5 @@
+
+
 <section>
     <div class="my-4 formulario-gestor">
         <form #servicioForm="ngForm" class="opacidad">
@@ -36,31 +38,34 @@
                     </select>
                 </div>
 
+
+              
+
                 <!-- Ubicacion -->
                 <div class="mb-4">
-                    <label for="idUbicacion" class="form-label">Ubicacion (<span
-                            class="text-danger fw-bold">*</span>)</label>
+                    <label for="idUbicacion" class="form-label">Ubicacion</label>
 
-                    <input type="text" class="form-control bg-light" id="idUbicacion" name="ubicacion"
-                        placeholder="Ingrese ubicacion del servicio" [(ngModel)]="servicio.ubicacion" required
-                        #ubicacionServicio="ngModel" />
-
-                    <!-- Validar Ubicacion -->
-                    <div *ngIf="ubicacionServicio.invalid && (ubicacionServicio.dirty || ubicacionServicio.touched)"
-                        class="alert alert-danger">
-                        <div *ngIf="ubicacionServicio.errors?.['required']">
-                            Debe ingresar la ubicacion del servicio.
-                        </div>
-                    </div>
+                    <select class="form-select bg-light" name="ubicacion" id="idUbicacion" [(ngModel)]="seleccion" (ngModelChange)="consultarProvincia(seleccion)"
+                        required>
+                        <option *ngFor="let c of provincias" [value]="c.name">{{c.name}}</option>
+                    </select>
                 </div>
+                <div class="mb-4">
+                    <label for="idLocalidad" class="form-label">Localidad</label>
+                    <select class="form-select bg-light" name="localidad" id="idLocalidad" [(ngModel)]="servicio.ubicacion" required>
+                      <option *ngFor="let localidad of localidades" [value]="localidad._id">{{localidad.nombre}}</option>
+                    </select>
+                  </div>
 
                 <!-- Button Cargar Servicio -->
                 <div class="mb-4 d-grid">
                     <button type="submit" class="btn btn-warning fw-bold mt-2"
-                        [disabled]="servicioForm.invalid">Crear Servicio
+                        [disabled]="servicioForm.invalid"  (click)="guardarServicio(servicio)">Crear Servicio
                         <i class="fa-solid fa-cash-register"></i></button>
                 </div>
             </fieldset>
         </form>
     </div>
 </section>
+
+
