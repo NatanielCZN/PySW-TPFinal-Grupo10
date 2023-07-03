@@ -6,6 +6,32 @@
         <p>Campos obligatorios (<span class="text-danger fw-bold">*</span>)</p>
         <hr />
 
+
+        <!-- CAMPO DE SERVICIOS -->
+        <!-- <div class="mb-4">
+          <label for="servicio" class="col-sm-3 col-form-label"
+            >Servicio(<span class="text-danger fw-bold">*</span>)</label
+          >
+          <select
+            class="form-select form-select-lg"
+            name="servicio"
+            id="servicio"
+            aria-label=".form-select-lg example"
+            [(ngModel)]="reserva.servicio"
+            #servicio="ngModel" required
+          >
+            <option *ngFor="let s of servicios" [ngValue]="s">
+                {{s.nombre}} - {{s.categoria}}
+            </option>
+          </select>
+          <div *ngIf="servicio.invalid && (servicio.dirty || servicio.touched)" class="alert alert-danger">
+            <div *ngIf="servicio.errors?.['required']">
+                Este campo es obligatorio.
+            </div>
+        </div>
+        </div> -->
+
+        <!-- CAMPO CATEGORIA -->
         <div class="mb-4">
           <label for="idNombreGestor" class="form-label"
             >Categoria (<span class="text-danger fw-bold">*</span>)</label
@@ -19,7 +45,7 @@
             #categoria="ngModel"
             required
           >
-            <option value="restaurant">restaurant</option>
+            <option value="restaurant">Restaurant</option>
             <option value="hotel">Hotel</option>
           </select>
           <div
@@ -27,11 +53,12 @@
             class="alert alert-danger"
           >
             <div *ngIf="categoria.errors?.['required']">
-              Tipo espectador es requerido.
+              Tipo serviciotador es requerido.
             </div>
           </div>
         </div>
 
+        <!-- CAMPO CANTIDAD -->
         <div class="mb-4">
           <label class="form-label"
             >Cantidad(<span class="text-danger fw-bold">*</span>)</label
@@ -54,6 +81,7 @@
           </div>
         </div>
 
+        <!-- CAMPO FECHA ALTA -->
         <div class="mb-4">
           <label for="fechaAlta" class="form-label"
             >Fecha de Alta(<span class="text-danger fw-bold">*</span>)</label
@@ -79,6 +107,7 @@
           </div>
         </div>
 
+        <!-- CAMPO FECHA INGRESO-->
         <div class="mb-4">
           <label for="fechaIngreso" class="form-label"
             >fechaIngreso(<span class="text-danger fw-bold">*</span>)</label
@@ -107,6 +136,7 @@
           </div>
         </div>
 
+        <!-- CAMPO FECHA EGRESO -->
         <div class="mb-4">
           <label for="fechaEgreso" class="form-label"
             >fechaEgreso(<span class="text-danger fw-bold">*</span>)</label
@@ -134,6 +164,7 @@
           </div>
         </div>
 
+        <!-- CAMPO PRECIO -->
         <div class="mb-4">
           <label for="precio" class="form-label"
             >Precio(<span class="text-danger fw-bold">*</span>)</label
@@ -161,6 +192,7 @@
           </div>
         </div>
 
+        <!-- CAMPO RESERVADO -->
         <div class="mb-4">
           <label for="reservado" class="form-label"
             >Reservado (<span class="text-danger fw-bold">*</span>)</label
@@ -174,15 +206,15 @@
             #reservado="ngModel"
             required
           >
-            <option value="true">reservado</option>
-            <option value="false">no reservado</option>
+            <option value="true">Reservado</option>
+            <option value="false">No reservado</option>
           </select>
           <div
             *ngIf="reservado.invalid && (reservado.dirty || reservado.touched)"
             class="alert alert-danger"
           >
             <div *ngIf="reservado.errors?.['required']">
-              Tipo espectador es requerido.
+              Campo Requerido
             </div>
           </div>
         </div>

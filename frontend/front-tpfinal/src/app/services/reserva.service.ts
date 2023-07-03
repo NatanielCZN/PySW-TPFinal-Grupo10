@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Reserva } from '../models/reserva';
+import { Usuario } from '../models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,7 @@ export class ReservaService {
     return this._http.post(this.urlBase+"reserva/",body, httpOptions);
   }
 
+
   getReserva(_id:string) : Observable<any>{
     const httpOptions={
       headers:new HttpHeaders(
@@ -57,18 +59,19 @@ export class ReservaService {
      params:new HttpParams()
    }
    let body= JSON.stringify(reserva);
-   return this._http.post(this.urlBase+"reserva/",body, httpOptions);
+   return this._http.put(this.urlBase+"reserva/",body, httpOptions);
   }
 
-  deleteReserva(_id:string):Observable<any>{
+  deleteReserva(id:string):Observable<any>{
     const httpOptions={
       headers:new HttpHeaders(
         {
 
         }
-      ),params: new HttpParams().append("id",_id)
+      ),params: new HttpParams()
     }
-    return this._http.get(this.urlBase+"reserva/"+_id,httpOptions);
+
+    return this._http.delete(this.urlBase+"reserva/"+id,httpOptions);
   }
 
 }
