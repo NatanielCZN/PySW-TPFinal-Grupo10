@@ -23,6 +23,17 @@ export class ReservaService {
     }
     return this._http.get(this.urlBase+"reserva",httpOptions);
   }
+  //devuelve todas las reservas de un usuario
+  getReservaUsuario(id:string) : Observable<any>{
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+
+        }
+      ),params: new HttpParams().append("id",id)
+    }
+    return this._http.get(this.urlBase+"reserva/usuario/"+id,httpOptions);
+  }
 
   crearReserva(reserva:Reserva) : Observable<any>{
     const httpOptions = {
