@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', reservaCtrl.getReservas);
-router.get('/usuario/:id', reservaCtrl.getReservasUsuario);
+router.get('/usuario', reservaCtrl.getReservasUsuario);
 router.get('/:id', reservaCtrl.getReserva);
 router.post('/', reservaCtrl.createReserva);
 router.delete('/:id', reservaCtrl.deleteReserva);
