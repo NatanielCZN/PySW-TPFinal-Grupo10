@@ -11,8 +11,8 @@ import { GestorComponent } from './components/roles/gestor/gestor.component';
 import { AdminComponent } from './components/roles/admin/admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
-import { ReseniaComponent } from './components/resenia/resenia.component';
-import { ReseniaFormComponent } from './components/resenia-form/resenia-form.component';
+import { ReseniaComponent } from './components/resenias/resenia/resenia.component';
+import { ReseniaFormComponent } from './components/resenias/resenia-form/resenia-form.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { GestorFormComponent } from './components/roles/gestor-form/gestor-form.component';
@@ -25,6 +25,8 @@ import { ServicioFormComponent } from './components/servicio-form/servicio-form.
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { ReservaFormComponent } from './components/reserva-form/reserva-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReseniaServicioComponent } from './components/resenias/resenia-servicio/resenia-servicio.component';
+import { ReseniaUsuarioComponent } from './components/resenias/resenia-usuario/resenia-usuario.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ServicioComponent,
     ServicioFormComponent,
     ReservaComponent,
-    ReservaFormComponent
+    ReservaFormComponent,
+    ReseniaServicioComponent,
+    ReseniaUsuarioComponent
   ],
   imports: [
     BrowserModule,

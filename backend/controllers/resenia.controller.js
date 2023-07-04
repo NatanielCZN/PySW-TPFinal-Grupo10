@@ -28,7 +28,7 @@ reseniaCtrl.createResenia= async (req, res) => {
 ///mostrar uno solo
  
 reseniaCtrl.getResenia = async (req, res) => {
-    const resenia = await Resenia.findById(req.params.id).populate("servicio");
+    const resenia = await Resenia.findById(req.params.id);//.populate("servicio");
     //const resenia = await Resenia.findById(req.params.id).populate("reseniaUsuario");
     res.json(resenia);
 };
@@ -40,7 +40,7 @@ reseniaCtrl.getResenia = async (req, res) => {
 }*/
 ///**** muestra todas las renesnias con los id de usuario q lo creo y el id del servicio q realizo la resenia *****/
 reseniaCtrl.getResenias = async (req, res) => {
-    var resenias = await Resenia.find();
+    var resenias = await Resenia.find().populate('servicio').populate('usuario');
     res.json(resenias);
 };
 
@@ -74,9 +74,9 @@ reseniaCtrl.deleteResenia= async (req, res)=>{
   }
 };
 
-/*
+
 reseniaCtrl.modificarResenia = async (req, res) => {
-    const vResenia= new Resenia(req.body);
+    const vresenia= new Resenia(req.body);
     try {
         await Resenia.updateOne({_id: req.body._id}, vresenia);
         res.json({
@@ -89,7 +89,7 @@ reseniaCtrl.modificarResenia = async (req, res) => {
         'msg': 'Error procesando la operacion'
     })
   }
-}*/
+};
 
  
  

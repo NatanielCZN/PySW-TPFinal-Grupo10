@@ -1,18 +1,7 @@
-<!--
-<input class="form-control" placeholder="Ingrese el idusuario"
-  name="txt1"  [(ngModel)]="txt1" id="txt1">
-<button class="btn btn-primary" (click)="obtenerReseniasUs()">Obtener Reseñas usuario</button>
-<input class="form-control" placeholder="Ingrese el idservicio"
-  name="txt"  [(ngModel)]="txt" id="txt">
-<button class="btn btn-primary" (click)="obtenerReseniaServ()">Obtener Reseñas servicio</button>
---><!-- descomentar para usarlo -->
+<p>resenia-usuario works!</p>
+ 
 
 <div class="container-fluid">
-
-    <div class="container justify-content-start align-content-start text-start">
-        <button type="button" class="btn btn-success mt-2 mb-3 fw-bold" (click)="cargar()">comentar <i
-                class="bi bi-clipboard2-plus"></i></button>
-    </div>
     <!--*****lista desplegable****-->
     <table>
         <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
@@ -37,10 +26,13 @@
                             <h5 class="card-title"> {{resenia.comentario}}</h5>
 
                         </div>
-                        <img src="{{resenia.imagen}}" class="card-img-top" alt="..." width="300px" height="300px">
-
+                        <ng-container *ngIf="resenia.imagen">
+                            <img [src]="resenia.imagen" alt="Imagen de la reseña">
+                          </ng-container>
                     </td>
                 </thead>
+                <button class="btn btn-danger mx-1" (click)="eliminar(resenia._id)"><i class="bi bi-trash3 mx-1">Eliminar</i></button>
+                <button class="btn btn-danger mx-1" (click)="modificar(resenia)"><i class="bi bi-trash3 mx-1">Modificar</i></button>
 
             </tbody>
         </table>
