@@ -47,13 +47,13 @@ export class ServicioFormComponent implements OnInit {
     this.localidad = new Provincia();
     this.localidades = new Array<Provincia>();
 
-    this.servicio.gestor = this.id;
+   
   }
 
   ngOnInit() {
     this.id = sessionStorage.getItem("userId");
 
-    
+    this.servicio.gestor = this.id as string;
     // this.route.params.subscribe(params => {
     //   this.id = params['id'];
     //   this.idGestor = params['idGestor'];
