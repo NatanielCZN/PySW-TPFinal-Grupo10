@@ -65,6 +65,6 @@ export class GestorComponent implements OnInit {
   }
 
   irFormularioServicio(): void {
-    this.router.navigate(['servicio-form', 0, this.id]);
+    this.router.navigate(['servicio-form']);
   }
 }

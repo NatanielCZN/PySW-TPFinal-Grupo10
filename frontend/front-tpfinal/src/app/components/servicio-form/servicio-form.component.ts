@@ -29,12 +29,13 @@ export class ServicioFormComponent implements OnInit {
   { id: 21, name: "Santiago del Estero" }, { id: 22, name: "Tierra del Fuego" },
   { id: 5, name: "Tucuman" }
   ];
+
   servicio!: Servicio;
   seleccion!: string;
   localidad!: Provincia;
   gestor!: Gestor;
   localidades!: Array<Provincia>;
-  id: string = "";
+  id: any;
   idGestor: string = "";
 
   constructor(private route: ActivatedRoute, private ciudadService: CiudadesService, private servicioService: ServiciosService, private router: Router, private gestorService: GestorService) {
@@ -45,14 +46,19 @@ export class ServicioFormComponent implements OnInit {
     //this.obtenerGestor(this.id);
     this.localidad = new Provincia();
     this.localidades = new Array<Provincia>();
+
+    this.servicio.gestor = this.id;
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
-      this.idGestor = params['idGestor'];
-      this.servicio.gestor = params['id'];
-    });
+    this.id = sessionStorage.getItem("userId");
+
+    
+    // this.route.params.subscribe(params => {
+    //   this.id = params['id'];
+    //   this.idGestor = params['idGestor'];
+    //   this.servicio.gestor = params['id'];
+    // });
   }
 
   guardarServicio(servicio: Servicio) {
@@ -69,16 +75,16 @@ export class ServicioFormComponent implements OnInit {
     )
   }
 
-  obtenerGestor(id: string): void {
-    this.gestorService.getGestor(id).subscribe(
-      result => {
-        this.gestor = result;
-        // this.servicio.gestor = this.gestor;
-      },
-      error => {
-      }
-    )
-  }
+  // obtenerGestor(id: string): void {
+  //   this.gestorService.getGestor(id).subscribe(
+  //     result => {
+  //       this.gestor = result;
+  //       // this.servicio.gestor = this.gestor;
+  //     },
+  //     error => {
+  //     }
+  //   )
+  // }
 
   consultarProvincia(nombre: string) {
     this.ciudadService.getProvincias(nombre).subscribe(
