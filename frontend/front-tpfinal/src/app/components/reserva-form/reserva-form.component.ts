@@ -4,11 +4,11 @@ import { Console, error } from 'console';
 import { AppComponent } from 'src/app/app.component';
 import { Reserva } from 'src/app/models/reserva';
 import { Servicio } from 'src/app/models/servicio';
-
 import { Usuario } from 'src/app/models/usuario.model';
 import { ReservaService } from 'src/app/services/reserva.service';
 import { ServiciosService } from 'src/app/services/servicios.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+
 
 @Component({
   selector: 'app-reserva-form',
@@ -21,88 +21,90 @@ export class ReservaFormComponent implements OnInit {
   accion!:string;
   id!:any;
   servicio!:any;
+  servicioSeleccionado!:Servicio;
   servicios!:Array<Servicio>;
+  nombreServicio!:string;
+  precioCalculado!:number;
+
+    
   constructor(private reservaService:ReservaService,
-              private appcomponent:AppComponent,
-              private router:Router,
-              private activatedRoute: ActivatedRoute,
-              private usuarioService:UsuarioService,
-              private serviceServicio:ServiciosService) {
-     //capturando id del usuario en sesion
-     this.id=sessionStorage.getItem('userId');
+    private appcomponent:AppComponent,
+    private router:Router,
+    private activatedRoute: ActivatedRoute,
+    private usuarioService:UsuarioService,
+    private serviceServicio:ServiciosService) {
+//capturando id del usuario en sesion
+this.id=sessionStorage.getItem('userId');
+appcomponent.logeado = true;
+this.reserva= new Reserva();
+this.usuario= new Usuario();
+this.cargarUsuario();
+this.reserva.fechaAlta = new Date().toISOString();
+this.reserva.numeroReserva = this.usuario.reservas.length+1 ;
+this.reserva.reservado = false;
+}
 
-     appcomponent.logeado = true;
-     this.reserva= new Reserva();
-     this.usuario= new Usuario();
-     this.cargarUsuario();
+calcularPrecioRestaurante(cantidad:number){
+this.precioCalculado = cantidad * 1500;
+this.reserva.precio = this.precioCalculado ;
+}
 
-   }
-
-  ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
-      if (params['id'] == "0"){
-      this.accion = "new";
-      }else{
-
-      }
-    })
-  }
-
-  //cargar servicios
-  ubicacionService!:string;
-  bandServicios:boolean=false;
-
-  cargarServicios(){
-    this.serviceServicio.getServicios("380035").subscribe(
-      res=>{
-        let servicio = new Servicio();
-        res.forEach(
-          (s:any) => {
-            Object.assign(servicio,s);
-            this.servicios.push(servicio);
-            servicio= new Servicio();
-          }
-        );
-      },error=>{
-        console.log("error Al cargar Servicios");
-      }
-    )
-  }
-
-  cargarUsuario(){
-    this.usuarioService.getusuario(this.id).subscribe(
-      (res:any)=>{
-        Object.assign(this.usuario,res);
-      }
-    )
-  }
-
-  guardarReserva(){
-    //id de Servicio CAMBIAR
-    this.servicio="64a16b119845e78c3c352125";
+ngOnInit(): void {
+this.id = sessionStorage.getItem("userId");
+this.reserva.usuario = this.id as string ;
+this.activatedRoute.params.subscribe(params => {
+if (params['id'] == "0"){
+this.accion = "new";
+}else{
+}
+})
+this.activatedRoute.paramMap.subscribe(params => {
+const idServicio = params.get('idServicio');
+this.reserva.servicio = idServicio as string;
+this.cargarDatosDelServicio(idServicio as string);
+// Aquí puedes usar el valor de idServicio como desees
+});
+}
 
 
-    this.reserva.servicio =this.servicio;
+cargarDatosDelServicio(_id:string){
+this.serviceServicio.getServicio(_id).subscribe(
+result=>{
+console.log(result)
+this.servicioSeleccionado = new Servicio();
+Object.assign(this.servicioSeleccionado,result);
+this.reserva.categoria = this.servicioSeleccionado.categoria; 
+this.nombreServicio = this.servicioSeleccionado.nombre;
+},
+error=>{
+}
+);
+}
 
-    //id de usuario
-    this.reserva.usuario=this.id;
 
-    this.reserva.numeroReserva = this.usuario.reservas.length+1 ;
-   // this.reserva.fechaAlta=new Date().toISOString().substring(0, 10);
+cargarUsuario(){
+this.usuarioService.getusuario(this.id).subscribe(
+(res:any)=>{
+Object.assign(this.usuario,res);
+}
+)
+}
 
-    this.reservaService.crearReserva(this.reserva).subscribe(
-       res => {
-         if(res.status==1)
-         {
-          console.log("reserva guardada");
-           alert(res.msg);
-           this.reserva= new Reserva();
-           this.router.navigate(["reserva"]);
-         }
-          },error=>{
-              alert(error.msg);
-         }
-    )
-  }
+guardarReserva(){
+this.reservaService.crearReserva(this.reserva).subscribe(
+res => {
+if(res.status==1)
+{
+console.log("reserva guardada");
+ alert(res.msg);
+ this.reserva= new Reserva();
+ this.router.navigate(["usuario"]);
+}
+},error=>{
+    alert(error.msg);
+}
+)
+}
 
 }
+

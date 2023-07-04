@@ -10,7 +10,8 @@ const ServicioSchema = new Schema({
     categoria: { type: String, required: true },
     ubicacion: { type: String, required: true },
     calificacionTotal: { type: Number, required: true },
-    gestor: { type: mongoose.Schema.Types.ObjectId, ref: Gestor, required: true },
+    gestor: { type: String, required: true },   //cambio de atributo gestor a solo el id de un gestor
+    //gestor: { type: mongoose.Schema.Types.ObjectId, ref: Gestor, required: true },
     resenia: [{ type: mongoose.Schema.Types.ObjectId, ref: Resenia, required: false }],
     reservas: [{ type: mongoose.Schema.Types.ObjectId, ref: Recerva, required: false }]
 })

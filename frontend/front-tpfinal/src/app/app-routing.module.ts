@@ -29,19 +29,19 @@ const routes: Routes = [
   { path: "admin", component: AdminComponent },
 
   { path: 'home', component: HomeComponent },
-  //{ path: '**', pathMatch: 'full', redirectTo: 'home' },
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'ciudad', component: CiudadesComponent },
 
   { path: 'resenia', component: ReseniaComponent },
   { path: 'reseniaForm/:id', component: ReseniaFormComponent },
-  { path: "", redirectTo: "resenia", pathMatch: "full" },
+  //{ path: "", redirectTo: "resenia", pathMatch: "full" },
   { path: 'localidad-user/:nombre/:id', component: LocalidadUserComponent },
   //{ path: "", redirectTo: "resenia", pathMatch: "full" }
 
   { path: 'servicio', component: ServicioComponent },
-  { path: 'servicio-form/:id/:idGestor', component: ServicioFormComponent },
+  { path: 'servicio-form', component: ServicioFormComponent },
   { path: 'reserva',component: ReservaComponent },
-  { path: 'reservaForm/:id', component: ReservaFormComponent }
+  { path: 'reservaForm/:idServicio', component: ReservaFormComponent }
 ];
 
 @NgModule({

@@ -14,6 +14,21 @@ reservaCtrl.getReservas = async (req, res) => {
     res.json(reservas);
 };
 
+
+reservaCtrl.getReservasUsuario = async (req, res) => {
+    try {
+        let criteria = {};
+        if ((req.query.usuario != null) && (req.query.usuario != "")) {
+            criteria.usuario = req.query.usuario;
+        }
+        var reservas = await Reserva.find(criteria);
+        res.json(reservas);
+    } catch (error) {
+      res.status(500).json({ message: 'Error al obtener las reservas.', error });
+    }
+  };
+
+
 /**
  * ALta de una reserva (POST)
  * @param {*} req 

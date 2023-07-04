@@ -2,10 +2,11 @@ const Servicio = require('../models/servicio');
 const Gestor = require('../models/gestor');
 const servicioCtrl = {}
 
-servicioCtrl.getServicio = async (req, res) => { //se define una funcion asincrona
-    var servicios = await Servicio.find();
-    res.json(servicios);
-}
+servicioCtrl.getServicio = async (req, res) => {
+    const servicio = await Servicio.findById(req.params.id);
+    res.json(servicio);
+  };
+  
 
 servicioCtrl.getServiciosLocalidad = async (req, res) => {
     try {
