@@ -17,13 +17,15 @@ import { ServicioComponent } from './components/servicio/servicio.component';
 import { ServicioFormComponent } from './components/servicio-form/servicio-form.component';
 import { ReservaFormComponent } from './components/reserva-form/reserva-form.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
+import { UsuarioDatosComponent } from './components/roles/usuario-datos/usuario-datos.component';
 
 const routes: Routes = [
   { path: 'header', component: HeaderComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'usuario', component: UsuarioComponent },
-  { path: 'usuario-form', component: UsuarioFormComponent },
+  {path:'usuario/datos',component:UsuarioDatosComponent},
+  { path: 'usuario-form/:id', component: UsuarioFormComponent },
   { path: "gestor", component: GestorComponent },
   { path: "gestor-form", component: GestorFormComponent },
   { path: "admin", component: AdminComponent },

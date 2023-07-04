@@ -25,6 +25,7 @@ import { ServicioFormComponent } from './components/servicio-form/servicio-form.
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { ReservaFormComponent } from './components/reserva-form/reserva-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UsuarioDatosComponent } from './components/roles/usuario-datos/usuario-datos.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ServicioComponent,
     ServicioFormComponent,
     ReservaComponent,
-    ReservaFormComponent
+    ReservaFormComponent,
+    UsuarioDatosComponent
   ],
   imports: [
     BrowserModule,
