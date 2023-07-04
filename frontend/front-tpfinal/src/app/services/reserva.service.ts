@@ -31,8 +31,10 @@ export class ReservaService {
 
         }
       ),params: new HttpParams().append("id",id)
+      
     }
-    return this._http.get(this.urlBase+"reserva/usuario/"+id,httpOptions);
+    console.log(id);
+    return this._http.get("http://localhost:3000/api/reserva/usuario?usuario="+id,httpOptions);
   }
 
   crearReserva(reserva:Reserva) : Observable<any>{

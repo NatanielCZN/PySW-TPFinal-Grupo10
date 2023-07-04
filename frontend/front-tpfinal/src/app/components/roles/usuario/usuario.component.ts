@@ -42,6 +42,7 @@ export class UsuarioComponent implements OnInit {
  
 
   constructor(private appCom:AppComponent,private servicioU:UsuarioService, private _http: HttpClient,private reservaService:ReservaService, private ciudadService: CiudadesService, private router: Router) {
+    this.id= sessionStorage.getItem("userId"); 
     this.appCom.logeado=true;
     this.usuario=new Usuario();
     this.provincia = new Provincia();
@@ -71,6 +72,7 @@ export class UsuarioComponent implements OnInit {
 
   mostrarReservas() {
     this.reservasCliente = new Array<Reserva>();
+    console.log(this.id);
     this.reservaService.getReservaUsuario(this.id as string).subscribe(
       (result) => {
         let unaReserva = new Reserva();
