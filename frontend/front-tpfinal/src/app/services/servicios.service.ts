@@ -12,6 +12,7 @@ export class ServiciosService {
 
   constructor(private _http:HttpClient) { }
 
+  //me devuelve los servicios que se encuentran en una localidad determinada
   getServicios(ubicacion:string): Observable<any>{
     const httpOptions={
       headers:new HttpHeaders(
@@ -22,6 +23,17 @@ export class ServiciosService {
     
     }
     return this._http.get("http://localhost:3000/api/servicio/ubicacion?ubicacion="+ubicacion,httpOptions);
+  }
+
+  getServicio(_id:string) : Observable<any>{
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+
+        }
+      ),params: new HttpParams().append("id",_id)
+    }
+    return this._http.get(this.urlBase+"servicio/"+_id,httpOptions);
   }
 
   crearServicio(servicio:Servicio) : Observable<any>{
@@ -37,17 +49,7 @@ export class ServiciosService {
     return this._http.post(this.urlBase+"servicio",body, httpOptions);
   }
 
-  getServicio(_id:string) : Observable<any>{
-    const httpOptions={
-      headers:new HttpHeaders(
-        {
-
-        }
-      ),params: new HttpParams().append("id",_id)
-    }
-    return this._http.get(this.urlBase+"servicio/"+_id,httpOptions);
-  }
-
+ 
   modificarServicio(servicio:Servicio):Observable<any>{
     const httpOptions = {
       headers : new HttpHeaders(

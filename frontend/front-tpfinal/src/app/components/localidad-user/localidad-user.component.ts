@@ -14,13 +14,9 @@ export class LocalidadUserComponent implements OnInit {
   id:string=""
   servicios!:Array<Servicio>;
 
-  constructor(private route: ActivatedRoute, private router: Router, private serviceServicios:ServiciosService) {
-
-    
+  constructor(private route: ActivatedRoute, private router: Router, private serviceServicios:ServiciosService) {   
    }
 
-
-  
   cargarServicios(id:string){
     this.serviceServicios.getServicios(id).subscribe(
       result =>{
@@ -38,7 +34,6 @@ export class LocalidadUserComponent implements OnInit {
     )
   }
 
-
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.nombre = params['nombre'];
@@ -47,5 +42,7 @@ export class LocalidadUserComponent implements OnInit {
     });
   }
   
-
+  realizarReserva(idServicio:string){
+    this.router.navigate(["reservaForm",idServicio]);
+  }
 }

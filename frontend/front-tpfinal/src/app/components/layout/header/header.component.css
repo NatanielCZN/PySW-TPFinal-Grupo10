@@ -4,7 +4,7 @@ a {
 }
 
 .navbar {
-  background-color: #FFA500;
+  background: linear-gradient(to left, #ffa500, #664d03);
   padding: 0;
 }
 
