@@ -56,7 +56,8 @@ import { UsuarioDatosComponent } from './components/roles/usuario-datos/usuario-
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [LoginService,
     {

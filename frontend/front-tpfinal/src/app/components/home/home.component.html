@@ -36,8 +36,27 @@
             Sign In
         </a>
 
-        <a routerLink="/login" routerLinkActive="active" class="btn btn-outline-info">
+        <a class="btn btn-outline-info" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             Sign Up
         </a>
-    </div>    
+    </div> 
+</div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog modal-sm">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h6 class="modal-title" id="staticBackdropLabel">Registro</h6>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <a href="#" aria-current="usuarioForm" [routerLink]="['/usuario-form/0']" routerLinkActive="active"
+        data-bs-dismiss="modal">Registrarse como Usuario</a><br>
+
+        <a href="#" aria-current="gestorForm" [routerLink]="['/gestor-form']" routerLinkActive="active"
+        data-bs-dismiss="modal">Registrarse como Gestor</a>
+    </div>
+  </div>
+</div>
 </div>

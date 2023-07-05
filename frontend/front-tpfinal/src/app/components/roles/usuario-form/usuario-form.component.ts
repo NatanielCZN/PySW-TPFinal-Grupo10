@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { FormControl,Validator, Validators } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-usuario-form',
@@ -9,6 +11,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./usuario-form.component.css']
 })
 export class UsuarioFormComponent implements OnInit {
+  emailCtrl=new FormControl('',[Validators.required]);///validacion sincrona ''; validacion asincrona []
+
   title:string="Ingrese sus datos";
   usuario:Usuario;
   fechaNa:string="";
@@ -16,6 +20,15 @@ export class UsuarioFormComponent implements OnInit {
   id:any;
   constructor(private userService:UsuarioService,private router:Router,private route:ActivatedRoute) {
     this.usuario=new Usuario();
+    this.emailCtrl.valueChanges
+    .pipe(
+      debounceTime(550)
+    )
+    .subscribe(
+      res=>{
+        console.log(res)
+      }
+    )
    }
 
   ngOnInit(): void {
@@ -67,5 +80,10 @@ export class UsuarioFormComponent implements OnInit {
         }
       )
     }
+  }
+
+  getEmail(event: Event){
+    event.preventDefault();
+      console.log(this.emailCtrl.value)
   }
 }
