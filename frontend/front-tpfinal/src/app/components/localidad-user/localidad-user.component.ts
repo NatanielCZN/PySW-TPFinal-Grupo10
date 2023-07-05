@@ -47,5 +47,11 @@ export class LocalidadUserComponent implements OnInit {
     });
   }
   
+  obtenerReseniaServ(servicio: Servicio) {//produ:NgForm){
+    this.router.navigate(['reseniaSer',servicio._id]);
+  }
+  cargar(servicio: Servicio) {//produ:NgForm){
+    this.router.navigate(['reseniaForm',0,servicio._id]);
+  }
 
 }

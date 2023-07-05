@@ -107,7 +107,7 @@ reseniaCtrl.getReseniasUsuario = async (req, res) => {
   reseniaCtrl.getReseniasServicio = async (req, res) => {
     try {
       const { servicioId } = req.params;
-      const resenias = await Resenia.find({ servicio: servicioId }).populate('usuario');
+      const resenias = await Resenia.find({ servicio: servicioId }).populate('servicio').populate('usuario');
       res.json(resenias);
     } catch (error) {
       console.error('Error al obtener las reseñas del servicio:', error);

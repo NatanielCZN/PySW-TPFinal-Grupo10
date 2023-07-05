@@ -16,17 +16,17 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class ReseniaFormComponent implements OnInit {
 
   fecha: Date;
-   
-   accion: string = "";
+  ids: string = "";
+  accion: string = "";
   indice: number = 0;
 
   resenia!: Resenia;
   resenias!: Array<Resenia>;
 
   id!: any;
-  servicio!: any;
+  idservicio!: any;
   usuario!: Usuario;
-  usuarios!:Array<Usuario>;
+  usuarios!: Array<Usuario>;
   servicios!: Array<Servicio>;
   constructor(private appCom: AppComponent,
     private router: Router,
@@ -38,43 +38,45 @@ export class ReseniaFormComponent implements OnInit {
     this.appCom.logeado = true;
     this.resenias = new Array<Resenia>();
     this.resenia = new Resenia();
-    this.usuario= new Usuario();
-    this.id=sessionStorage.getItem('userId');
-    this.cargarUsuario();
-    this.cargarServicio();
+    this.usuario = new Usuario();
+    this.id = sessionStorage.getItem('userId');
+    // this.cargarUsuario(); 
     this.fecha = new Date();
   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       if (params['id'] == "0") {
+        this.ids = params['servicio'];
         this.accion = "new";
+        //this.cargar();
       } else {
-      this.accion = "update";
-       this.alter(params['id']);
+        this.accion = "update";
+        this.alter(params['id']);
       }
     })
   }
   ////////////
   cargar() {//produ:NgForm){
+    console.log(this.ids);
     this.resenia.fechaAlta = this.fechaHoy();
-    this.resenia.usuario=this.id;
-    this.servicio="649718107225d20a45afe1b3";
+    this.resenia.usuario = this.id;
 
-    this.resenia.servicio=this.servicio;
+    this.idservicio = this.ids;//"649718107225d20a45afe1b3";
+
+    this.resenia.servicio = this.idservicio;
     this.reseniaService.postResenia(this.resenia).subscribe(
       (result) => {
         if (result.status == 1) {
-          alert(result.msg);
-          this.router.navigate(['reseniaSer']);
+          //alert(result.msg);
+          this.router.navigate(['reseniaSer', this.idservicio]);
         }
-        // resenia.reset();
       },
       (error) => {
         alert(error.msg);
       }
     )
-    this.router.navigate(['reseniaSer']);
+    this.router.navigate(['reseniaSer', this.idservicio]);
   }
   ///////
   fechaHoy() {
@@ -95,68 +97,49 @@ export class ReseniaFormComponent implements OnInit {
     }
   }
   ////////////////////////
-  cargarUsuario(){//obtener usuario
+  /*cargarUsuario(){//obtener usuario
     this.usuarioService.getusuario(this.id).subscribe(
       (res:any)=>{
         Object.assign(this.usuario,res);
       }
     )
+  }*/
+
+  public cancelar() {
+    this.router.navigate(['reseniaSer', this.ids]);
   }
-  cargarServicio(){//obtener servicio
-   /* this.serviceServicio.getServicio(this.id).subscribe(
-      (res:any)=>{
-        Object.assign(this.servicio,res);
-      }
-    )*/
-    this.serviceServicio.getServicios("649718107225d20a45afe1b3").subscribe(
-      res=>{
-        let servicio = new Servicio();
-        res.forEach(
-          (s:any) => {
-            Object.assign(servicio,s);
-            this.servicios.push(servicio);
-            servicio= new Servicio();
-          }
-        );
-      },error=>{
-        console.log("error Al cargar Servicios");
-      }
-    )
-  }
-  public cancelar(){    
-    this.router.navigate(['reseniaSer']);
-  }
-  public cancelarUs(){    
+  public cancelarUs() {
     this.router.navigate(['reseniaUs']);
   }
   ////////////////
-  modificar( ){
+  modificar() {
     this.reseniaService.editarResenia(this.resenia).subscribe(
-      (result:any)  => {
+      (result: any) => {
         // La reseña se ha editado correctamente
-        if(result.status == 1){
+        if (result.status == 1) {
           //console.log(result);  
-          console.log("Se ha actualizado un producto")
+          console.log("Se ha actualizado un producto");
+
+          this.router.navigate(['reseniaUs']);
         }
-      },  
+      },
       (error) => {
         // Se produjo un error al editar la reseña
-       // console.error(error);
+        // console.error(error);
         //alert(error.msg);
-       // console.error('Error al modificar reseña:', error);
+        // console.error('Error al modificar reseña:', error);
       }
-    );
-    this.router.navigate(['reseniaUs']);
+    )
   }
-    public alter(id: string){ //muestra los datos de un id
+  public alter(id: string) { //muestra los datos de un id
     this.reseniaService.getResenia(id).subscribe(
       result => {
         console.log(result);
         Object.assign(this.resenia, result);
-      //console.log(this.resenia)
+        //console.log(this.resenia)
       },
-      error=>{
-        console.error(error); 
+      error => {
+        console.error(error);
       }
     )
   }

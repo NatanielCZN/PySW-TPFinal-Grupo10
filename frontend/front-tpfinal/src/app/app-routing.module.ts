@@ -36,7 +36,8 @@ const routes: Routes = [
 
   { path: 'resenia', component: ReseniaComponent },
   { path: 'reseniaUs', component: ReseniaUsuarioComponent },
-  { path: 'reseniaSer', component: ReseniaServicioComponent },
+  { path: 'reseniaSer/:servicio', component: ReseniaServicioComponent },
+  { path: 'reseniaForm/:id/:servicio', component: ReseniaFormComponent },
   { path: 'reseniaForm/:id', component: ReseniaFormComponent },
   //{ path: "", redirectTo: "resenia", pathMatch: "full" },
   { path: 'localidad-user/:nombre/:id', component: LocalidadUserComponent },

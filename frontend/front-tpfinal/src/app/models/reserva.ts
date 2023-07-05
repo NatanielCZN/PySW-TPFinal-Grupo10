@@ -13,7 +13,7 @@ export class Reserva {
     reservado!: boolean;
     usuario!: Usuario;
     servicio!: Servicio;
-
+    //servicio!: string
     constructor() {
 
     }
