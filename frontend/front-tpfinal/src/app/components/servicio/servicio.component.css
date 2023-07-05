@@ -6,7 +6,27 @@ body {
     margin-top: -24px;
 }
 
-
+.busquedaProvincia{
+    background: #727272bd;
+    border-radius: 15px;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.btn-search{
+    border: 2px solid;
+    width: 46%;
+    border-radius: 15px;
+    background: #d58d01c4;
+}
+.selectProvincia{
+    margin-left: 10%;
+    width: 80%;
+    margin-right: 10%;
+    border-radius: 15px;
+    text-align: center;
+    background: #c4c1bcba;
+}
 .card {
     background: linear-gradient(to right, #ffa500b5, #664d03e0);
     border: 1px solid #4e4e4e;
