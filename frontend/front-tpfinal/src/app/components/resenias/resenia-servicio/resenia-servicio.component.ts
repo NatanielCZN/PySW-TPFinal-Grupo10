@@ -14,6 +14,7 @@ export class ReseniaServicioComponent implements OnInit {
   resenia!: Resenia;
   resenias!: Array<Resenia>;
   id:string="";
+  tipo:any;
   //idServicio!:any;
   constructor(private reseniaService: ReseniaService,
     private appCom:AppComponent, private router: Router,
@@ -25,6 +26,7 @@ export class ReseniaServicioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.tipo=sessionStorage.getItem("tipo");
    this.route.params.subscribe(params => {
        this.id = params['servicio'];
        this.obtenerReseniaServ(this.id);
