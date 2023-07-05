@@ -16,6 +16,14 @@
         <div class="card-body">
           <button type="button" class="form-control" (click)="realizarReserva(s._id)">Reservar</button>
         </div>
+        <div class="container justify-content-start align-content-start text-start">
+          <button type="button" class="btn btn-success mt-2 mb-3 fw-bold" (click)="obtenerReseniaServ(s)">Resenias <i
+                  class="bi bi-clipboard2-plus"></i></button>
+      </div>
+      <div class="container justify-content-start align-content-start text-start">
+        <button type="button" class="btn btn-success mt-2 mb-3 fw-bold" (click)="cargar(s)">comentar <i
+                class="bi bi-clipboard2-plus"></i></button>
+    </div>
       </div>
     </div>
   </div>
@@ -23,12 +31,5 @@
   <div *ngIf="servicios.length === 0">
     <p>No hay servicios disponibles aun!.</p>
   </div>
-  <div class="container justify-content-start align-content-start text-start">
-        <button type="button" class="btn btn-success mt-2 mb-3 fw-bold" (click)="obtenerReseniaServ(s)">Resenias <i
-                class="bi bi-clipboard2-plus"></i></button>
-    </div>
-    <div class="container justify-content-start align-content-start text-start">
-      <button type="button" class="btn btn-success mt-2 mb-3 fw-bold" (click)="cargar(s)">comentar <i
-              class="bi bi-clipboard2-plus"></i></button>
-  </div>
+  
 </div>

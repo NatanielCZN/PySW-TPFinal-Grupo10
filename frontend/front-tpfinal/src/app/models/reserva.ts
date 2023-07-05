@@ -11,9 +11,8 @@ export class Reserva {
     fechaEgreso!: string;
     precio!: number;
     reservado!: boolean;
-    usuario!: Usuario;
-    servicio!: Servicio;
-    //servicio!: string
+    usuario!: string; 
+    servicio!: string
     constructor() {
 
     }
