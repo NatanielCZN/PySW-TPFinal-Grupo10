@@ -49,7 +49,10 @@ import { UsuarioDatosComponent } from './components/roles/usuario-datos/usuario-
     ServicioComponent,
     ServicioFormComponent,
     ReservaComponent,
-    ReservaFormComponent
+    ReservaFormComponent,
+    ReseniaServicioComponent,
+    ReseniaUsuarioComponent,
+    UsuarioDatosComponent
   ],
   imports: [
     BrowserModule,

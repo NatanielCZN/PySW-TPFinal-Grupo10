@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { Resenia } from 'src/app/models/resenia';
-import { Usuario } from 'src/app/models/usuario.model';
 import { ReseniaService } from 'src/app/services/resenia.service';
-import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-resenia-usuario',
@@ -22,7 +20,7 @@ export class ReseniaUsuarioComponent implements OnInit {
     this.resenias = new Array<Resenia>();
     this.resenia = new Resenia(); 
     this.obtenerReseniasUs();
-   // this.idUs=sessionStorage.getItem('userId'); 
+    this.idUs=sessionStorage.getItem('userId'); 
   }
 
   ngOnInit(): void {
@@ -30,7 +28,9 @@ export class ReseniaUsuarioComponent implements OnInit {
   
   //// para mostrar por usuario 
   obtenerReseniasUs() { 
-   this.idUs = sessionStorage.getItem('userId'); 
+   this.idUs = sessionStorage.getItem('userId');
+   console.log(this.idUs);
+
     this.reseniaService.getReseniaUsuario(this.idUs).subscribe(
       result => {
         this.resenias = new Array<Resenia>();
