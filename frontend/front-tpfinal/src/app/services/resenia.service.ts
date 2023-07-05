@@ -37,8 +37,8 @@ export class ReseniaService {
     }
     return this._http.get(this.urlbase + "resenia/", httpOption)
   }
-//mostrar todos las resenias segun el usuario id
-  getReseniaUsuario(usuario:string): Observable<any> {
+  //mostrar todos las resenias segun el usuario id
+  getReseniaUsuario(usuario: string): Observable<any> {
     let httpOption = {
       headers: new HttpHeaders(
         {
@@ -47,10 +47,10 @@ export class ReseniaService {
       ),
       params: new HttpParams()
     }
-    return this._http.get(this.urlbase + "resenia/usuario/"+usuario, httpOption)
+    return this._http.get(this.urlbase + "resenia/usuario/" + usuario, httpOption)
   }
   //mostrar todos las resenias segun el servicio id
-  getReseniaServicio(servicio:string): Observable<any> {
+  getReseniaServicio(servicio: string): Observable<any> {
     let httpOption = {
       headers: new HttpHeaders(
         {
@@ -59,9 +59,43 @@ export class ReseniaService {
       ),
       params: new HttpParams()
     }
-    return this._http.get(this.urlbase + "resenia/servicio/"+servicio, httpOption)
+    return this._http.get(this.urlbase + "resenia/servicio/" + servicio, httpOption)
   }
-
-
-
+  ////eliminar
+  delateResenia(id: string): Observable<any> {
+    let httpOption = {
+      headers: new HttpHeaders(
+        {
+          'Content-type': 'application/json'
+        }
+      ),
+      params: new HttpParams()
+    }
+    return this._http.delete(this.urlbase + "resenia/" + id, httpOption)
+  }
+  /// modificar
+  editarResenia(resenia: Resenia): Observable<any> {
+    let httpOption = {
+      headers: new HttpHeaders(
+        {
+          'Content-type': 'application/json'
+        }
+      ),
+      params: new HttpParams()
+    }
+    var body = JSON.stringify(resenia);
+    return this._http.put(this.urlbase + "resenia/"+resenia._id,body, httpOption)
+  }
+  ///mostrar uno para la modificaion
+  getResenia(id: string): Observable<any> {
+    let httpOption = {
+      headers: new HttpHeaders(
+        {
+          'Content-type': 'application/json'
+        }
+      ),
+      params: new HttpParams()
+    }
+    return this._http.get(this.urlbase + "resenia/"+id, httpOption)
+  }
 }

@@ -1,0 +1,45 @@
+
+
+<div class="container-fluid">
+
+    <!--div class="container justify-content-start align-content-start text-start">
+        <button type="button" class="btn btn-success mt-2 mb-3 fw-bold" (click)="cargar()">comentar <i
+                class="bi bi-clipboard2-plus"></i></button>
+    </div-->
+    <!--*****lista desplegable****-->
+    <table>
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
+            aria-expanded="false" aria-controls="multiCollapseExample1">comentarios</a>
+
+    </table>
+
+    <div><!--class="collapse multi-collapse" id="multiCollapseExample1"-->
+        <table *ngFor="let resenia of resenias">
+            servicio: {{resenia.servicio.nombre}} 
+            <tbody>
+                <thead>
+                    <div class="card-header bg-success">
+                        <td>Ussuario: {{resenia.usuario.username}}</td>
+                        <td> {{resenia.fechaAlta}}</td>
+                        <td>calificacion {{resenia.valoracion}}</td>
+                    </div>
+                </thead>
+                <thead>
+                    <td>
+                        <div class="card-body text-success">
+                            <h5 class="card-title"> {{resenia.comentario}}</h5>
+
+                        </div>
+                        <ng-container *ngIf="resenia.imagen">
+                            <img [src]="resenia.imagen" alt="Imagen de la reseña">
+                          </ng-container>
+                    </td>
+                </thead>
+                <button class="btn btn-danger mx-1" (click)="eliminar(resenia._id)"><i class="bi bi-trash3 mx-1">Eliminar</i></button>
+
+            </tbody>
+        </table>
+        <br>
+    </div>
+    <br>
+</div>

@@ -10,18 +10,14 @@ import { ReseniaService } from 'src/app/services/resenia.service';
   styleUrls: ['./resenia.component.css']
 })
 export class ReseniaComponent implements OnInit {
-  fecha: Date;
-  action: string = "";
-  indice: number = 0;
-
+  
   resenia!: Resenia;
   resenias!: Array<Resenia>;
   constructor(private reseniaService: ReseniaService,
     private appCom:AppComponent, private router: Router) {
       this.appCom.logeado=true;
     this.resenias = new Array<Resenia>();
-    this.resenia = new Resenia();
-    this.fecha = new Date();
+    this.resenia = new Resenia(); 
     this.mostrarResenias();
   }
 
@@ -32,8 +28,7 @@ export class ReseniaComponent implements OnInit {
     this.router.navigate(['reseniaForm',0]);
   }
   ////////////
-  mostrarResenias() {
-    this.resenia.fechaAlta=this.fechaHoy();
+  mostrarResenias() { 
     this, this.reseniaService.getMostarResenia().subscribe(
       result => {
         this.resenias = new Array<Resenia>();
@@ -49,9 +44,20 @@ export class ReseniaComponent implements OnInit {
       });
   }
   ///////
-  fechaHoy() {
-    return new Date().toISOString().substring(0, 10);
+  eliminar(id:string){
+    this.reseniaService.delateResenia(id).subscribe(
+      res=>{
+          console.log(res);
+          this.upDate();
+        },error=>{
+          console.log(error);
+        }
+    )
   }
+  upDate(){
+    location.reload();
+  }
+
   //// para mostrar por usuario
 txt1!:string; 
   obtenerReseniasUs() {

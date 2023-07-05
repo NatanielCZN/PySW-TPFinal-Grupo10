@@ -6,8 +6,8 @@ import { GestorComponent } from './components/roles/gestor/gestor.component';
 import { AdminComponent } from './components/roles/admin/admin.component';
 import { HomeComponent } from './components/home/home.component';
 import { CiudadesComponent } from './components/ciudades/ciudades.component';
-import { ReseniaComponent } from './components/resenia/resenia.component';
-import { ReseniaFormComponent } from './components/resenia-form/resenia-form.component';
+import { ReseniaComponent } from './components/resenias/resenia/resenia.component';
+import { ReseniaFormComponent } from './components/resenias/resenia-form/resenia-form.component';
 import { GestorFormComponent } from './components/roles/gestor-form/gestor-form.component';
 import { LocalidadUserComponent } from './components/localidad-user/localidad-user.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
@@ -18,6 +18,8 @@ import { ServicioFormComponent } from './components/servicio-form/servicio-form.
 import { ReservaFormComponent } from './components/reserva-form/reserva-form.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { UsuarioDatosComponent } from './components/roles/usuario-datos/usuario-datos.component';
+import { ReseniaUsuarioComponent } from './components/resenias/resenia-usuario/resenia-usuario.component';
+import { ReseniaServicioComponent } from './components/resenias/resenia-servicio/resenia-servicio.component';
 
 const routes: Routes = [
   { path: 'header', component: HeaderComponent },
@@ -35,6 +37,9 @@ const routes: Routes = [
   { path: 'ciudad', component: CiudadesComponent },
 
   { path: 'resenia', component: ReseniaComponent },
+  { path: 'reseniaUs', component: ReseniaUsuarioComponent },
+  { path: 'reseniaSer/:servicio', component: ReseniaServicioComponent },
+  { path: 'reseniaForm/:id/:servicio', component: ReseniaFormComponent },
   { path: 'reseniaForm/:id', component: ReseniaFormComponent },
   //{ path: "", redirectTo: "resenia", pathMatch: "full" },
   { path: 'localidad-user/:nombre/:id', component: LocalidadUserComponent },
