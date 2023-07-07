@@ -18,7 +18,7 @@ AdminCtrl.getAdmins = async (req, res) => {
  * @param {*} res 
  */
 AdminCtrl.getAdmin = async (req, res) => {
-    var admin = await Admin.find({_id: req.params._id});
+    var admin = await Admin.findById(req.params._id);
     res.json(admin);
 }
 
