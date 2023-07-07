@@ -68,4 +68,16 @@ export class UsuarioService {
     }
     return this.http.delete(this.hostBD+"/"+ _id, httOptions);
   }
+
+  findEmail(email:string){
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+          'Content-Type': 'application/json'
+        }
+      ),
+    }
+    let body={email:email}
+    return this.http.post(this.hostBD+"/email",body,httpOptions);
+  }
 }
