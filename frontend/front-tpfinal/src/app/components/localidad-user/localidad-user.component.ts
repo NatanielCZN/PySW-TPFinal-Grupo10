@@ -50,6 +50,6 @@ export class LocalidadUserComponent implements OnInit {
   }
 
   realizarReserva(idServicio:string){
-    this.router.navigate(["reservaForm",idServicio]);
+    this.router.navigate(["reservaForm",0,idServicio]);
   }
 }
