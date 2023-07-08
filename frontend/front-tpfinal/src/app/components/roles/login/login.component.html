@@ -13,6 +13,7 @@
             <input type="password" name="password" class="form-control" [(ngModel)]="log.password"
               placeholder="Contraseña">
           </div>
+          <p *ngIf="falloLogin" class="error">{{msgError}}</p>
           <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block" (click)="login()">Iniciar sesión</button>
           </div>
