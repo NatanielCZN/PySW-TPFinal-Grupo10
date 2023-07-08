@@ -1,7 +1,7 @@
 <body>
     <br>
     <div class="container-fluid">
-        <div class="row col-12">
+        <div class="row">
             <nav class="navbar navbar-expand">
                 <div class="container-fluid busquedaProvincia">
                     <h3>Selecciona una Provincia :</h3>
@@ -14,24 +14,32 @@
 
                     </div>
                 </div>
-            </nav>
-            <section class="col-md-6 bg-dark-subtle  d-none d-md-block">
+            </nav> 
+            <div class="col-6">
+                <div class="slider ">
+                    <ul> 
+                        <li *ngFor="let i of imagenes"><img *ngIf="i" src="{{i}}" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+           
+            <section class="col-6 ">
                 <div class="row">
-                    <div class="col-6">
-                        <div class="card col-4" *ngIf="mostrarCard" style="width: 18rem;">
+                    <div class="col">
+                        <div class="card" *ngIf="mostrarCard">
 
                             <div class="card-body">
-                                <h5 class="card-title">{{provincia.nombre}}</h5>
+                                <h5 class="card-title text-center">{{provincia.nombre}}</h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the
                                     bulk
                                     of the
                                     card's content.</p>
                             </div>
-                            <ul class="list-group list-group-flush">
+                            <!-- <ul class="list-group list-group-flush">
                                 <li class="list-group-item">{{provincia.clima}}</li>
                                 <li class="list-group-item">Lat: {{provincia.lat}}</li>
                                 <li class="list-group-item">Long: {{provincia.long}}</li>
-                            </ul>
+                            </ul> -->
                             <div class="card-body">
                                 <a href="https://maps.google.com/?q={{provincia.long}},{{provincia.lat}}"
                                     class="card-link">Maps</a>
@@ -39,73 +47,33 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div id="carouselExample" class="carousel slide col-8" *ngIf="mostrarCard">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active" *ngFor="let i of imagenes">
-                                    <img *ngIf="i" src="{{i}}" class="d-block w-100" alt="...">
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
-                                data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-                                data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
+                    <div class="tabla-contenedor overflow-auto" *ngIf="mostrarCard">
+                        <h2 style="text-align: center;">Localidades:</h2>
+                        <table class="table table-striped" >
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Id</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let s of localidades">
+                                <tr>
+                                    <th scope="row">{{s.nombre}}</th>
+                                    <td colspan="2">{{s._id}}</td>
+                                    <button type="button" class="form-control botonLocalidad"
+                                        (click)="seleccionarLocalidad(s)">Visitar</button>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </section>
-            <aside class=" col-md-6 col-sm-12 bg-info ">
-
-                <div class="tabla-contenedor">
-                    <table class="table table-striped" *ngIf="mostrarCard">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Id</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody *ngFor="let s of localidades">
-                            <tr>
-                                <th scope="row">{{s.nombre}}</th>
-                                <td colspan="2">{{s._id}}</td>
-                                <button type="button" class="form-control"
-                                    (click)="seleccionarLocalidad(s)">Visitar</button>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </aside>
+            
+           
         </div>
     </div>
 
-    <div class="container mx-auto mt-4">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <img src="https://www.eltrecetv.com.ar/resizer/_DpGw1Ir_1ZozO6-b6R1Z1NYv9M=/767x0/smart/filters:format(webp)/cloudfront-us-east-1.images.arcpublishing.com/artear/2TVD2AICLBEWLHUFFLJBWQ7IUE.jpg"
-                            class="card-img-top" alt="...">
-                        <br>
-                        <br>
-                        <a href="#" class="btn">Crear una Rese&#241;a</a>
-                        <a href="#" class="btn ">Hacer una reserva</a>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
+    
+    <br>
 </body>
