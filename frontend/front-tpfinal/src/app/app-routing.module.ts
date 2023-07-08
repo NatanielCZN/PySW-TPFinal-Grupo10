@@ -48,7 +48,7 @@ const routes: Routes = [
   { path: 'servicio', component: ServicioComponent },
   { path: 'servicio-form', component: ServicioFormComponent },
   { path: 'reserva',component: ReservaComponent },
-  { path: 'reservaForm/:idServicio', component: ReservaFormComponent }
+  { path: 'reservaForm/:id/:idServicio', component: ReservaFormComponent }
 ];
 
 @NgModule({

@@ -57,7 +57,7 @@ export class ReservaService {
         {
 
         }
-      ),params: new HttpParams().append("id",_id)
+      ),params: new HttpParams()
     }
     return this._http.get(this.urlBase+"reserva/"+_id,httpOptions);
   }
@@ -72,10 +72,10 @@ export class ReservaService {
      params:new HttpParams()
    }
    let body= JSON.stringify(reserva);
-   return this._http.put(this.urlBase+"reserva/",body, httpOptions);
+   return this._http.put(this.urlBase+"reserva/"+reserva._id,body, httpOptions);
   }
 
-  deleteReserva(id:string):Observable<any>{
+  deleteReserva(_id:string):Observable<any>{
     const httpOptions={
       headers:new HttpHeaders(
         {
@@ -84,7 +84,7 @@ export class ReservaService {
       ),params: new HttpParams()
     }
 
-    return this._http.delete(this.urlBase+"reserva/"+id,httpOptions);
+    return this._http.delete(this.urlBase+"reserva/"+_id,httpOptions);
   }
 
 }
