@@ -43,7 +43,7 @@ export class CiudadesService {
     const httpOptions = {
       headers: new HttpHeaders({
       }),
-      params: new HttpParams().set('query',palabraClave).set('per_page', '1').set('client_id', this.clientId)
+      params: new HttpParams().set('query',palabraClave).set('per_page', '4').set('client_id', this.clientId)
     };
     return this._http.get(this.unsplashAPIUrl, httpOptions);
   }

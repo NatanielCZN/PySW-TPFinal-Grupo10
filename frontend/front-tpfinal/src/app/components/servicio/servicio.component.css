@@ -5,7 +5,13 @@ body {
     min-height: 100vh;
     margin-top: -24px;
 }
-
+.tabla-contenedor{
+    max-height: 50vh;
+    float: right;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 30px;
+}
 .busquedaProvincia{
     background: #727272bd;
     border-radius: 15px;
@@ -19,6 +25,9 @@ body {
     border-radius: 15px;
     background: #d58d01c4;
 }
+.botonLocalidad{
+    margin: 5%;
+}
 .selectProvincia{
     margin-left: 10%;
     width: 80%;
@@ -28,12 +37,17 @@ body {
     background: #c4c1bcba;
 }
 .card {
-    background: linear-gradient(to right, #ffa500b5, #664d03e0);
+    background: linear-gradient(to right,  #664d03e0, #664d038f);
     border: 1px solid #4e4e4e;
     color: rgba(250, 250, 250, 0.8);
     margin-bottom: 2rem;
+    max-width: 100%;
 }
-
+.imagenProvincia{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
 .btn {
     border: 2px solid;
     text-decoration: none;
@@ -49,4 +63,43 @@ body {
     border: 5px solid #fff;
     box-shadow: #222 1px 0 10px;
     background: #664d03e0;
+}
+.slider {
+	width: 60%;
+    height: auto;
+	margin:50px auto 0;
+	overflow: hidden;
+    margin-bottom: 50px;
+    
+}
+
+.slider ul {
+   
+	display: flex;
+	padding: 0;
+	width: 400%;
+	animation: slide 20s infinite alternate ease-in-out;
+}
+
+.slider li {
+	width: 80%;
+	list-style: none;
+}
+
+.slider img {
+	width: 100%;
+}
+
+@keyframes slide {
+	0% {margin-left: 0;}
+	20% {margin-left: 0;}
+	
+	25% {margin-left: -100%;}
+	45% {margin-left: -100%;}
+	
+	50% {margin-left: -200%;}
+	70% {margin-left: -200%;}
+	
+	75% {margin-left: -300%;}
+	100% {margin-left: -300%;}
 }
