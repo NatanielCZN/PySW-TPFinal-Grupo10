@@ -44,6 +44,12 @@
   border-color: #0056b3;
 }
 
+.error{
+  font-weight: bold;
+  color:red;
+  font-style: italic;
+}
+
 @keyframes fadeInDown {
   0% {
     opacity: 0;

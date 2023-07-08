@@ -3,7 +3,8 @@ import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AbstractControl, FormBuilder, FormControl,FormGroup,Validator, ValidatorFn, Validators } from '@angular/forms';
-import { debounceTime } from 'rxjs/operators';
+import { catchError, debounceTime,map } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-usuario-form',
@@ -13,7 +14,7 @@ import { debounceTime } from 'rxjs/operators';
 export class UsuarioFormComponent implements OnInit {
   form!:FormGroup;
   //emailCtrl=new FormControl('',[Validators.required]);///validacion sincrona ''; validacion asincrona []
-
+  emailExist:boolean=false;
   title:string="Ingrese sus datos";
   usuario:Usuario;
   fechaNacimiento!:Date;
@@ -74,9 +75,11 @@ export class UsuarioFormComponent implements OnInit {
     event.preventDefault();
     if(this.form.valid){
      await Object.assign(this.usuario,this.form.value);
-     this.usuario.edad= await this.calculoEdad(this.form.value.fechaNacimiento);
-    await this.guardarUsuario();
-     console.log(this.usuario);
+     if(this.emailExist = false){
+             this.usuario.edad= await this.calculoEdad(this.form.value.fechaNacimiento);
+             await this.guardarUsuario();
+             console.log(this.usuario);
+            }
     }else{
       this.form.markAllAsTouched();
     }
@@ -135,12 +138,22 @@ export class UsuarioFormComponent implements OnInit {
     return null;
   };
  }
+  
+  //Validador Personalisado para chekear el Email 
+  /*chekearEmail():ValidatorFn{
+    return async (control: AbstractControl) => {
+      const value = control.value;
+      const res = await this.userService.findEmail(value).toPromise();
+      console.log(res)
+      return res ==true ? { emailExists: true } : null;
+    };
+  }*/
 
- findEmail(){
-    this.userService.findEmail("natanielarg@gmail.com")
+ findEmail(email:string){
+    this.userService.findEmail(email)
     .subscribe(
       (res:any)=>{
-        console.log(res);
+               this.emailExist=res as boolean;
       },
       err=>{
         console.log(err);

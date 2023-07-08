@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   gestUrl!: string;
   adminUrl!: string;
   msgError!: string;
+  falloLogin:boolean=false;
   constructor(private loginS: LoginService, private router: Router, private route: ActivatedRoute, private appCom: AppComponent) {
     this.appCom.logeado = false;
   }
@@ -59,6 +60,7 @@ export class LoginComponent implements OnInit {
             if (res.tipo === 'admin')
               this.router.navigateByUrl(this.adminUrl);
           } else {
+            this.falloLogin=true;
             this.msgError = "Credenciales Incorrectas";
           }
         },
