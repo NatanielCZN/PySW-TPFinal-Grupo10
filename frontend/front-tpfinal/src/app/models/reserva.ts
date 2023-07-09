@@ -5,6 +5,9 @@ export class Reserva {
     _id!: string;
     numeroReserva!: number;
     categoria!: string;
+
+    nombreServicio!: string;
+
     cantidad!: number;
     fechaAlta!: string;
     fechaIngreso!: string;

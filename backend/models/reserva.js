@@ -7,6 +7,9 @@ const { Schema } = mongoose;
 const ReservaSchema = new Schema({
     numeroReserva: { type: Number, require: true },
     categoria: { type: String, require: true },
+
+    nombreServicio: { type: String, require: true },
+    
     cantidad: { type: Number, require: true },
     fechaAlta: { type: String, require: true },
     fechaIngreso: { type: String, require: true },

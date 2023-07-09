@@ -10,6 +10,23 @@ const reservaCtrl = {};
   */
 reservaCtrl.getReservas = async (req, res) => {
     let criteria = {}
+    //filtro por estado de reserva y usuario
+    if ((req.query.usuario != null && req.query.usuario != "") && (req.query.reservado != null && req.query.reservado != "")) {
+        criteria.usuario=req.query.usuario;
+        criteria.reservado=req.query.reservado;
+    }
+    //filtro por categoria de servicio y usuario
+    if ((req.query.usuario != null && req.query.usuario != "") && (req.query.categoria != null && req.query.categoria != "")) {
+        criteria.usuario=req.query.usuario;
+        criteria.categoria=req.query.categoria;
+    }
+
+    //filtro por nombre de servicio servicio y usuario
+    if ((req.query.usuario != null && req.query.usuario != "") && (req.query.nombreServicio != null && req.query.nombreServicio != "")) {
+        criteria.usuario=req.query.usuario;
+        criteria.nombreServicio=req.query.nombreServicio;
+    }
+
     var reservas = await Reserva.find(criteria);
     res.json(reservas);
 };
@@ -21,6 +38,13 @@ reservaCtrl.getReservasUsuario = async (req, res) => {
         if ((req.query.usuario != null) && (req.query.usuario != "")) {
             criteria.usuario = req.query.usuario;
         }
+
+        if ( ((req.query.usuario!= null) && (req.query.usuario!= ""))  && 
+             ((req.query.reservado!=null) && (req.query.reservado!="")) ) {
+            criteria.usuario=req.query.usuario;
+            criteria.reservado=req.query.reservado;
+        }
+
         var reservas = await Reserva.find(criteria);
         res.json(reservas);
     } catch (error) {
