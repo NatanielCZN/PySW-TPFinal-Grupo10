@@ -75,11 +75,11 @@ export class UsuarioFormComponent implements OnInit {
     event.preventDefault();
     if(this.form.valid){
      await Object.assign(this.usuario,this.form.value);
-     if(this.emailExist = false){
+  
              this.usuario.edad= await this.calculoEdad(this.form.value.fechaNacimiento);
              await this.guardarUsuario();
              console.log(this.usuario);
-            }
+            
     }else{
       this.form.markAllAsTouched();
     }

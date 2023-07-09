@@ -68,14 +68,22 @@ export class AdminService {
     }
   
 
-    deleteGestor(id:string){
-      this.gestorService.deleteGestor(id);
-    }
 
     deleteUsuario(id:string){
       this.usuarioService.deleteUsuario(id);
     }
 
+    deleteGestor(_id: string): Observable<any> {
+      const token=sessionStorage.getItem("token")
+      const httOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }),  
+      }
+  
+      return this.httpClient.delete(this.urlBase + "gestor/" + _id, httOptions);
+    }
 
     
 }
