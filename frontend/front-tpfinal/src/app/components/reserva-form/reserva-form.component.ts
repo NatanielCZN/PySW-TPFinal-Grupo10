@@ -84,6 +84,9 @@ export class ReservaFormComponent implements OnInit {
         this.servicioSeleccionado = new Servicio();
         Object.assign(this.servicioSeleccionado, result);
         this.reserva.categoria = this.servicioSeleccionado.categoria;
+
+        this.reserva.nombreServicio = this.servicioSeleccionado.nombre;
+
         this.nombreServicio = this.servicioSeleccionado.nombre;
       },
       error => {

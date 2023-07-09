@@ -184,7 +184,64 @@ export class UsuarioComponent implements OnInit {
 
 
   modificarReserva(reserva:Reserva){
-    //console.log(reserva._id,reserva.servicio);
    this.router.navigate(['reservaForm',reserva._id,reserva.servicio]);
   }
+
+
+  //Filtros de Reserva
+
+  reservado!:boolean;
+  filtrarReservaPorReservado(){
+    this.reservasCliente = new Array<Reserva>();
+    this.reservaService.getReservaUsuarioAndReservado(this.id as string,this.reservado).subscribe(
+      res=>{
+          let unaReserva = new Reserva();
+          res.forEach((element: any) => {
+          Object.assign(unaReserva, element);
+          this.reservasCliente.push(unaReserva);
+          unaReserva = new Reserva();
+        });
+      },error=>{
+        console.log(error);
+      }
+    )
+  }
+
+
+  cat:string="";
+  filtrarPorCategoria(){
+    this.reservasCliente = new Array<Reserva>();
+    this.reservaService.getReservaUsuarioAndCategoria(this.id as string,this.cat).subscribe(
+      res=>{
+        let unaReserva = new Reserva();
+        res.forEach((element: any) => {
+        Object.assign(unaReserva, element);
+        this.reservasCliente.push(unaReserva);
+        unaReserva = new Reserva();
+      });
+      },error=>{
+        console.log(error);
+      }
+    )
+  }
+
+  nomServicio!:string;
+  filtrarPorNombreDeServicio(){
+    this.reservasCliente = new Array<Reserva>();
+    this.reservaService.getReservaUsuarioAndNombreDeServicio(this.id as string,this.nomServicio).subscribe(
+      res=>{
+        let unaReserva = new Reserva();
+        res.forEach((element: any) => {
+        Object.assign(unaReserva, element);
+        this.reservasCliente.push(unaReserva);
+        unaReserva = new Reserva();
+      });
+
+      console.log(this.reservasCliente);
+      },error=>{
+        console.log(error);
+      }
+    )
+  }
+
 }
