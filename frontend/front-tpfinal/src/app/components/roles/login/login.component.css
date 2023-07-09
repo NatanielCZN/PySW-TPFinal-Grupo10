@@ -1,5 +1,5 @@
 .fondo-login {
-  background-image: url("../../../../assets/fondo-login/viajes.jpg");
+  background-image: url("/assets/fondo-login/viajes.jpg");
 
   background-position: center;
   background-size: cover;
