@@ -72,7 +72,7 @@ usuarioCtl.deleteUsuario=async(req,res)=>{
       res.json({
         status: "0",
            msg: "Error al eliminar usuario",
-       })
+       }) 
     }
 }
 

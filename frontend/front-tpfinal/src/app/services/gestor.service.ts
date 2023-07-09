@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaderResponse, HttpHeaders, HttpParams } from '@angula
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Gestor } from '../models/gestor';
+import { Token } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +69,9 @@ export class GestorService {
   }
 
   deleteGestor(_id: string): Observable<any> {
+    const token=sessionStorage.getItem("token")
+    const tipo = sessionStorage.getItem("tipo")
+     console.log("tipo: "+tipo+ "   token: "+token)
     const httOptions = {
       headers: new HttpHeaders({
 

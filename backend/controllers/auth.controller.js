@@ -4,14 +4,9 @@ const jwt = require('jsonwebtoken');
 const authCtl = {}
 
 authCtl.verifyToken = async (req, res, next) => {
-    //Para los headers de autenticasion 
-
-    if (req.user === 'admin') {
-        // Si el usuario es de tipo admin, se permite el acceso a todos los routes
-        next();}
-
-    if (!req.headers || !req.headers.authorization) {
-        res.json({ 'status': '0', 'msg': 'Unauthorized request' })
+    //las llamadas a la API debieran tener un header authorization
+    if (!req.headers.authorization) {
+        res.json({ 'status': '0', 'msg': ' 1. Unauthorized request' })
         return;
     }
 
@@ -19,10 +14,9 @@ authCtl.verifyToken = async (req, res, next) => {
     var token = null;
     (arrayTexto.length >= 2) ? token = arrayTexto[1] : token = null;
     if (token == null) {
-        res.json({ 'status': '0', 'msg': 'Unauthorized request.' });
+        res.json({ 'status': '0', 'msg': '2. Unauthorized request.' });
     } else {
-        try {
-            
+        try {             
             const payload = jwt.verify(token, "secretkey");
             //payload retorna la información del user que se uso en el método de login
             req.userId = payload._id;
@@ -31,7 +25,7 @@ authCtl.verifyToken = async (req, res, next) => {
 
             
         } catch (error) {
-            res.json({ 'status': '0', 'msg': 'Unauthorized request.' });
+            res.json({ 'status': '0', 'msg': '3. Unauthorized request.' });
         }
     }
 }

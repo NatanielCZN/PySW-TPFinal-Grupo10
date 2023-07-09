@@ -2,6 +2,7 @@
   <div class="row">
       <div class="tabla col-sm-8 offset-sm-2">
           <div class="title col-12">
+            {{token}}
           <strong><h3>Mis Datos</h3></strong>
           </div>
            <div class="row">
@@ -77,7 +78,7 @@
           <td>{{s.nombre}} {{s.apellido}}</td>
           <td>{{s.dni}}</td>
           <td>{{s.email}}</td>
-          <button type="button" class="form-control bg-danger"
+          <button type="button" class="form-control bg-danger" (click)="eliminarGestor(s._id)"
           >Eliminar</button>
         </tr>
       </tbody>
@@ -109,7 +110,7 @@
           <td>{{s.nombre}} {{s.apellido}}</td>
           <td>{{s.dni}}</td>
           <td>{{s.email}}</td>
-          <button type="button" class="form-control bg-danger rounded-end"   (click)="eliminarUsuario(s._id)"
+          <button type="button" class="form-control bg-danger rounded-end" (click)="eliminarUsuario(s._id)"
           >Eliminar Usuario</button>
         </tr>
       </tbody>

@@ -25,7 +25,7 @@ export class AdminComponent implements OnInit {
   usuarios!:Array<Usuario>;
   tablaSeleccionada: string = 'gestores';
   reseniasUsuario!:Array<Resenia>;
-
+  token!:any;
   constructor(private appCom:AppComponent, private adminService:AdminService , private reseniaService:ReseniaService
     ,private gestorServicio:GestorService, private usuarioService:UsuarioService, private servicioService:ServiciosService) { 
    this.appCom.logeado=true;
@@ -38,6 +38,7 @@ export class AdminComponent implements OnInit {
     this.id=sessionStorage.getItem("userId");
     this.tipo=sessionStorage.getItem("tipo");
     this.cargarAdministrador(this.id);
+    this.token=sessionStorage.getItem("token")
     console.log(this.administrador);
   }
 
@@ -96,8 +97,36 @@ export class AdminComponent implements OnInit {
     );
   }
 
-  eliminarUsuario(id:string){
-    this.usuarioService.deleteUsuario(id);
-    location.reload();
+  eliminarGestor(id:string){
+    this.gestorServicio.deleteGestor(id)
+    .subscribe(
+      (res:any)=>{
+      console.log(res);
+      },
+      err=>{
+        console.log(err)
+      }
+    )
+    /*this.adminService.deleteGestor(id)
+    .subscribe(
+      (res:any)=>{
+      console.log(res);
+      },
+      err=>{
+        console.log(err)
+      }
+    )
+    location.reload();*/
   }
+
+  eliminarUsuario(id:string){
+    this.usuarioService.deleteUsuario(id)
+    .subscribe(
+      (res:any)=>{
+      console.log(res);
+      },
+      err=>{
+        console.log(err)
+      }
+    )}
 }
