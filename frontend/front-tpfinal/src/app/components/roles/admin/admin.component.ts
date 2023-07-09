@@ -107,16 +107,7 @@ export class AdminComponent implements OnInit {
         console.log(err)
       }
     )
-    /*this.adminService.deleteGestor(id)
-    .subscribe(
-      (res:any)=>{
-      console.log(res);
-      },
-      err=>{
-        console.log(err)
-      }
-    )
-    location.reload();*/
+    location.reload();
   }
 
   eliminarUsuario(id:string){
@@ -128,5 +119,7 @@ export class AdminComponent implements OnInit {
       err=>{
         console.log(err)
       }
-    )}
+    )
+    location.reload();
+  }
 }
