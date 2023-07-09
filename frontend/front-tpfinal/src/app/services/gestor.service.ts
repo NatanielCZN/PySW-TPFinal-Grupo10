@@ -83,4 +83,47 @@ export class GestorService {
 
     return this.httpClient.delete(this.urlBase + "gestor/" + _id, httOptions);
   }
+
+  //Filtros de Gestor
+
+  getGestorPorUsername(username: string): Observable<any> {
+    const httpOption = {
+      headers: new HttpHeaders({
+
+      }),
+
+      params: new HttpParams()
+        .append('username', username)
+    }
+
+    return this.httpClient.get(this.urlBase + "gestor/", httpOption);
+  }
+
+  getGestorPorEmail(email: string): Observable<any> {
+    const httpOption = {
+      headers: new HttpHeaders({
+
+      }),
+
+      params: new HttpParams()
+        .append('email',email)
+    }
+
+    return this.httpClient.get(this.urlBase + "gestor/", httpOption);
+  }
+
+  getGestorPorNombre(nombre: string): Observable<any> {
+    const httpOption = {
+      headers: new HttpHeaders({
+
+      }),
+
+      params: new HttpParams()
+        .append('nombre',nombre)
+    }
+
+    return this.httpClient.get(this.urlBase + "gestor/", httpOption);
+  }
+
+
 }

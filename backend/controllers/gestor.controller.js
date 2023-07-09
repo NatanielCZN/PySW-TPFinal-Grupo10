@@ -7,9 +7,22 @@ const gestorCtrl = {}
  * @param {*} res 
  */
 gestorCtrl.getGestores = async (req, res) => {
-    var gestores = await Gestor.find();
-
+    let criteria = {};
+    //Buscar Gestor por username
+    if(req.query.username != null && req.query.username != ""){
+        criteria.username=req.query.username;
+    }
+    //Buscar por nombre de usuario
+    if(req.query.nombre != null && req.query.nombre != ""){
+        criteria.nombre=req.query.nombre;
+    }
+    //Buscar por email
+    if(req.query.email != null && req.query.email != ""){
+        criteria.email=req.query.email;
+    }
+    var gestores = await Gestor.find(criteria);
     res.json(gestores);
+    
 }
 
 /**

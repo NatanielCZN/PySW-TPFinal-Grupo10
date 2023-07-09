@@ -19,7 +19,23 @@ usuarioCtl.createUsuario = async(req,res)=>{
 }
 
 usuarioCtl.getUsuarios = async(req,res)=>{
-    const usuarios = await Usuario.find();
+    let criteria = {}
+
+    //Buscar un usuario por Nombre
+    if(req.query.nombreUsuario != null && req.query.nombreUsuario != ""){
+      criteria.nombre=req.query.nombreUsuario;
+    }
+
+    //Buscar un usuario por email
+    if(req.query.email != null && req.query.email != ""){
+      criteria.email=req.query.email;
+    }
+
+    //Buscar por username
+    if(req.query.username != null && req.query.username != ""){
+      criteria.username=req.query.username;
+    }
+    const usuarios = await Usuario.find(criteria);
     res.json(usuarios);
 }
 

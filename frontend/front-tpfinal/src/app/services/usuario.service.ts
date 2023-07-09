@@ -23,7 +23,7 @@ export class UsuarioService {
     }
 
     return this.http.get(this.hostBD,httpOptions);
-} 
+}
 
   public getusuario(id:string):Observable<any>{
       const httpOptions={
@@ -71,7 +71,7 @@ export class UsuarioService {
   }
 
   findEmail(email:string){
-    
+
     const httpOptions={
       headers:new HttpHeaders(
         {
@@ -93,5 +93,41 @@ export class UsuarioService {
         // Realizar cualquier acción de finalización necesaria
       })
     );*/
+  }
+
+  getUsuarioPorUsername(username:string) : Observable<any>{
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+
+        }
+      ),params: new HttpParams().append('username',username)
+
+    }
+    return this.http.get(this.hostBD+"/",httpOptions);
+  }
+
+  getUsuarioPorEmail(email:string) : Observable<any>{
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+
+        }
+      ),params: new HttpParams().append('email',email)
+
+    }
+    return this.http.get(this.hostBD+"/",httpOptions);
+  }
+
+  getUsuarioPorNombre(nombre:string) : Observable<any>{
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+
+        }
+      ),params: new HttpParams().append('nombre',nombre)
+
+    }
+    return this.http.get(this.hostBD+"/",httpOptions);
   }
 }
