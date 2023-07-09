@@ -46,7 +46,7 @@ export class AdminService {
         }),
   
         params: new HttpParams()
-      }
+      } 
   
       let body = JSON.stringify(admin);
   
