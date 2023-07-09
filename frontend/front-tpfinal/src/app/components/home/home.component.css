@@ -9,6 +9,20 @@
   background-position: center;
 }
 
+/**
+  CAPA DE FONDO
+*/
+.overlay {
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: -1;
+}
+
 /*
     CAROUSEL
 */
@@ -22,7 +36,8 @@
 }
 
 .carousel-item {
-  transition-duration: 1s;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
 }
 
 .carousel-item {
@@ -36,7 +51,7 @@
 }
 
 /**
-  CONTENIDO
+  TITULO
 */
 .contenido-titulo {
   position: fixed;
@@ -49,8 +64,13 @@
   width: 100%;
 }
 
+#logo-img {
+  max-width: 100%;
+  height: auto;
+}
+
 /**
-  BOTON LOGIN  
+  BOTONES LOGIN  
 */
 .corner-button {
   position: fixed;
@@ -60,16 +80,13 @@
   z-index: 1;
 }
 
-/**
+.btn.btn-outline-info {
+  color: #FFA500;
+  border-color: #FFA500;
+}
 
-*/
-.overlay {
-  position: fixed;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.25);
-  z-index: 1;
+.btn.btn-outline-info:hover {
+  color: #FFFFFF;
+  background-color: #FFA500;
+  border-color: #FFA500;
 }
