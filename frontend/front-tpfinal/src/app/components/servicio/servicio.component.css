@@ -44,9 +44,8 @@ body {
     max-width: 100%;
 }
 .imagenProvincia{
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+    width: 50%;
+    margin: 10%;
 }
 .btn {
     border: 2px solid;
@@ -64,42 +63,13 @@ body {
     box-shadow: #222 1px 0 10px;
     background: #664d03e0;
 }
-.slider {
-	width: 60%;
-    height: auto;
-	margin:50px auto 0;
-	overflow: hidden;
-    margin-bottom: 50px;
-    
+.botonImagen{
+    border-radius: 10px;
+    background: #c78501a8;
+    margin: 2%;
 }
-
-.slider ul {
-   
-	display: flex;
-	padding: 0;
-	width: 400%;
-	animation: slide 20s infinite alternate ease-in-out;
-}
-
-.slider li {
-	width: 80%;
-	list-style: none;
-}
-
-.slider img {
-	width: 100%;
-}
-
-@keyframes slide {
-	0% {margin-left: 0;}
-	20% {margin-left: 0;}
-	
-	25% {margin-left: -100%;}
-	45% {margin-left: -100%;}
-	
-	50% {margin-left: -200%;}
-	70% {margin-left: -200%;}
-	
-	75% {margin-left: -300%;}
-	100% {margin-left: -300%;}
+.margen{
+    background: #000000c9;
+    border-radius: 10px;
+    height: max-content;
 }
