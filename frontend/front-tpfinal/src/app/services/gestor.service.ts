@@ -30,11 +30,8 @@ export class GestorService {
   getGestor(_id: string): Observable<any> {
     const httpOption = {
       headers: new HttpHeaders({
-
+         
       }),
-
-      params: new HttpParams()
-        .append('_id', _id)
     }
 
     return this.httpClient.get(this.urlBase + "gestor/" + _id, httpOption);

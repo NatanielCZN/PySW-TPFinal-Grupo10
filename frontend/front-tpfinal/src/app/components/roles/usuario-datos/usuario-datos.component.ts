@@ -26,6 +26,7 @@ export class UsuarioDatosComponent implements OnInit {
  }
 
  getUsuario(){
+  
      this.servicioU.getusuario(this.id)
      .subscribe(
        (res:any)=>{
