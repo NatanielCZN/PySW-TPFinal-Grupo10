@@ -93,23 +93,6 @@
                     </div>
                 </div>
 
-                <!-- Edad -->
-                <div class="mb-4">
-                    <label for="idEdadGestor" class="form-label">Edad (<span
-                            class="text-danger fw-bold">*</span>)</label>
-
-                    <input type="number" class="form-control bg-light" id="idEdadGestor" name="edadGestor"
-                        placeholder="Ingrese su edad" [(ngModel)]="gestor.edad" required #edadGestor="ngModel" />
-
-                    <!-- Validar Email -->
-                    <div *ngIf="edadGestor.invalid && (edadGestor.dirty || edadGestor.touched)"
-                        class="alert alert-danger">
-                        <div *ngIf="edadGestor.errors?.['required']">
-                            Debe igresar su edad.
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Username -->
                 <div class="mb-4">
                     <label for="idUsername" class="form-label">Username (<span
