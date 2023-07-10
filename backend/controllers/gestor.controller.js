@@ -12,9 +12,9 @@ gestorCtrl.getGestores = async (req, res) => {
     if(req.query.username != null && req.query.username != ""){
         criteria.username=req.query.username;
     }
-    //Buscar por nombre de usuario
-    if(req.query.nombre != null && req.query.nombre != ""){
-        criteria.nombre=req.query.nombre;
+    //Buscar por dni
+    if(req.query.dni != null && req.query.dni != ""){
+        criteria.dni=req.query.dni;
     }
     //Buscar por email
     if(req.query.email != null && req.query.email != ""){

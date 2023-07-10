@@ -39,10 +39,10 @@ export class UsuarioComponent implements OnInit {
    { id: 21, name: "Santiago del Estero" },{ id: 22, name: "Tierra del Fuego" },
    { id: 5, name: "Tucuman" }
    ];
- 
+
 
   constructor(private appCom:AppComponent,private servicioU:UsuarioService, private _http: HttpClient,private reservaService:ReservaService, private ciudadService: CiudadesService, private router: Router) {
-    this.id= sessionStorage.getItem("userId"); 
+    this.id= sessionStorage.getItem("userId");
     this.appCom.logeado=true;
     this.usuario=new Usuario();
     this.provincia = new Provincia();
@@ -52,7 +52,7 @@ export class UsuarioComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.id= sessionStorage.getItem("userId"); 
+    this.id= sessionStorage.getItem("userId");
     this.tipo=sessionStorage.getItem("tipo");
     this.getUsuario();
   }
@@ -87,9 +87,9 @@ export class UsuarioComponent implements OnInit {
       error => { alert("Error en la petición"); }
     );
   }
-  
 
- 
+
+
   mostrarTarjeta() {
     this.mostrarCard = true;
   }
@@ -127,7 +127,7 @@ export class UsuarioComponent implements OnInit {
       error => { alert("Error en la petición"); }
     );
   }
-  
+
 
   buscarImagen(provincia: Provincia) {
     this.ciudadService.buscarImagenPorPalabraClave(provincia.nombre).subscribe(
@@ -161,6 +161,8 @@ export class UsuarioComponent implements OnInit {
     this.router.navigate(['localidad-user',localidad.nombre,localidad._id]);
   }
 
+  /// ****** TENGO QUE CAMBIAR TODO ESTE CODIGO AL COMPONENTE RESERVA ******** ////
+
   //Delete Reserva
   //se puede usar el Delete reserva solo si reserva.reservado es falso
   deleteReserva(reserva:Reserva) {
@@ -175,7 +177,7 @@ export class UsuarioComponent implements OnInit {
       },error=>{
         alert(error.msg);
       }
-        
+
       )
     }else{
       alert("No Puede Eliminar Esta Reserva");

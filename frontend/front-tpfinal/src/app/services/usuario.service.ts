@@ -119,13 +119,13 @@ export class UsuarioService {
     return this.http.get(this.hostBD+"/",httpOptions);
   }
 
-  getUsuarioPorNombre(nombre:string) : Observable<any>{
+  getUsuarioPorDni(dni:string) : Observable<any>{
     const httpOptions={
       headers:new HttpHeaders(
         {
 
         }
-      ),params: new HttpParams().append('nombre',nombre)
+      ),params: new HttpParams().append('dni',dni)
 
     }
     return this.http.get(this.hostBD+"/",httpOptions);

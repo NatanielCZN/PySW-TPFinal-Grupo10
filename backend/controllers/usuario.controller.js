@@ -22,8 +22,8 @@ usuarioCtl.getUsuarios = async(req,res)=>{
     let criteria = {}
 
     //Buscar un usuario por Nombre
-    if(req.query.nombreUsuario != null && req.query.nombreUsuario != ""){
-      criteria.nombre=req.query.nombreUsuario;
+    if(req.query.dni != null && req.query.dni != ""){
+      criteria.dni=req.query.dni;
     }
 
     //Buscar un usuario por email

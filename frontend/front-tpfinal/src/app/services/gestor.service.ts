@@ -112,14 +112,14 @@ export class GestorService {
     return this.httpClient.get(this.urlBase + "gestor/", httpOption);
   }
 
-  getGestorPorNombre(nombre: string): Observable<any> {
+  getGestorPorDni(dni: string): Observable<any> {
     const httpOption = {
       headers: new HttpHeaders({
 
       }),
 
       params: new HttpParams()
-        .append('nombre',nombre)
+        .append('dni',dni)
     }
 
     return this.httpClient.get(this.urlBase + "gestor/", httpOption);

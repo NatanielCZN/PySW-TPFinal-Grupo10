@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-6">
                     <div class="card col-4" *ngIf="mostrarCard" style="width: 18rem;">
-                        
+
                         <div class="card-body">
                             <h5 class="card-title">{{provincia.nombre}}</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -90,11 +90,11 @@
 </div>-->
 <h1 class="title">Mis Reservas : </h1>
 <div class="row">
-    
+
     <div class="col-lg-3 col-md-3 col-sx-12">
         <div class="accordion" id="accordionExample">
             <div class="accordion-item p-2 todo ">
-                <button class="btn w-100 text-start" (click)="mostrarReservas()">Todas las Reservas</button> 
+                <button class="btn w-100 text-start" (click)="mostrarReservas()">Todas las Reservas</button>
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header">
@@ -112,7 +112,7 @@
                   </div>
                 </div>
               </div>
-              
+
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -144,11 +144,11 @@
               </div>
           </div>
 
-       
-      
-        
-        
-    
+
+
+
+
+
     </div>
     <div class="tabla-contenedor col-lg-7 col-md-9 col-12">
         <table class="table table-hover" >
@@ -167,7 +167,7 @@
                     <th >{{reserva.nombreServicio}}</th>
                     <td>
                       <p *ngIf="reserva.reservado;else noReservado" style="color: blue;">Reservado</p>
-                      <ng-template #noReservado><p style="color:red;" >Canselado</p></ng-template>
+                      <ng-template #noReservado><p style="color:red;" >Cancelado</p></ng-template>
                     </td>
                     <td >{{reserva.fechaIngreso}}</td>
                     <td>

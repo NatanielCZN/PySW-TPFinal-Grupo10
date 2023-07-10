@@ -48,7 +48,7 @@
               </div>
            </div>
 
-           <button type="button" class="btn btn-primary" routerLink="/usuario-form/1">        
+           <button type="button" class="btn btn-primary" routerLink="/usuario-form/1">
               <i class="fa fa-pencil-square-o" aria-hidden="true"></i> MODIFICAR
           </button>
       </div>
@@ -58,10 +58,11 @@
 <select class="form-select form-select-lg mb-3" style="margin-top: 100px; margin-bottom: 20px;" aria-label="Default select example" [(ngModel)]="tablaSeleccionada">
   <option value="gestores">Tabla de Gestores</option>
   <option value="usuarios">Tabla de Usuarios</option>
+  <option value="reservas">Tabla de Reservas</option>
 </select>
 
-<br>
-<table  class="table table-bordered" *ngIf="tablaSeleccionada === 'gestores'">
+<!-- Primer Formulario -->
+<!-- <table  class="table table-bordered" *ngIf="tablaSeleccionada === 'gestores'">
     <thead>
         <tr>
           <th scope="col">#</th>
@@ -74,7 +75,7 @@
       <tbody *ngFor="let s of gestores">
         <tr>
           <th scope="row" >1</th>
-          
+
           <td>{{s.nombre}} {{s.apellido}}</td>
           <td>{{s.dni}}</td>
           <td>{{s.email}}</td>
@@ -84,7 +85,7 @@
       </tbody>
   </table>
 
-  
+
   <table class="table table-bordered" *ngIf="tablaSeleccionada === 'usuarios'">
     <thead>
         <tr>
@@ -99,7 +100,7 @@
         <tr>
           <p>
             <button class="btn btn-primary"  (click)="cargarReseniasUsuario(s._id)" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-              ver resenias 
+              ver resenias
             </button>
           </p>
           <div class="collapse" id="collapseExample">
@@ -110,11 +111,235 @@
           <td>{{s.nombre}} {{s.apellido}}</td>
           <td>{{s.dni}}</td>
           <td>{{s.email}}</td>
-          <button type="button" class="form-control bg-danger rounded-end" (click)="eliminarUsuario(s._id)"
-          >Eliminar Usuario</button>
+          <td></td>
+          <button type="button" class="form-control bg-danger rounded-end" (click)="eliminarUsuario(s._id)">Eliminar Usuario</button>
         </tr>
       </tbody>
-  </table>
+  </table> -->
+
+
+
+  <div class="mt-5 mb-5 row" style="font-size: 14px;" >
+
+
+      <!-- Filtro de Usuarios -->
+      <div class="col-lg-3 col-md-3 col-12" >
+        <div class="accordion mt-1" id="accordionExample" *ngIf="tablaSeleccionada === 'usuarios'">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="btn w-100 text-start mx-1" type="button" (click)="cargarUsuarios()" >
+                Todos los Usuarios
+              </button>
+            </h2>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Buscar por username
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <input class="form-control" type="text" [(ngModel)]="username" placeholder="Ingresa UserName">
+                <button *ngIf="username!=null" (click)="buscarUsuarioPorUserName()" class="btn btn-dark mt-2 mb-2 w-100">Buscar</button>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Buscar por email
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <input class="form-control"  type="text" [(ngModel)]="emailUser" placeholder="Ingrese Email">
+                <button *ngIf="emailUser!=null" (click)="buscarUsuarioPorEmail()" class="btn btn-dark mt-2 w-100">Buscar</button>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Buscar Por Dni
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <input class="form-control"  type="text" [(ngModel)]="dniUser" placeholder="Ingrese Dni">
+                <button *ngIf="dniUser!=null" (click)="buscarUsuarioPorDni()" class="btn btn-dark mt-2 w-100">Buscar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <!-- Filtro de Gestores -->
+        <div class="accordion mt-1" id="accordionExample" *ngIf="tablaSeleccionada === 'gestores'">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="btn w-100 text-start mx-1" type="button" (click)="cargarGestores()" >
+                Todos los Gestores
+              </button>
+            </h2>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Buscar por UserName
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <input class="form-control" type="text" [(ngModel)]="usernameGestor" placeholder="Ingresar UserName">
+                <button *ngIf="usernameGestor!=null" (click)="buscarGestorPorUsername()" class="btn btn-dark mt-2 mb-2 w-100">Buscar</button>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Buscar por email
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <input class="form-control"  type="text" [(ngModel)]="emailGestor" placeholder="Ingrese Email">
+                <button *ngIf="emailGestor!=null" (click)="buscarGestorPorEmail()" class="btn btn-dark mt-2 w-100">Buscar</button>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Buscar Por Dni
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <input class="form-control"  type="text" [(ngModel)]="dniGestor" placeholder="Ingrese Dni">
+                <button *ngIf="dniGestor!=null" (click)="buscarGestorPorDni()" class="btn btn-dark mt-2 w-100">Buscar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Tabla de Gestores -->
+      <div class="col-lg-9 col-md-9 col-12 ">
+        <table class="table table-striped text-center" *ngIf="tablaSeleccionada === 'gestores'">
+          <thead>
+            <tr>
+              <th scope="col">Username</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Email</th>
+              <th scope="col">Edad</th>
+              <th scope="col">Dni</th>
+              <th scope="col">Fecha Nacimiento</th>
+              <th scope="col">Servicios</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let g of gestores" >
+            <tr>
+              <td>{{g.username}}</td>
+              <td>{{g.nombre}} {{g.apellido}}</td>
+              <td>{{g.email}}</td>
+              <td>{{g.edad}}</td>
+              <td>{{g.dni}}</td>
+              <td>{{g.fechaNacimiento}}</td>
+              <td>{{g.servicio.length }}</td>
+              <td>
+                <button type="button" class="form-control bg-info">Modificar</button>
+                <button type="button" class="form-control bg-danger" (click)="eliminarGestor(g._id)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      <!-- Tabla de Usuarios -->
+        <table class="table table-striped text-center" *ngIf="tablaSeleccionada === 'usuarios'">
+          <thead>
+            <tr>
+              <th scope="col">Username</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Email</th>
+              <th scope="col">Edad</th>
+              <th scope="col">Dni</th>
+              <th scope="col">Fecha Nacimiento</th>
+              <th scope="col">Reservas</th>
+              <th scope="col">Resenias</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let u of usuarios" >
+            <tr>
+              <td>{{u.username}}</td>
+              <td>{{u.nombre}} {{u.apellido}}</td>
+              <td>{{u.email}}</td>
+              <td>{{u.edad}}</td>
+              <td>{{u.dni}}</td>
+              <td>{{u.fechaNacimiento}}</td>
+              <td>{{u.reservas.length }}</td>
+              <td>{{u.resenias.length }}</td>
+              <td>
+                <button type="button" class="form-control bg-info">Modificar</button>
+                <button type="button" class="form-control bg-danger" (click)="eliminarUsuario(u._id)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-12" *ngIf="tablaSeleccionada === 'reservas'">
+        <table class="table table-striped text-center">
+          <thead>
+            <tr>
+              <th scope="col">IdReserva</th>
+              <th scope="col">Numero De Reserva</th>
+              <th scope="col">categoria</th>
+              <th scope="col">Nombre De Servicio</th>
+              <th scope="col">Cantidad de Reservas</th>
+              <th scope="col">Fecha de Alta</th>
+              <th scope="col">Fecha de Ingreso</th>
+              <th scope="col">Fecha de Egreso</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Reservado</th>
+              <th scope="col">IDUsuario</th>
+              <th scope="col">IDServicio</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let r of reservas" >
+            <tr>
+                <td>{{r._id}}</td>
+                <td>{{r.numeroReserva}}</td>
+                <td>{{r.categoria}}</td>
+                <td>{{r.nombreServicio}}</td>
+                <td>{{r.cantidad}}</td>
+                <td>{{r.fechaAlta}}</td>
+                <td>{{r.fechaIngreso}}</td>
+                <td>{{r.fechaEgreso}}</td>
+                <td>{{r.precio}}</td>
+                <td>{{r.reservado}}</td>
+                <td>{{r.usuario}}</td>
+                <td>{{r.servicio}}</td>
+                <td>
+                    <button class="btn btn-info">Modificar</button>
+                    <button class="btn btn-danger" (click)="deleteReserva(r)">Eliminar</button>
+                </td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+
+
+
+
+
 </div>
 
 
