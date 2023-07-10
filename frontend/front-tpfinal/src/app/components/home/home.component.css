@@ -90,3 +90,31 @@
   background-color: #FFA500;
   border-color: #FFA500;
 }
+
+/*
+  MODAL
+*/
+.bg-orange {
+  background-color: #FFA500;
+  color: white;
+}
+
+.registration-option {
+  border: 1px solid;
+  border-color: gray;
+  padding: 8px;
+  border-radius: 8px;
+  transition-duration: 0.3s;
+}
+
+.registration-option:hover {
+  background-color: #ffa500;
+}
+
+.registration-option:active {
+  background-color: #ffa500;
+}
+
+.modal-footer .btn-secondary {
+  width: 100%;
+}
