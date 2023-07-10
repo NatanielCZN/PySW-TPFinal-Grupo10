@@ -58,6 +58,16 @@ export class ServicioComponent implements OnInit {
     this.id = sessionStorage.getItem("userId");
     this.tipo = sessionStorage.getItem("tipo");
     this.getUsuario();
+
+     /////////maps
+     const script = document.createElement('script');
+     script.src = `https://maps.googleapis.com/maps/api/js?key=KEY&callback=initMap`;//AIzaSyCdi7hQUPe89nyScSyO1SijO1UJDvSILkg
+     script.defer = true;
+     script.async = true;
+     script.onload = () => {
+       this.initMap(this.provincia);
+     };
+     document.body.appendChild(script); 
   }
 
   getUsuario() {
@@ -109,6 +119,8 @@ export class ServicioComponent implements OnInit {
         this.buscarImagen(this.provincia);
         this.cargarClima(this.provincia);
         this.mostrarTarjeta();
+        this.initMap(this.provincia);//manda info de la provincia
+
       },
       error => { alert("Error en la petición"); })
   }
@@ -204,6 +216,34 @@ export class ServicioComponent implements OnInit {
     this.router.navigate(['localidad-user', localidad.nombre, localidad._id]);
   }
 
+///////
+initMap(provincia:Provincia) {
+  const lat = parseFloat(provincia.lat);//transforma las coordenadas de
+  const long = parseFloat(provincia.long);//la provincia q esta en string a number
+    
 
+  const mapOptions = {//provincia.lat,provincia.long
+    center: {lat: lat, lng:  long},//{ lat: -34.397, lng: 150.644 }, // Coordenadas del centro del mapa
+    zoom: 6 // Nivel de zoom inicial
+  };
+
+  const mapElement = document.getElementById('map');//para referenciar en html
+  if (mapElement) {
+    const map = new google.maps.Map(mapElement, mapOptions);
+  } else {
+    console.error('No se encontró el elemento con ID "mapa".');
+  }
+}
+///////
 
 }
+/////map
+declare global {
+interface Window {
+  initMap: () => void;
+}
+}
+
+window.initMap = function() {
+// Implementación de la función
+};
