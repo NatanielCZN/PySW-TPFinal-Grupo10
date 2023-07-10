@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { error } from 'console';
 import { AppComponent } from 'src/app/app.component';
+import { Admin } from 'src/app/models/admin';
 import { Gestor } from 'src/app/models/gestor';
+import { Resenia } from 'src/app/models/resenia';
 import { Usuario } from 'src/app/models/usuario.model';
+import { AdminService } from 'src/app/services/admin.service';
 import { GestorService } from 'src/app/services/gestor.service';
+import { ReseniaService } from 'src/app/services/resenia.service';
 import { ServiciosService } from 'src/app/services/servicios.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -16,24 +20,52 @@ export class AdminComponent implements OnInit {
   
   id:any;
   tipo:any
+  administrador!:Admin;
   gestores!:Array<Gestor>;
   usuarios!:Array<Usuario>;
-
-
-  constructor(private appCom:AppComponent, private gestorServicio:GestorService, private usuarioService:UsuarioService, private servicioService:ServiciosService) { 
+  tablaSeleccionada: string = 'gestores';
+  reseniasUsuario!:Array<Resenia>;
+  token!:any;
+  constructor(private appCom:AppComponent, private adminService:AdminService , private reseniaService:ReseniaService
+    ,private gestorServicio:GestorService, private usuarioService:UsuarioService, private servicioService:ServiciosService) { 
    this.appCom.logeado=true;
    this.cargarGestores();
    this.cargarUsuarios();
+   
   }
 
   ngOnInit(): void {
     this.id=sessionStorage.getItem("userId");
     this.tipo=sessionStorage.getItem("tipo");
+    this.cargarAdministrador(this.id);
+    this.token=sessionStorage.getItem("token")
+    console.log(this.administrador);
   }
 
-  cargarServiciosGestor(){
-    
+  cargarAdministrador(id:string){
+    this.administrador = new Admin();
+    this.adminService.getAdmin(id).subscribe(
+      result => {
+        Object.assign(this.administrador, result[0]);
+      },
+      error => {
+      }
+    )
   }
+
+    cargarReseniasUsuario(idUsuario:string) {
+      this.reseniaService.getReseniaUsuario(idUsuario).subscribe(
+        result => {
+         console.log(result + "estas resenias son")
+         
+         this.reseniasUsuario.push()
+        },
+        error => {
+        }
+      )
+  }
+  
+
 
    cargarGestores() {
     this.gestorServicio.getGestores().subscribe(
@@ -63,5 +95,31 @@ export class AdminComponent implements OnInit {
           },
       error => { alert("Error en la petición"); }
     );
+  }
+
+  eliminarGestor(id:string){
+    this.gestorServicio.deleteGestor(id)
+    .subscribe(
+      (res:any)=>{
+      console.log(res);
+      },
+      err=>{
+        console.log(err)
+      }
+    )
+    location.reload();
+  }
+
+  eliminarUsuario(id:string){
+    this.usuarioService.deleteUsuario(id)
+    .subscribe(
+      (res:any)=>{
+      console.log(res);
+      },
+      err=>{
+        console.log(err)
+      }
+    )
+    location.reload();
   }
 }

@@ -1,3 +1,4 @@
+const usuario = require('../models/usuario');
 const Usuario= require('../models/usuario');
 const usuarioCtl={};
 
@@ -28,6 +29,22 @@ usuarioCtl.getUsuario= async(req,res )=>{
     res.json(user);
 }
 
+usuarioCtl.findEmail=async (req,res)=>{
+   try {
+      const existingUser = await usuario.findOne({ email: req.body.email });
+      if (existingUser) {
+        res.json(true); // El correo electrónico existe
+      } else {
+        res.json(false); // El correo electrónico no existe
+      }
+    } catch (error) {
+      res.status(400).json({
+        status: "0",
+        msg: "No se encuentra el usuario"
+      });
+   }
+}
+
 usuarioCtl.edidUsuario= async(req,res)=>{
    const user = new Usuario(req.body);
    try{
@@ -55,7 +72,7 @@ usuarioCtl.deleteUsuario=async(req,res)=>{
       res.json({
         status: "0",
            msg: "Error al eliminar usuario",
-       })
+       }) 
     }
 }
 

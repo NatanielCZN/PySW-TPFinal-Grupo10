@@ -1,7 +1,67 @@
-<h1>ID: {{id}}</h1>
-<h3>Tipo: {{tipo}}</h3>
+<div class="container">
+  <div class="row">
+      <div class="tabla col-sm-8 offset-sm-2">
+          <div class="title col-12">
+            {{token}}
+          <strong><h3>Mis Datos</h3></strong>
+          </div>
+           <div class="row">
+              <div class="col-12 col-md-4 ">
+                  <label class="label1">nombre : {{administrador.nombre}}</label><br>
+                   <div class="nombre">
+                   </div>
+              </div>
+              <div class="col-12 col-md-4">
+                  <label class="label1">Apellido : {{administrador.apellido}}</label><br>
+                  <div class="nombre">
+                  </div>
+              </div>
+              <div class="col-12 col-md-4">
+                  <label class="label1">Dni: {{administrador.dni}}</label><br>
+                  <div class="nombre">
+                  </div>
+              </div>
+              <div class="col-12 col-md-4">
+                  <label class="label1">Email: {{administrador.email}}</label><br>
+                  <div class="nombre">
+                  </div>
+              </div>
+              <div class="col-12 col-md-4">
+                  <label class="label1">Edad: {{administrador.edad}}</label><br>
+                  <div class="nombre">
+                  </div>
+              </div>
+              <div class="col-12 col-md-4">
+                  <label class="label1">Fecha de Nacimiento: {{administrador.fechaNacimiento}}</label><br>
+                  <div class="nombre">
+                  </div>
+              </div>
+              <div class="col-12 col-md-4">
+                  <label class="label1">Usuario: {{administrador.username}}</label><br>
+                  <div class="nombre">
+                  </div>
+              </div>
+              <div class="col-12 col-md-4">
+                  <label class="label1">Password: {{administrador.password}}</label><br>
+                  <div class="nombre">
+                  </div>
+              </div>
+           </div>
 
-<table class="table table-striped">
+           <button type="button" class="btn btn-primary" routerLink="/usuario-form/1">        
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i> MODIFICAR
+          </button>
+      </div>
+  </div>
+
+
+<select class="form-select form-select-lg mb-3" style="margin-top: 100px; margin-bottom: 20px;" aria-label="Default select example" [(ngModel)]="tablaSeleccionada">
+  <option value="gestores">Tabla de Gestores</option>
+  <option value="usuarios">Tabla de Usuarios</option>
+</select>
+
+<br>
+<table  class="table table-bordered" *ngIf="tablaSeleccionada === 'gestores'">
     <thead>
         <tr>
           <th scope="col">#</th>
@@ -18,14 +78,14 @@
           <td>{{s.nombre}} {{s.apellido}}</td>
           <td>{{s.dni}}</td>
           <td>{{s.email}}</td>
-          <button type="button" class="form-control bg-danger"
+          <button type="button" class="form-control bg-danger" (click)="eliminarGestor(s._id)"
           >Eliminar</button>
         </tr>
       </tbody>
   </table>
 
   
-<table class="table table-striped">
+  <table class="table table-bordered" *ngIf="tablaSeleccionada === 'usuarios'">
     <thead>
         <tr>
           <th scope="col">#</th>
@@ -37,13 +97,25 @@
       </thead>
       <tbody *ngFor="let s of usuarios">
         <tr>
-          <th scope="row" >1</th>
-          
+          <p>
+            <button class="btn btn-primary"  (click)="cargarReseniasUsuario(s._id)" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              ver resenias 
+            </button>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body" *ngFor="let resenia of s.resenias">
+             {{resenia}}
+            </div>
+          </div>
           <td>{{s.nombre}} {{s.apellido}}</td>
           <td>{{s.dni}}</td>
           <td>{{s.email}}</td>
-          <button type="button" class="form-control bg-danger"
-          >Eliminar</button>
+          <button type="button" class="form-control bg-danger rounded-end" (click)="eliminarUsuario(s._id)"
+          >Eliminar Usuario</button>
         </tr>
       </tbody>
   </table>
+</div>
+
+
+{{reseniasUsuario | json}}

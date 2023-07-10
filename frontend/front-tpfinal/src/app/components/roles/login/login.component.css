@@ -1,15 +1,25 @@
+.fondo-login {
+  background-image: url("/assets/fondo-login/viajes.jpg");
+
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  margin-top: -24px;
+}
+
 .container {
-  padding-top: 20px;
+  padding-top: 50px;
 }
 
 .login-form {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
-  background: #fff;
+  background: #ffffffd6;
   border-radius: 5px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   animation: fadeInDown 1s;
+
 }
 
 .form-group {
@@ -34,6 +44,12 @@
 .btn:hover {
   background-color: #0056b3;
   border-color: #0056b3;
+}
+
+.error {
+  font-weight: bold;
+  color: red;
+  font-style: italic;
 }
 
 @keyframes fadeInDown {

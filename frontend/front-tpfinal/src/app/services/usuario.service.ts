@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, finalize, map} from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import { Usuario } from '../models/usuario.model';
 
 @Injectable({
@@ -67,5 +68,30 @@ export class UsuarioService {
         .append('_id', _id)
     }
     return this.http.delete(this.hostBD+"/"+ _id, httOptions);
+  }
+
+  findEmail(email:string){
+    
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+          'Content-Type': 'application/json'
+        }
+      ),
+    }
+    let body={email:email}
+    return this.http.post(this.hostBD+"/email",body,httpOptions);
+    /*.pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError((error: any) => {
+        console.error('Error en la solicitud:', error);
+        return of(null);
+      }),
+      finalize(() => {
+        // Realizar cualquier acción de finalización necesaria
+      })
+    );*/
   }
 }

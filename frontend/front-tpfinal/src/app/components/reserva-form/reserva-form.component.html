@@ -105,9 +105,20 @@
           </div>
           <!-- CAMPO RESERVADO -->
   
-          <div class="mb-4 d-grid">
+          <div class="mb-4 d-grid" *ngIf="accion!='update'">
             <button class="btn btn-success" (click)="guardarReserva()" [disabled]="!reservaForm.form.valid">
               Guardar Reserva
+            </button>
+            <button class="btn btn-dark mt-1" (click)="volver()">
+              Volver
+            </button>
+          </div>
+          <div class="mb-4 d-grid" *ngIf="accion=='update'">
+            <button class="btn btn-success" (click)="modificarReserva()" [disabled]="!reservaForm.form.valid">
+              Modificar
+            </button>
+            <button class="btn btn-dark mt-1" (click)="volver()">
+              Volver
             </button>
           </div>
         </fieldset>

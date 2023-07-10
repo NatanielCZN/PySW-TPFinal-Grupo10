@@ -7,7 +7,8 @@ const router = express.Router();
 
 // Definimos las rutas para la gestion de producto
 router.get('/', authCtrl.verifyToken, adminCtrl.getAdmins);
-router.get('/:id', authCtrl.verifyToken, adminCtrl.getAdmin);
+//router.get('/:id', authCtrl.verifyToken, adminCtrl.getAdmin);
+router.get('/:id', adminCtrl.getAdmin);
 router.post('/', adminCtrl.createAdmin);
 router.delete('/:id', authCtrl.verifyToken, adminCtrl.deleteAdmin);
 router.put('/:id', authCtrl.verifyToken, adminCtrl.editAdmin);

@@ -4,6 +4,7 @@ import { AppComponent } from 'src/app/app.component';
 import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
+
 @Component({
   selector: 'app-usuario-datos',
   templateUrl: './usuario-datos.component.html',

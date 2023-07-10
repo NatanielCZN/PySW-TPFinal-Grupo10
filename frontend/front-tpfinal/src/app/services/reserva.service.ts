@@ -37,6 +37,44 @@ export class ReservaService {
     return this._http.get("http://localhost:3000/api/reserva/usuario?usuario="+id,httpOptions);
   }
 
+
+  getReservaUsuarioAndReservado(usuario:string,reservado:boolean) : Observable<any>{
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+
+        }
+      ),params: new HttpParams().append("usuario",usuario).append("reservado",reservado)
+      
+    }
+    return this._http.get(this.urlBase+"reserva/",httpOptions);
+  }
+
+
+  getReservaUsuarioAndCategoria(usuario:string,categoria:string) : Observable<any>{
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+
+        }
+      ),params: new HttpParams().append("usuario",usuario).append("categoria",categoria)
+      
+    }
+    return this._http.get(this.urlBase+"reserva/",httpOptions);
+  }
+
+  getReservaUsuarioAndNombreDeServicio(usuario:string,nombreServicio:string) : Observable<any>{
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+
+        }
+      ),params: new HttpParams().append("usuario",usuario).append("nombreServicio",nombreServicio)
+      
+    }
+    return this._http.get(this.urlBase+"reserva/",httpOptions);
+  }
+
   crearReserva(reserva:Reserva) : Observable<any>{
     const httpOptions = {
        headers : new HttpHeaders(
@@ -57,7 +95,7 @@ export class ReservaService {
         {
 
         }
-      ),params: new HttpParams().append("id",_id)
+      ),params: new HttpParams()
     }
     return this._http.get(this.urlBase+"reserva/"+_id,httpOptions);
   }
@@ -72,10 +110,10 @@ export class ReservaService {
      params:new HttpParams()
    }
    let body= JSON.stringify(reserva);
-   return this._http.put(this.urlBase+"reserva/",body, httpOptions);
+   return this._http.put(this.urlBase+"reserva/"+reserva._id,body, httpOptions);
   }
 
-  deleteReserva(id:string):Observable<any>{
+  deleteReserva(_id:string):Observable<any>{
     const httpOptions={
       headers:new HttpHeaders(
         {
@@ -84,7 +122,7 @@ export class ReservaService {
       ),params: new HttpParams()
     }
 
-    return this._http.delete(this.urlBase+"reserva/"+id,httpOptions);
+    return this._http.delete(this.urlBase+"reserva/"+_id,httpOptions);
   }
 
 }

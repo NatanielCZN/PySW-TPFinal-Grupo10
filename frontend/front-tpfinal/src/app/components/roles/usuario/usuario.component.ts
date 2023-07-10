@@ -190,6 +190,89 @@ initMap(provincia:Provincia) {
     this.router.navigate(['localidad-user',localidad.nombre,localidad._id]);
   }
 
+  //Delete Reserva
+  //se puede usar el Delete reserva solo si reserva.reservado es falso
+  deleteReserva(reserva:Reserva) {
+    if(reserva.reservado==false){
+      this.reservaService.deleteReserva(reserva._id).subscribe(
+        res=>{
+          if(res.status==1){
+              alert(res.msg);
+              //recargar la lista de reservas
+              this.mostrarReservas();
+             }
+      },error=>{
+        alert(error.msg);
+      }
+        
+      )
+    }else{
+      alert("No Puede Eliminar Esta Reserva");
+    }
+  }
+
+
+  modificarReserva(reserva:Reserva){
+   this.router.navigate(['reservaForm',reserva._id,reserva.servicio]);
+  }
+
+
+  //Filtros de Reserva
+
+  reservado!:boolean;
+  filtrarReservaPorReservado(){
+    this.reservasCliente = new Array<Reserva>();
+    this.reservaService.getReservaUsuarioAndReservado(this.id as string,this.reservado).subscribe(
+      res=>{
+          let unaReserva = new Reserva();
+          res.forEach((element: any) => {
+          Object.assign(unaReserva, element);
+          this.reservasCliente.push(unaReserva);
+          unaReserva = new Reserva();
+        });
+      },error=>{
+        console.log(error);
+      }
+    )
+  }
+
+
+  cat:string="";
+  filtrarPorCategoria(){
+    this.reservasCliente = new Array<Reserva>();
+    this.reservaService.getReservaUsuarioAndCategoria(this.id as string,this.cat).subscribe(
+      res=>{
+        let unaReserva = new Reserva();
+        res.forEach((element: any) => {
+        Object.assign(unaReserva, element);
+        this.reservasCliente.push(unaReserva);
+        unaReserva = new Reserva();
+      });
+      },error=>{
+        console.log(error);
+      }
+    )
+  }
+
+  nomServicio!:string;
+  filtrarPorNombreDeServicio(){
+    this.reservasCliente = new Array<Reserva>();
+    this.reservaService.getReservaUsuarioAndNombreDeServicio(this.id as string,this.nomServicio).subscribe(
+      res=>{
+        let unaReserva = new Reserva();
+        res.forEach((element: any) => {
+        Object.assign(unaReserva, element);
+        this.reservasCliente.push(unaReserva);
+        unaReserva = new Reserva();
+      });
+
+      console.log(this.reservasCliente);
+      },error=>{
+        console.log(error);
+      }
+    )
+  }
+
 }
 ////
 declare global {

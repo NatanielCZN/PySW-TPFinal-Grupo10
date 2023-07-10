@@ -16,6 +16,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./servicio.component.css']
 })
 export class ServicioComponent implements OnInit {
+  indice: number = 0;
+  imagen!: any;
   id: any;
   usuario: Usuario;
   tipo: any;
@@ -49,6 +51,7 @@ export class ServicioComponent implements OnInit {
     this.localidades = new Array<Provincia>();
     this.reservasCliente = new Array<Reserva>();
     this.mostrarReservas();
+    this.iniciar();
   }
 
   ngOnInit(): void {
@@ -157,14 +160,35 @@ export class ServicioComponent implements OnInit {
         for (const resultado of response.results) {
           const imagen = resultado.urls.small;
           this.imagenes.push(imagen);
+          this.iniciar();
         }
       },
       (error) => {
         console.error(error);
       }
     );
+    
+  }
+  iniciar(){
+    console.log(this.imagenes[this.indice]);
+    if (this.indice < this.imagenes.length){
+      this.imagen = this.imagenes[this.indice];
+    }
   }
 
+  siguiente(){
+    this.indice = this.indice +1;
+    if (this.indice < this.imagenes.length){
+      this.imagen = this.imagenes[this.indice];
+    }
+  }
+
+  anterior(){
+    this.indice = this.indice -1;
+    if (this.indice < this.imagenes.length){
+      this.imagen = this.imagenes[this.indice];
+    }
+  }
   cargarClima(provincia: Provincia) {
     this.ciudadService.getClima(provincia.lat, provincia.long).subscribe(
       (result) => {
