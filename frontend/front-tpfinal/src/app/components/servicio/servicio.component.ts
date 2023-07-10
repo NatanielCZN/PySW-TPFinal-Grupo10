@@ -221,7 +221,7 @@ initMap(provincia:Provincia) {
   const lat = parseFloat(provincia.lat);//transforma las coordenadas de
   const long = parseFloat(provincia.long);//la provincia q esta en string a number
     
-
+  if (!isNaN(lat) && !isNaN(long)) {//validad cuando esten vacias
   const mapOptions = {//provincia.lat,provincia.long
     center: {lat: lat, lng:  long},//{ lat: -34.397, lng: 150.644 }, // Coordenadas del centro del mapa
     zoom: 6 // Nivel de zoom inicial
@@ -230,9 +230,20 @@ initMap(provincia:Provincia) {
   const mapElement = document.getElementById('map');//para referenciar en html
   if (mapElement) {
     const map = new google.maps.Map(mapElement, mapOptions);
+     // Agregar marcador en una ubicación específica
+     const marker = new google.maps.Marker({
+      position: { lat: lat, lng: long },
+      map: map,
+      title: 'Marcador del objetivo'
+    }); 
   } else {
     console.error('No se encontró el elemento con ID "mapa".');
   }
+  
+}else {
+  console.error('Las coordenadas ingresadas no son válidas.');
+}
+
 }
 ///////
 
