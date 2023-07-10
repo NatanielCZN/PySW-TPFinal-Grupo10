@@ -20,9 +20,21 @@ export class ServiciosService {
 
         }
       ),params: new HttpParams()
-    
+
     }
     return this._http.get("http://localhost:3000/api/servicio/ubicacion?ubicacion="+ubicacion,httpOptions);
+  }
+
+  getServiciosTotal(): Observable<any>{
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+
+        }
+      ),params: new HttpParams()
+
+    }
+    return this._http.get("http://localhost:3000/api/servicio/",httpOptions);
   }
 
   getServicio(_id:string) : Observable<any>{
@@ -49,7 +61,7 @@ export class ServiciosService {
     return this._http.post(this.urlBase+"servicio",body, httpOptions);
   }
 
- 
+
   modificarServicio(servicio:Servicio):Observable<any>{
     const httpOptions = {
       headers : new HttpHeaders(

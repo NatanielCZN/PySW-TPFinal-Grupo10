@@ -2,6 +2,15 @@ const Servicio = require('../models/servicio');
 const Gestor = require('../models/gestor');
 const servicioCtrl = {}
 
+
+servicioCtrl.getServicios = async (req, res) => {
+    let criteria={};
+    var servicios = await Servicio.find(criteria);
+    res.json(servicios);
+  };
+
+
+  
 servicioCtrl.getServicio = async (req, res) => {
     const servicio = await Servicio.findById(req.params.id);
     res.json(servicio);

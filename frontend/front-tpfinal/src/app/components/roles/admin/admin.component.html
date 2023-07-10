@@ -59,6 +59,7 @@
   <option value="gestores">Tabla de Gestores</option>
   <option value="usuarios">Tabla de Usuarios</option>
   <option value="reservas">Tabla de Reservas</option>
+  <option value="servicios">Tabla de Servicios</option>
 </select>
 
 <!-- Primer Formulario -->
@@ -290,6 +291,37 @@
             </tr>
           </tbody>
         </table>
+
+        <table class="table table-striped text-center" *ngIf="tablaSeleccionada === 'servicios'">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Ubicacion</th>
+              <th scope="col">Calificacion Total</th>
+              <th scope="col">IDGestor</th>
+              <th scope="col">Resenias</th>
+              <th scope="col">Reservas</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let s of servicios" >
+            <tr>
+              <td>{{s.nombre}}</td>
+              <td>{{s.categoria}}</td>
+              <td>{{s.ubicacion}}</td>
+              <td>{{s.calificacionTotal}}</td>
+              <td>{{s.gestor}}</td>
+              <td>{{s.resenia.length}}</td>
+              <td>{{s.reservas.length }}</td>
+              <td>
+                <button type="button" class="form-control bg-info">Modificar</button>
+                <button type="button" class="form-control bg-danger">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
       </div>
 
       <div class="col-lg-12 col-md-12 col-12" *ngIf="tablaSeleccionada === 'reservas'">
