@@ -61,7 +61,7 @@ export class ServicioComponent implements OnInit {
 
      /////////maps
      const script = document.createElement('script');
-     script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCdi7hQUPe89nyScSyO1SijO1UJDvSILkg&callback=initMap`;
+     script.src = `https://maps.googleapis.com/maps/api/js?key=KEY&callback=initMap`;//AIzaSyCdi7hQUPe89nyScSyO1SijO1UJDvSILkg
      script.defer = true;
      script.async = true;
      script.onload = () => {
