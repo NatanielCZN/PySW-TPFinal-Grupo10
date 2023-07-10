@@ -5,17 +5,15 @@ export class Reserva {
     _id!: string;
     numeroReserva!: number;
     categoria!: string;
-
     nombreServicio!: string;
-
     cantidad!: number;
     fechaAlta!: string;
     fechaIngreso!: string;
     fechaEgreso!: string;
     precio!: number;
     reservado!: boolean;
-    usuario!: string; 
-    servicio!: string
+    usuario!: string;
+    servicio!: string;
     constructor() {
 
     }

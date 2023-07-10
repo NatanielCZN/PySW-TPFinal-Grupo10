@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { error } from 'console';
+import { Console, error } from 'console';
 import { AppComponent } from 'src/app/app.component';
 import { Admin } from 'src/app/models/admin';
 import { Gestor } from 'src/app/models/gestor';
 import { Resenia } from 'src/app/models/resenia';
+import { Reserva } from 'src/app/models/reserva';
+import { Servicio } from 'src/app/models/servicio';
 import { Usuario } from 'src/app/models/usuario.model';
 import { AdminService } from 'src/app/services/admin.service';
 import { GestorService } from 'src/app/services/gestor.service';
 import { ReseniaService } from 'src/app/services/resenia.service';
+import { ReservaService } from 'src/app/services/reserva.service';
 import { ServiciosService } from 'src/app/services/servicios.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -17,21 +20,26 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  
+
   id:any;
   tipo:any
   administrador!:Admin;
   gestores!:Array<Gestor>;
   usuarios!:Array<Usuario>;
+  reservas!:Array<Reserva>;
+  resernias!:Array<Resenia>;
+  servicios!:Array<Servicio>;
   tablaSeleccionada: string = 'gestores';
   reseniasUsuario!:Array<Resenia>;
   token!:any;
   constructor(private appCom:AppComponent, private adminService:AdminService , private reseniaService:ReseniaService
-    ,private gestorServicio:GestorService, private usuarioService:UsuarioService, private servicioService:ServiciosService) { 
+     ,private gestorServicio:GestorService, private usuarioService:UsuarioService, private servicioService:ServiciosService,
+      private reservaService:ReservaService) {
    this.appCom.logeado=true;
    this.cargarGestores();
    this.cargarUsuarios();
-   
+   this.cargarReservas();
+
   }
 
   ngOnInit(): void {
@@ -57,14 +65,14 @@ export class AdminComponent implements OnInit {
       this.reseniaService.getReseniaUsuario(idUsuario).subscribe(
         result => {
          console.log(result + "estas resenias son")
-         
+
          this.reseniasUsuario.push()
         },
         error => {
         }
       )
   }
-  
+
 
 
    cargarGestores() {
@@ -81,7 +89,7 @@ export class AdminComponent implements OnInit {
       error => { alert("Error en la petición"); }
     );
   }
-  
+
   cargarUsuarios() {
     this.usuarioService.getusuarios().subscribe(
       (result) => {
@@ -122,4 +130,153 @@ export class AdminComponent implements OnInit {
     )
     location.reload();
   }
+
+
+  cargarReservas(){
+    this.reservas= new Array<Reserva>();
+    this.reservaService.getReservas().subscribe(
+        res =>{
+          let reserva=new Reserva();
+          res.forEach(
+            (e:any)=>{
+              Object.assign(reserva,e);
+              this.reservas.push(reserva);
+              reserva= new Reserva();
+            }
+          )
+        },error=>{
+          alert("No se pueden cargar las Reservas")
+        }
+      )
+  }
+
+  deleteReserva(reserva:Reserva) {
+    this.reservaService.deleteReserva(reserva._id).subscribe(
+      res=>{
+        if(res.status==1){
+            alert(res.msg);
+              //recargar la lista de reservas
+            this.cargarReservas();
+          }
+     },error=>{
+          alert(error.msg);
+        }
+      )
+  }
+  //******** FILTROS ******* */
+
+
+  //Filtros para usuarios
+
+  username!:string;
+  buscarUsuarioPorUserName(){
+    this.usuarios=new Array<Usuario>();
+    this.usuarioService.getUsuarioPorUsername(this.username).subscribe(
+      res=>{
+        let usuario=new Usuario();
+        res.forEach((element: any) => {
+          Object.assign(usuario, element);
+          this.usuarios.push(usuario);
+          usuario = new Usuario();
+        });
+      },error=>{
+        console.log("error en recuperar la informacion")
+      }
+    )
+  }
+
+  emailUser!:string;
+  buscarUsuarioPorEmail(){
+    this.usuarios=new Array<Usuario>();
+    this.usuarioService.getUsuarioPorEmail(this.emailUser).subscribe(
+      res=>{
+        let usuario=new Usuario();
+        res.forEach((element: any) => {
+          Object.assign(usuario, element);
+          this.usuarios.push(usuario);
+          usuario = new Usuario();
+        });
+      },error=>{
+        console.log("error en recuperar la informacion")
+      }
+    )
+  }
+
+  dniUser!:string;
+  buscarUsuarioPorDni(){
+    this.usuarios=new Array<Usuario>();
+    this.usuarioService.getUsuarioPorDni(this.dniUser).subscribe(
+      res=>{
+        let usuario=new Usuario();
+        res.forEach((element: any) => {
+          Object.assign(usuario, element);
+          this.usuarios.push(usuario);
+          usuario = new Usuario();
+        });
+      },error=>{
+        console.log("error en recuperar la informacion")
+      }
+    )
+  }
+
+
+  //Filtros para gestores
+
+  usernameGestor!:string;
+  buscarGestorPorUsername(){
+    this.gestores= new Array<Gestor>();
+    this.gestorServicio.getGestorPorUsername(this.usernameGestor).subscribe(
+      res=>{
+        let gestor=new Gestor();
+        res.forEach((element: any) => {
+          Object.assign(gestor, element);
+          this.gestores.push(gestor);
+          gestor = new Gestor();
+        });
+      },error=>{
+        console.log("error en recuperar la informacion")
+      }
+    )
+  }
+
+  emailGestor!:string;
+  buscarGestorPorEmail(){
+    this.gestores= new Array<Gestor>();
+    this.gestorServicio.getGestorPorEmail(this.emailGestor).subscribe(
+      res=>{
+        let gestor=new Gestor();
+        res.forEach((element: any) => {
+          Object.assign(gestor, element);
+          this.gestores.push(gestor);
+          gestor = new Gestor();
+        });
+      },error=>{
+        console.log("error en recuperar la informacion")
+      }
+    )
+  }
+
+  dniGestor!:string;
+  buscarGestorPorDni(){
+    this.gestores= new Array<Gestor>();
+    this.gestorServicio.getGestorPorDni(this.dniGestor).subscribe(
+      res=>{
+        let gestor=new Gestor();
+        res.forEach((element: any) => {
+          Object.assign(gestor, element);
+          this.gestores.push(gestor);
+          gestor = new Gestor();
+        });
+      },error=>{
+        console.log("error en recuperar la informacion")
+      }
+    )
+  }
+
 }
+
+
+
+
+
+

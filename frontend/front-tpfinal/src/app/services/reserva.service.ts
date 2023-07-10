@@ -31,7 +31,7 @@ export class ReservaService {
 
         }
       ),params: new HttpParams().append("id",id)
-      
+
     }
     console.log(id);
     return this._http.get("http://localhost:3000/api/reserva/usuario?usuario="+id,httpOptions);
@@ -45,7 +45,7 @@ export class ReservaService {
 
         }
       ),params: new HttpParams().append("usuario",usuario).append("reservado",reservado)
-      
+
     }
     return this._http.get(this.urlBase+"reserva/",httpOptions);
   }
@@ -58,7 +58,7 @@ export class ReservaService {
 
         }
       ),params: new HttpParams().append("usuario",usuario).append("categoria",categoria)
-      
+
     }
     return this._http.get(this.urlBase+"reserva/",httpOptions);
   }
@@ -70,7 +70,7 @@ export class ReservaService {
 
         }
       ),params: new HttpParams().append("usuario",usuario).append("nombreServicio",nombreServicio)
-      
+
     }
     return this._http.get(this.urlBase+"reserva/",httpOptions);
   }
