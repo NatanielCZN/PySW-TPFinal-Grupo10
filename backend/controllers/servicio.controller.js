@@ -1,5 +1,7 @@
 const Servicio = require('../models/servicio');
 const Gestor = require('../models/gestor');
+const Resenia = require('../models/resenia');
+const Reserva = require('../models/reserva');
 const servicioCtrl = {}
 
 
@@ -71,6 +73,22 @@ servicioCtrl.editServicio = async (req, res) => {
 
 servicioCtrl.deleteServicio = async (req, res) => {
     try {
+        const servicio = await Servicio.findById(req.params.id)
+        const gestor = await Gestor.findById(servicio.gestor);
+        const index = gestor.servicio.findIndex(res=>res.equals(servicio._id))
+        if(index !== -1){
+            gestor.servicio.splice(index,1);
+        }
+        await Gestor.updateOne({_id: servicio.gestor},gestor);
+
+        for(let resenia of servicio.resenia){
+            await Resenia.deleteOne({_id:resenia});
+        }
+
+        for(let reserva of servicio.reservas){
+            await Reserva.deleteOne({_id:reserva});
+        }
+
         await Servicio.deleteOne({ _id: req.params.id });
         res.json({
             status: '1',
@@ -79,7 +97,7 @@ servicioCtrl.deleteServicio = async (req, res) => {
     } catch (error) {
         res.status(400).json({
             'status': '0',
-            'msg': 'Error procesando la operacion'
+            'msg': 'Error procesando la operacion'+error
         })
     }
 }

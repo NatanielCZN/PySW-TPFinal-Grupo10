@@ -22,7 +22,8 @@ reseniaCtrl.createResenia= async (req, res) => {
     } catch (error) {
         res.status(400).json({
         'status': '0',
-        'msg': 'Error procesando operacion.'})
+        'msg': 'Error procesando operacion.'+error
+      })
     }
 };
 ///mostrar uno solo

@@ -31,8 +31,6 @@
     <!-- Logo -->
     <div class="contenido-titulo m-0 px-4">
         <img src="/assets/logo-turismoapp2.png" alt="Logo | TurismoApp" id="logo-img" />
-
-
     </div>
 
     <!-- Botones -->
@@ -47,22 +45,41 @@
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
+<!-- Modal seleccion usuario -->
+<div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="modalSeleccionUsuario" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h6 class="modal-title" id="staticBackdropLabel">Registro</h6>
+            <!-- Header modal -->
+            <div class="modal-header bg-orange">
+                <h5 class="modal-title" id="modalSeleccionUsuario">Seleccionar</h5>
 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <a aria-current="usuarioForm" [routerLink]="['/usuario-form/0']" routerLinkActive="active"
-                    data-bs-dismiss="modal">Registrarse como Usuario</a><br>
 
-                <a aria-current="gestorForm" [routerLink]="['/gestor-form']" routerLinkActive="active"
-                    data-bs-dismiss="modal">Registrarse como Gestor</a>
+            <!-- Body modal -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col px-2">
+                        <a aria-current="usuarioForm" [routerLink]="['/usuario-form/0']" routerLinkActive="active"
+                            data-bs-dismiss="modal">
+                            <img src="/assets/fondo-home/icono/icono-viajero.png" alt="Login | Usuario"
+                                class="img-fluid registration-option" />
+                        </a>
+                    </div>
+
+                    <div class="col px-2">
+                        <a aria-current="gestorForm" [routerLink]="['/gestor-form']" routerLinkActive="active"
+                            data-bs-dismiss="modal">
+                            <img src="/assets/fondo-home/icono/icono-gestor.png" alt="Login | Gestor"
+                                class="img-fluid registration-option" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer modal -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>

@@ -20,7 +20,13 @@ export class GestorFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Guarda un Gestor en la BDD
+   * @param gestorForm 
+   */
   guardarGestor(gestorForm: NgForm): void {
+    this.gestor.calcularEdad();
+
     this.gestorService.postGestor(this.gestor)
       .subscribe(
         (res: any) => {
