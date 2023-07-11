@@ -7,9 +7,22 @@ const gestorCtrl = {}
  * @param {*} res 
  */
 gestorCtrl.getGestores = async (req, res) => {
-    var gestores = await Gestor.find();
-
+    let criteria = {};
+    //Buscar Gestor por username
+    if(req.query.username != null && req.query.username != ""){
+        criteria.username=req.query.username;
+    }
+    //Buscar por dni
+    if(req.query.dni != null && req.query.dni != ""){
+        criteria.dni=req.query.dni;
+    }
+    //Buscar por email
+    if(req.query.email != null && req.query.email != ""){
+        criteria.email=req.query.email;
+    }
+    var gestores = await Gestor.find(criteria);
     res.json(gestores);
+    
 }
 
 /**
@@ -18,8 +31,7 @@ gestorCtrl.getGestores = async (req, res) => {
  * @param {*} res 
  */
 gestorCtrl.getGestor = async (req, res) => {
-    var gestor = await Gestor.findById(req.params._id);
-
+    const gestor = await Gestor.findById(req.params.id);
     res.json(gestor);
 }
 

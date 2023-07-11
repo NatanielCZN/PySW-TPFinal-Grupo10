@@ -10,19 +10,18 @@ export class Usuario extends Login {
     dni: string;
     fechaNacimiento: string;
     edad: number;
-    reserva: Array<Reserva>;
-    resenia: Array<Resenia>;
+    reservas: Array<Reserva>;
+    resenias: Array<Resenia>;
 
     constructor() {
         super();
-        //this._id = '';
         this.nombre = '';
         this.apellido = '';
         this.email = '';
         this.dni = '';
         this.fechaNacimiento = '';
         this.edad = 0;
-        this.reserva = new Array<Reserva>();
-        this.resenia = new Array<Resenia>();
+        this.reservas = new Array<Reserva>();
+        this.resenias = new Array<Resenia>();
     }
 }

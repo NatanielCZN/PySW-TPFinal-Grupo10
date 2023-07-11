@@ -43,7 +43,7 @@ export class CiudadesService {
     const httpOptions = {
       headers: new HttpHeaders({
       }),
-      params: new HttpParams().set('query',palabraClave).set('per_page', '1').set('client_id', this.clientId)
+      params: new HttpParams().set('query',palabraClave).set('per_page', '8').set('client_id', this.clientId)
     };
     return this._http.get(this.unsplashAPIUrl, httpOptions);
   }
@@ -61,18 +61,6 @@ export class CiudadesService {
      return this._http.get("https://climate-data.p.rapidapi.com/api/getclimatedata",httpOptions);  
   }
  
-  getStaticMap(lat:string,long:string): Observable<any> {
-    const url = `https://maps.googleapis.com/maps/api/staticmap`;
-    const params = {
-      center:"center",
-      zoom: "zoom.toString()",
-      size: "size",
-      key: this.apiGoogle
-    };
-
-    https://maps.googleapis.com/maps/api/staticmap?center=40.714728,-73.998672&zoom=12&size=400x400&key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback
-    return this._http.get(url, { params: params, responseType: 'blob' });
-  }
  
 
   

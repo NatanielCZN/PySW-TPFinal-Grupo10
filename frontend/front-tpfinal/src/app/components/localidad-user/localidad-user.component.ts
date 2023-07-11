@@ -13,14 +13,11 @@ export class LocalidadUserComponent implements OnInit {
   nombre:string=""
   id:string=""
   servicios!:Array<Servicio>;
-
-  constructor(private route: ActivatedRoute, private router: Router, private serviceServicios:ServiciosService) {
-
-    
+  servicio!: any;
+  indice: number = 0;
+  constructor(private route: ActivatedRoute, private router: Router, private serviceServicios:ServiciosService) {   
    }
 
-
-  
   cargarServicios(id:string){
     this.serviceServicios.getServicios(id).subscribe(
       result =>{
@@ -31,13 +28,13 @@ export class LocalidadUserComponent implements OnInit {
           Object.assign(unaServicio,element)
           this.servicios.push(unaServicio)
           unaServicio = new Servicio();
+          this.iniciar();
         });
       } ,
       error=>{
       }
     )
   }
-
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -47,5 +44,33 @@ export class LocalidadUserComponent implements OnInit {
     });
   }
   
+  obtenerReseniaServ(servicio: Servicio) {//produ:NgForm){
+    this.router.navigate(['reseniaSer',servicio._id]);
+  }
+  iniciar(){
+    if (this.indice < this.servicios.length){
+      this.servicio = this.servicios[this.indice];
+    }
+  }
 
+  siguiente(){
+    this.indice = this.indice +1;
+    if (this.indice < this.servicios.length){
+      this.servicio = this.servicios[this.indice];
+    }
+  }
+
+  anterior(){
+    this.indice = this.indice -1;
+    if (this.indice < this.servicios.length){
+      this.servicio = this.servicios[this.indice];
+    }
+  }
+  cargar(servicio: Servicio) {//produ:NgForm){
+    this.router.navigate(['reseniaForm',0,servicio._id]);
+  }
+
+  realizarReserva(idServicio:string){
+    this.router.navigate(["reservaForm",0,idServicio]);
+  }
 }

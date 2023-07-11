@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-6">
                     <div class="card col-4" *ngIf="mostrarCard" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
+                        
                         <div class="card-body">
                             <h5 class="card-title">{{provincia.nombre}}</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -46,7 +46,7 @@
                 <div id="carouselExample" class="carousel slide col-8" *ngIf="mostrarCard" >
                     <div class="carousel-inner" >
                         <div class="carousel-item active" *ngFor="let i of imagenes">
-                            <img src="{{i}}" class="d-block w-100" alt="...">
+                            <img *ngIf="i" src="{{i}}" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"

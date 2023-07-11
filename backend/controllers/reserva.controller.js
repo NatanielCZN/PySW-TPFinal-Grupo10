@@ -10,9 +10,74 @@ const reservaCtrl = {};
   */
 reservaCtrl.getReservas = async (req, res) => {
     let criteria = {}
+    //filtro por estado de reserva y usuario
+    if ((req.query.usuario != null && req.query.usuario != "") && (req.query.reservado != null && req.query.reservado != "")) {
+        criteria.usuario=req.query.usuario;
+        criteria.reservado=req.query.reservado;
+    }
+    //filtro por categoria de servicio y usuario
+    if ((req.query.usuario != null && req.query.usuario != "") && (req.query.categoria != null && req.query.categoria != "")) {
+        criteria.usuario=req.query.usuario;
+        criteria.categoria=req.query.categoria;
+    }
+
+    //filtro por nombre de servicio y usuario
+    if ((req.query.usuario != null && req.query.usuario != "") && (req.query.nombreServicio != null && req.query.nombreServicio != "")) {
+        criteria.usuario=req.query.usuario;
+        criteria.nombreServicio=req.query.nombreServicio;
+    }
+
+    //filtro por usuario
+    if (req.query.usuario != null && req.query.usuario != "") {
+        criteria.usuario=req.query.usuario;     
+    }
+
+    //filtro por estado de reserva y servicio
+    if ((req.query.servicio != null && req.query.servicio != "") && (req.query.reservado != null && req.query.reservado != "")) {
+        criteria.servicio=req.query.servicio;
+        criteria.reservado=req.query.reservado;
+    }
+
+     //filtro por servicio
+     if (req.query.servicio != null && req.query.servicio != "") {
+        criteria.servicio=req.query.servicio;
+    }
+
+     //filtro por Estado de Reserva
+     if (req.query.reservado != null && req.query.reservado != "") {
+        criteria.reservado=req.query.reservado;
+    }
+
+    //filtro por categoria
+     if (req.query.categoria != null && req.query.categoria != "") {
+        criteria.categoria=req.query.categoria;
+    }
+
     var reservas = await Reserva.find(criteria);
     res.json(reservas);
 };
+
+
+reservaCtrl.getReservasUsuario = async (req, res) => {
+    try {
+        let criteria = {};
+        if ((req.query.usuario != null) && (req.query.usuario != "")) {
+            criteria.usuario = req.query.usuario;
+        }
+
+        if ( ((req.query.usuario!= null) && (req.query.usuario!= ""))  && 
+             ((req.query.reservado!=null) && (req.query.reservado!="")) ) {
+            criteria.usuario=req.query.usuario;
+            criteria.reservado=req.query.reservado;
+        }
+
+        var reservas = await Reserva.find(criteria);
+        res.json(reservas);
+    } catch (error) {
+      res.status(500).json({ message: 'Error al obtener las reservas.', error });
+    }
+  };
+
 
 /**
  * ALta de una reserva (POST)

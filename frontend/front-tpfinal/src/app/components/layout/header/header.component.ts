@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -8,12 +8,22 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public loginService: LoginService) { }
 
-  ngOnInit(): void {
+  id: any;
+  tipo!:string;
+  constructor(public loginService: LoginService) {
+  }
+
+  ngOnInit(): void {    
+
+    this.id = sessionStorage.getItem("userId");
+    this.tipo = sessionStorage.getItem("tipo") as string;
+    console.log("es: "+this.tipo);
   }
 
   logout() {
     this.loginService.logout();
   }
+
+
 }

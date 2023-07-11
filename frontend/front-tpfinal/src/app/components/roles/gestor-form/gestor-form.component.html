@@ -1,6 +1,20 @@
-<!-- REALIZAR TRANSACCION -->
-<section>
-    <div class="my-4 formulario-gestor">
+<!-- Formulario Gestor -->
+<section class="container-fluid background-container">
+    <!-- Imagen de fondo -->
+    <img src="/assets/fondo-login/login-formulario-gestor.jpg" alt="Fondo" class="background-image">
+
+    <!-- Capa del fondo -->
+    <div class="overlay"></div>
+
+    <!-- Boton logearse -->
+    <div class="corner-button">
+        <a routerLink="/login" routerLinkActive="active" class="btn btn-outline-light me-2">
+            Sign In
+        </a>
+    </div>
+
+    <div class="my-4 formulario-gestor px-2">
+        <!-- Formulario -->
         <form #gestorForm="ngForm" class="opacidad">
             <fieldset class="form-group border rounded p-3">
                 <legend class="w-auto fw-bold">GESTOR</legend>
@@ -81,7 +95,7 @@
                             class="text-danger fw-bold">*</span>)</label>
 
                     <input type="date" class="form-control bg-light" id="idFechaNacimientoGestor"
-                        name="fechaNacimientoGestor" [(ngModel)]="gestor.dni" required
+                        name="fechaNacimientoGestor" [(ngModel)]="gestor.fechaNacimiento" required
                         #fechaNacimientoGestor="ngModel" />
 
                     <!-- Validar Fecha Nacimiento -->
@@ -93,28 +107,51 @@
                     </div>
                 </div>
 
-                <!-- Edad -->
+                <!-- Username -->
                 <div class="mb-4">
-                    <label for="idEdadGestor" class="form-label">Edad (<span
+                    <label for="idUsername" class="form-label">Username (<span
                             class="text-danger fw-bold">*</span>)</label>
 
-                    <input type="number" class="form-control bg-light" id="idEdadGestor" name="edadGestor"
-                        placeholder="Ingrese su edad" [(ngModel)]="gestor.edad" required #edadGestor="ngModel" />
+                    <input type="text" class="form-control bg-light" id="idUsername" name="username"
+                        placeholder="Ingrese un nombre de usuario" [(ngModel)]="gestor.username" required
+                        #usernameGestor="ngModel" />
 
-                    <!-- Validar Email -->
-                    <div *ngIf="edadGestor.invalid && (edadGestor.dirty || edadGestor.touched)"
+                    <!-- Validar Username -->
+                    <div *ngIf="usernameGestor.invalid && (usernameGestor.dirty || usernameGestor.touched)"
                         class="alert alert-danger">
-                        <div *ngIf="edadGestor.errors?.['required']">
-                            Debe igresar su edad.
+                        <div *ngIf="usernameGestor.errors?.['required']">
+                            Debe ingresar un username.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-4"  *ngIf="accion =='new'">
+                    <label for="idPassword" class="form-label">Password (<span
+                            class="text-danger fw-bold">*</span>)</label>
+
+                    <input type="text" class="form-control bg-light" id="idPassword" name="password"
+                        placeholder="Ingrese una contraseña" [(ngModel)]="gestor.password" required
+                        #passwordGestor="ngModel" />
+
+                    <!-- Validar Apellido -->
+                    <div *ngIf="passwordGestor.invalid && (passwordGestor.dirty || passwordGestor.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="passwordGestor.errors?.['required']">
+                            Debe ingresar una contraseña.
                         </div>
                     </div>
                 </div>
 
                 <!-- Button Conversion -->
                 <div class="mb-4 d-grid">
-                    <button type="submit" class="btn btn-warning fw-bold mt-2"
-                        (click)="agregarGestor(gestorForm)" [disabled]="gestorForm.invalid">Crear Gestor
-                        <i class="fa-solid fa-cash-register"></i></button>
+                    <button type="submit" class="btn btn-warning fw-bold mt-2" *ngIf="accion =='new'" (click)="guardarGestor(gestorForm)"
+                        [disabled]="gestorForm.invalid">Crear Gestor
+                    </button>
+                    <button type="submit" class="btn btn-success fw-bold mt-2" *ngIf="accion =='update'" (click)="modificarGestor()"
+                    [disabled]="gestorForm.invalid">Modificar
+                </button>
+                    
                 </div>
             </fieldset>
         </form>

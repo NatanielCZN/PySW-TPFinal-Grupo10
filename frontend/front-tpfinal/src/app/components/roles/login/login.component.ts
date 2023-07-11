@@ -21,12 +21,13 @@ export class LoginComponent implements OnInit {
   gestUrl!: string;
   adminUrl!: string;
   msgError!: string;
+  falloLogin:boolean=false;
   constructor(private loginS: LoginService, private router: Router, private route: ActivatedRoute, private appCom: AppComponent) {
     this.appCom.logeado = false;
   }
 
   ngOnInit(): void {
-    this.userUrl = this.route.snapshot.queryParams['returnUrl'] || '/ciudad';
+    this.userUrl = this.route.snapshot.queryParams['returnUrl'] || '/usuario';
     this.gestUrl = this.route.snapshot.queryParams['returnUrl'] || '/gestor';
     this.adminUrl = this.route.snapshot.queryParams['returnUrl'] || '/admin';
   }
@@ -59,6 +60,7 @@ export class LoginComponent implements OnInit {
             if (res.tipo === 'admin')
               this.router.navigateByUrl(this.adminUrl);
           } else {
+            this.falloLogin=true;
             this.msgError = "Credenciales Incorrectas";
           }
         },
