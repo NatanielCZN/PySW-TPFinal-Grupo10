@@ -20,16 +20,18 @@ import { ReservaComponent } from './components/reserva/reserva.component';
 import { UsuarioDatosComponent } from './components/roles/usuario-datos/usuario-datos.component';
 import { ReseniaUsuarioComponent } from './components/resenias/resenia-usuario/resenia-usuario.component';
 import { ReseniaServicioComponent } from './components/resenias/resenia-servicio/resenia-servicio.component';
+import { GestorDatosComponent } from './components/roles/gestor-datos/gestor-datos.component';
 
 const routes: Routes = [
   { path: 'header', component: HeaderComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'usuario', component: UsuarioComponent },
-  {path:'usuario/datos',component:UsuarioDatosComponent},
+  { path: 'usuario/datos', component: UsuarioDatosComponent },
   { path: 'usuario-form/:id', component: UsuarioFormComponent },
   { path: "gestor", component: GestorComponent },
   { path: "gestor-form", component: GestorFormComponent },
+  { path: 'gestor-datos', component: GestorDatosComponent },
   { path: "admin", component: AdminComponent },
 
   { path: 'home', component: HomeComponent },
@@ -47,7 +49,7 @@ const routes: Routes = [
 
   { path: 'servicio', component: ServicioComponent },
   { path: 'servicio-form', component: ServicioFormComponent },
-  { path: 'reserva',component: ReservaComponent },
+  { path: 'reserva', component: ReservaComponent },
   { path: 'reservaForm/:id/:idServicio', component: ReservaFormComponent }
 ];
 

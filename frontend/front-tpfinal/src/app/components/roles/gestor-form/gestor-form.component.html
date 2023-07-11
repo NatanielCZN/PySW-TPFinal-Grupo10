@@ -1,6 +1,20 @@
-<!-- REALIZAR TRANSACCION -->
-<section>
-    <div class="my-4 formulario-gestor">
+<!-- Formulario Gestor -->
+<section class="container-fluid background-container">
+    <!-- Imagen de fondo -->
+    <img src="/assets/fondo-login/login-formulario-gestor.jpg" alt="Fondo" class="background-image">
+
+    <!-- Capa del fondo -->
+    <div class="overlay"></div>
+
+    <!-- Boton logearse -->
+    <div class="corner-button">
+        <a routerLink="/login" routerLinkActive="active" class="btn btn-outline-light me-2">
+            Sign In
+        </a>
+    </div>
+
+    <div class="my-4 formulario-gestor px-2">
+        <!-- Formulario -->
         <form #gestorForm="ngForm" class="opacidad">
             <fieldset class="form-group border rounded p-3">
                 <legend class="w-auto fw-bold">GESTOR</legend>

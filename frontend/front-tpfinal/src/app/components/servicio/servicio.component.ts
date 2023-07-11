@@ -236,6 +236,34 @@ initMap(provincia:Provincia) {
       map: map,
       title: 'Marcador del objetivo'
     }); 
+    // Obtener ubicación del usuario y generar ruta
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const userLat = position.coords.latitude;
+        const userLng = position.coords.longitude;
+
+        const directionsService = new google.maps.DirectionsService();
+        const directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
+
+        const request = {
+          origin: { lat: userLat, lng: userLng },
+          destination: { lat: lat, lng: long },
+          travelMode: google.maps.TravelMode.DRIVING
+        };
+
+        directionsService.route(request, (result, status) => {
+          if (status === google.maps.DirectionsStatus.OK) {
+            directionsRenderer.setDirections(result);
+          } else {
+            console.error('Error al generar la ruta:', status);
+          }
+        });
+      }, (error) => {
+        console.error('Error al obtener la ubicación del dispositivo:', error);
+      });
+    } else {
+      console.error('La geolocalización no es compatible en este navegador.');
+    }
   } else {
     console.error('No se encontró el elemento con ID "mapa".');
   }
