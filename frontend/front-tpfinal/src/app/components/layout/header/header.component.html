@@ -12,7 +12,7 @@
                 </li>
 
                 <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link"  *ngIf="tipo !== 'admin'" aria-current="page">INFORMACION</a>
+                    <a class="nav-link"  *ngIf="tipo !== 'admin' && tipo !== 'user'" aria-current="page">INFORMACION</a>
                 </li>
 
                 <li class="nav-item dropdown" routerLinkActive="active">
@@ -22,7 +22,7 @@
                     <ul *ngIf="tipo =='user'" class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" [routerLink]="['usuario/datos']">MIS DATOS</a></li>
                         <li><a class="dropdown-item" [routerLink]="['usuario']">MIS RESERVAS</a></li>
-                        <li><a class="dropdown-item" [routerLink]="['usuario/resenias']">MIS RESENIAS</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['usuario/resenia']">MIS RESENIAS</a></li>
                         <li class="dropdown-divider"></li>                                             
                         <li><a class="dropdown-item" [routerLink]="['home']" routerLinkActive="active" (click)="logout()">CERRAR SESION</a></li>
                     </ul>

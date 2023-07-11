@@ -1,4 +1,7 @@
-<div class="container">
+<div class="container background-container">
+
+  <img src="/assets/fondo-login/login-formulario-gestor.jpg" alt="Fondo" class="background-image">
+
   <h1 style="text-align: center; margin-top: 40px ;">GESTION DEL SISTEMA :</h1>
   <select class="form-select form-select-lg mb-3" style="margin-top: 100px; margin-bottom: 20px;"
     aria-label="Default select example" [(ngModel)]="tablaSeleccionada">
@@ -305,14 +308,10 @@
 
     </div>
 
-
-
-
-
-
     <div class="col-lg-9 col-md-9 col-12 ">
+      <div class="table-responsive">
       <!-- Tabla de Gestores -->
-      <table class="table table-striped text-center" *ngIf="tablaSeleccionada === 'gestores'">
+      <table class="table table-striped text-center bg-white" *ngIf="tablaSeleccionada === 'gestores'">
         <thead>
           <tr>
             <th scope="col">Username</th>
@@ -342,9 +341,10 @@
           </tr>
         </tbody>
       </table>
-
+    </div>
+    <div class="table-responsive">
       <!-- Tabla de Usuarios -->
-      <table class="table table-striped text-center" *ngIf="tablaSeleccionada === 'usuarios'">
+      <table class="table table-striped text-center bg-white" *ngIf="tablaSeleccionada === 'usuarios'">
         <thead>
           <tr>
             <th scope="col">Username</th>
@@ -376,10 +376,10 @@
           </tr>
         </tbody>
       </table>
-
-
+    </div>
+    <div class="table-responsive">
       <!-- Tabla Servicios -->
-      <table class="table table-striped text-center" *ngIf="tablaSeleccionada === 'servicios'">
+      <table class="table table-striped text-center bg-white" *ngIf="tablaSeleccionada === 'servicios'">
         <thead>
           <tr>
             <th scope="col">Nombre</th>
@@ -408,9 +408,10 @@
           </tr>
         </tbody>
       </table>
-
+    </div>
+    <div class="table-responsive">
       <!-- Tabla Resenias -->
-      <table class="table table-striped text-center" *ngIf="tablaSeleccionada === 'resenias'">
+      <table class="table table-striped text-center bg-white" *ngIf="tablaSeleccionada === 'resenias'">
         <thead>
           <tr>
             <th scope="col">Nombre Usuario</th>
@@ -436,8 +437,76 @@
         </tbody>
       </table>
 
+    </div>
+    </div>
+
+  
+    <!-- Tabla Reservas -->
+    <div class="col-lg-12 col-md-12 col-12" *ngIf="tablaSeleccionada === 'reservas'">
+      <div class="col-lg-12 col-md-12 col-12 mb-4">
+        <div class="accordion mt-1" id="accordionExample" *ngIf="tablaSeleccionada === 'reservas'">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="btn w-100 text-start mx-1" type="button" (click)="cargarGestores()">
+                Todos los Gestores
+              </button>
+            </h2>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Buscar por UserName
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <input class="form-control" type="text" [(ngModel)]="usernameGestor" placeholder="Ingresar UserName">
+                <button *ngIf="usernameGestor!=null" (click)="buscarGestorPorUsername()"
+                  class="btn btn-dark mt-2 mb-2 w-100">Buscar</button>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Buscar por email
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <input class="form-control" type="text" [(ngModel)]="emailGestor" placeholder="Ingrese Email">
+                <button *ngIf="emailGestor!=null" (click)="buscarGestorPorEmail()"
+                  class="btn btn-dark mt-2 w-100">Buscar</button>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Buscar Por Dni
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <input class="form-control" type="text" [(ngModel)]="dniGestor" placeholder="Ingrese Dni">
+                <button *ngIf="dniGestor!=null" (click)="buscarGestorPorDni()"
+                  class="btn btn-dark mt-2 w-100">Buscar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+      <table class="table table-striped text-center bg-white">
+
+
        <!-- Tabla De Reservas -->
        <table class="table table-striped text-center"  *ngIf="tablaSeleccionada === 'reservas'">
+
         <thead>
           <tr *ngIf="reservas.length!=0">
             <th scope="col">categoria</th>
@@ -476,12 +545,5 @@
 
   </div>
 
-
-
-
-
-
 </div>
 
-
-{{reseniasUsuario | json}}
