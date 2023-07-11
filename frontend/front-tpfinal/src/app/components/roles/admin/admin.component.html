@@ -335,11 +335,11 @@
           <thead>
             <tr>
               <th scope="col">Username</th>
-              <th scope="col"  class="d-none d-xl-block">Nombre</th>
-              <th scope="col"  class="d-none d-xl-block">Email</th>
-              <th scope="col"  class="d-none d-xl-block">Edad</th>
-              <th scope="col"  class="d-none d-xl-block">Dni</th>
-              <th scope="col"  class="d-none d-xl-block">Fecha Nacimiento</th>
+              <th scope="col" >Nombre</th>
+              <th scope="col" >Email</th>
+              <th scope="col"  >Edad</th>
+              <th scope="col"  >Dni</th>
+              <th scope="col"  >Fecha Nacimiento</th>
               <th scope="col">Servicios</th>
               <th></th>
             </tr>
@@ -347,11 +347,11 @@
           <tbody *ngFor="let g of gestores">
             <tr>
               <td>{{g.username}}</td>
-              <td  class="d-none d-xl-block">{{g.nombre}} {{g.apellido}}</td>
-              <td  class="d-none d-xl-block">{{g.email}}</td>
-              <td  class="d-none d-xl-block">{{g.edad}}</td>
-              <td  class="d-none d-xl-block">{{g.dni}}</td>
-              <td  class="d-none d-xl-block">{{g.fechaNacimiento}}</td>
+              <td  >{{g.nombre}} {{g.apellido}}</td>
+              <td >{{g.email}}</td>
+              <td  >{{g.edad}}</td>
+              <td  >{{g.dni}}</td>
+              <td  >{{g.fechaNacimiento}}</td>
               <td>{{g.servicio.length }}</td>
               <td>
                 <button type="button" class="form-control bg-info">Modificar</button>
