@@ -1,6 +1,6 @@
 <div class="font-usuario">
     <div class="container-fluid">
-      <!--<div class="row col-12">
+        <!--<div class="row col-12">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">Selecciona una Provincia :</a>
@@ -88,95 +88,103 @@
         </aside>
 
     </div>-->
-    <h1 class="title">Mis Reservas : </h1>
-    <div class="row">
+        <h1 class="title">Mis Reservas : </h1>
+        <div class="row">
 
-        <div class="col-lg-3 col-md-3 col-sx-12">
-            <div class="accordion" id="accordionExample">
-                <div class="accordion-item p-2 todo ">
-                    <button class="btn w-100 text-start" (click)="mostrarReservas()">Todas las Reservas</button>
+            <div class="col-lg-3 col-md-3 col-sx-12">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item p-2 todo ">
+                        <button class="btn w-100 text-start" (click)="mostrarReservas()">Todas las Reservas</button>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Estado De las Reservas
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse show"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <select class="form-select mt-1 mb-1 mx-1" aria-label="Default select example"
+                                    id="reservado" name="reservado" [(ngModel)]="reservado"
+                                    (ngModelChange)="filtrarReservaPorReservado()">
+
+                                    <option value="true">Reservas Confirmadas</option>
+                                    <option value="false">Reservas Sin Confirmar</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Categoria
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <select class="form-select mt-1 mb-1 mx-1" aria-label="Default select example" id="cat"
+                                    name="cat" [(ngModel)]="cat" (ngModelChange)="filtrarPorCategoria()">
+                                    <option value="hotel">Hotel</option>
+                                    <option value="restaurante">Restaurante</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                Buscar por Nombre de Servicio
+                            </button>
+                        </h2>
+                        <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body p-2">
+                                <input class="form-control" type="text" name="nombreServicio" id="nombreServicio"
+                                    [(ngModel)]="nomServicio">
+                                <button *ngIf="nomServicio!=null" class="btn btn-info mt-2 mb-2 w-100"
+                                    (click)="filtrarPorNombreDeServicio()">Filtrar Por Nombre de servicio</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Estado De las Reservas
-                      </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                        <select class="form-select mt-1 mb-1 mx-1" aria-label="Default select example" id="reservado" name="reservado" [(ngModel)]="reservado" (ngModelChange)="filtrarReservaPorReservado()">
-                          <option value="true">Reservas Confirmadas</option>
-                          <option value="false">Reservas Sin Confirmar</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
+            </div>
 
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Categoria
-                    </button>
-                  </h2>
-                  <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <select class="form-select mt-1 mb-1 mx-1" aria-label="Default select example" id="cat" name="cat" [(ngModel)]="cat" (ngModelChange)="filtrarPorCategoria()">
-                            <option value="hotel">Hotel</option>
-                            <option value="restaurante">Restaurante</option>
-                        </select>
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                       Buscar por Nombre de Servicio
-                      </button>
-                    </h2>
-                    <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                      <div class="accordion-body p-2">
-                         <input class="form-control" type="text" name="nombreServicio" id="nombreServicio" [(ngModel)]="nomServicio">
-                         <button *ngIf="nomServicio" class="btn btn-info mt-2 mb-2 w-100" (click)="filtrarPorNombreDeServicio()">Filtrar Por Nombre de servicio</button>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-
-
-
-
-
-
+            <div class="tabla-contenedor col-lg-7 col-md-9 col-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <!-- <th scope="col">Servicio</th> -->
+                            <th scope="col">Nombre Servicio</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let reserva of reservasCliente">
+                        <tr>
+                            <!-- <th scope="row">{{reserva.servicio}}</th> -->
+                            <th>{{reserva.nombreServicio}}</th>
+                            <td>
+                                <p *ngIf="reserva.reservado;else noReservado" style="color: blue;">Reservado</p>
+                                <ng-template #noReservado>
+                                    <p style="color:red;">Canselado</p>
+                                </ng-template>
+                            </td>
+                            <td>{{reserva.fechaIngreso}}</td>
+                            <td>
+                                <button class="btn btn-info mx-1" (click)="modificarReserva(reserva)">Modificar</button>
+                                <button class="btn btn-danger mx-1" (click)="deleteReserva(reserva)">Dar de
+                                    Baja</button>
+                                <button class="btn btn-success mx-1" (click)="imprimirReserva(reserva)">Imprimir</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="tabla-contenedor col-lg-7 col-md-9 col-12">
-            <table class="table table-hover" >
-                <thead>
-                    <tr>
-                        <!-- <th scope="col">Servicio</th> -->
-                        <th scope="col">Nombre Servicio</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Opciones</th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let reserva of reservasCliente">
-                    <tr>
-                        <!-- <th scope="row">{{reserva.servicio}}</th> -->
-                        <th >{{reserva.nombreServicio}}</th>
-                        <td>
-                          <p *ngIf="reserva.reservado;else noReservado" style="color: blue;">Reservado</p>
-                          <ng-template #noReservado><p style="color:red;" >Canselado</p></ng-template>
-                        </td>
-                        <td >{{reserva.fechaIngreso}}</td>
-                        <td>
-                            <button class="btn btn-info mx-1" (click)="modificarReserva(reserva)">Modificar</button>
-                            <button class="btn btn-danger mx-1" (click)="deleteReserva(reserva)">Dar de Baja</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
     </div>
-    </div>
-    </div>
+</div>

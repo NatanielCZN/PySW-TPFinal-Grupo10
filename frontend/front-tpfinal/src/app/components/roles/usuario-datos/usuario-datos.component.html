@@ -2,60 +2,56 @@
     <div class="row">
         <div class="tabla col-sm-8 offset-sm-2">
             <div class="title col-12">
-            <strong><h3>Mis Datos</h3></strong>
+                <strong>
+                    <h3>Mis Datos</h3>
+                </strong>
             </div>
-             <div class="row">
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <label class="label1">Usuario</label><br>
+                    <div class="nombre">
+                        <label for="">{{usuario.username}}</label>
+                    </div>
+                </div>
                 <div class="col-12 col-md-4 ">
-                    <label class="label1">nombre</label><br>
-                     <div class="nombre">
-                      <label for="">{{usuario.nombre}}</label>
-                     </div>
+                    <label class="label1">Nombre</label><br>
+                    <div class="nombre">
+                        <label for="">{{usuario.nombre}}</label>
+                    </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <label class="label1">Apellido</label><br>
                     <div class="nombre">
-                    <label for="">{{usuario.apellido}}</label>
+                        <label for="">{{usuario.apellido}}</label>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
-                    <label class="label1">Dni:</label><br>
+                    <label class="label1">DNI</label><br>
                     <div class="nombre">
-                    <label for="">{{usuario.dni}}</label>
+                        <label for="">{{usuario.dni}}</label>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
-                    <label class="label1">Email:</label><br>
+                    <label class="label1">Email</label><br>
                     <div class="nombre">
-                    <label for="">{{usuario.email}}</label>
+                        <label for="">{{usuario.email}}</label>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
-                    <label class="label1">Edad:</label><br>
+                    <label class="label1">Edad</label><br>
                     <div class="nombre">
-                    <label for="">{{usuario.edad}}</label>
+                        <label for="">{{usuario.edad}}</label>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
-                    <label class="label1">Fecha de Nacimiento:</label><br>
+                    <label class="label1">Fecha de Nacimiento</label><br>
                     <div class="nombre">
-                    <label for="">{{usuario.fechaNacimiento}}</label>
+                        <label for="">{{usuario.fechaNacimiento}}</label>
                     </div>
                 </div>
-                <div class="col-12 col-md-4">
-                    <label class="label1">Usuario:</label><br>
-                    <div class="nombre">
-                    <label for="">{{usuario.username}}</label>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <label class="label1">Password:</label><br>
-                    <div class="nombre">
-                    <label for="">{{usuario.password}}</label>
-                    </div>
-                </div>
-             </div>
+            </div>
 
-             <button type="button" class="btn btn-primary" routerLink="/usuario-form/1">        
+            <button type="button" class="btn btn-primary" routerLink="/usuario-form/1">
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i> MODIFICAR
             </button>
         </div>

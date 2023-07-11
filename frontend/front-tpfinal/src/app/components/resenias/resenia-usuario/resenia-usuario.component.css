@@ -1,75 +1,25 @@
-table {
-    margin: 0 auto;
-    text-align: center;
-    border-collapse: collapse;
-    border: 1px solid #d4d4d4;
-    font-size: 20px;
-    background: #b4b4b4a4;
-    width: auto;
-    height: auto;
+body {
+    background-image: url("/assets/fondo-servicio/arg.jpg");
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    margin-top: -24px;
 }
-
-table th,
-table tr:nth-child(2n+2) {
-    background: #e7e7e7b0;
-}
-
-table th,
-table td {
-    padding: 20px 50px;
-}
-
-table th {
-    border-bottom: 1px solid #d4d4d4;
-}
-
-
-
-/*/*/
-button.accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    transition: 0.4s;
-}
-
-button.accordion.active,
-button.accordion:hover {
-    background-color: #ddd;
-}
-
-button.accordion:after {
-    content: '\02795';
-    font-size: 13px;
-    color: #777;
-    float: right;
-    margin-left: 5px;
-}
-
-button.accordion.active:after {
-    content: "\2796";
-}
-
-div.panel {
-    padding: 0 18px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: 0.6s ease-in-out;
-    opacity: 0;
-}
-
-div.panel.show {
-    opacity: 1;
-    max-height: 500px;
+h6{
+    text-align: right;
+    color: rgb(0, 0, 0);
+    font-family: cursive;
+ }
+ p{
+    font-family: cursive;
+ }
+.card {
+    background: linear-gradient(to right, #0084ffb5, #00407ce0);
+    border: 1px solid #1e8bbd;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 2rem; 
 }
 img{
-    width: 50%;
-    height: 50%;
+    width: 80%;
+    height: 80%;
 }

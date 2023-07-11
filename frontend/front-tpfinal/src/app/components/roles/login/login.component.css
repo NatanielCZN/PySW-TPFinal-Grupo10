@@ -63,3 +63,11 @@
     transform: translate3d(0, 0, 0);
   }
 }
+.boton{
+  border: 2px solid;
+  width: 40%;
+  border-radius: 15px;
+  background: #d58d01c4;
+  margin-left: 0%;
+  text-align: center;
+}
