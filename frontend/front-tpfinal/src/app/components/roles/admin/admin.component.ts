@@ -27,7 +27,7 @@ export class AdminComponent implements OnInit {
   gestores!:Array<Gestor>;
   usuarios!:Array<Usuario>;
   reservas!:Array<Reserva>;
-  resernias!:Array<Resenia>;
+  resenias!:Array<Resenia>;
   servicios!:Array<Servicio>;
   tablaSeleccionada: string = 'gestores';
   reseniasUsuario!:Array<Resenia>;
@@ -39,6 +39,8 @@ export class AdminComponent implements OnInit {
    this.cargarGestores();
    this.cargarUsuarios();
    this.cargarReservas();
+   this.cargarServicios();
+   this.cargarResenias()
 
   }
 
@@ -163,6 +165,44 @@ export class AdminComponent implements OnInit {
         }
       )
   }
+
+  cargarResenias(){
+    this.resenias= new Array<Resenia>();
+    this.reseniaService.getMostarResenia().subscribe(
+      res =>{
+        let resenia=new Resenia();
+        res.forEach(
+          (e:any)=>{
+            Object.assign(resenia,e);
+            this.resenias.push(resenia);
+            resenia= new Resenia();
+          }
+        )
+      },error=>{
+        alert("No se pueden cargar las Reservas")
+      }
+    )
+
+  }
+
+  cargarServicios(){
+    this.servicios= new Array<Servicio>();
+    this.servicioService.getServiciosTotal().subscribe(
+      res=>{
+        let servicio=new Servicio();
+          res.forEach(
+            (e:any)=>{
+              Object.assign(servicio,e);
+              this.servicios.push(servicio);
+              servicio= new Servicio();
+            }
+          )
+      },error=>{
+
+      }
+    )
+    }
+
   //******** FILTROS ******* */
 
 

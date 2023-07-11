@@ -39,9 +39,12 @@ reseniaCtrl.getResenia = async (req, res) => {
     //var resenias = await Resenia.find().populate("reseniaUsuario");
     res.json(resenias);
 }*/
+
+
 ///**** muestra todas las renesnias con los id de usuario q lo creo y el id del servicio q realizo la resenia *****/
 reseniaCtrl.getResenias = async (req, res) => {
-    var resenias = await Resenia.find().populate('servicio').populate('usuario');
+    let criteria={};
+    var resenias = await Resenia.find(criteria).populate('servicio').populate('usuario');
     res.json(resenias);
 };
 

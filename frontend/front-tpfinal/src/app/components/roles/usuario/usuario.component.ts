@@ -229,6 +229,7 @@ export class UsuarioComponent implements OnInit {
 
   nomServicio!:string;
   filtrarPorNombreDeServicio(){
+   if(this.nomServicio.length>0){
     this.reservasCliente = new Array<Reserva>();
     this.reservaService.getReservaUsuarioAndNombreDeServicio(this.id as string,this.nomServicio).subscribe(
       res=>{
@@ -245,5 +246,6 @@ export class UsuarioComponent implements OnInit {
       }
     )
   }
+}
 
 }
