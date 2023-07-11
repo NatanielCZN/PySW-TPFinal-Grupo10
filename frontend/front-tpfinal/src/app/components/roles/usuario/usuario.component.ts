@@ -47,7 +47,6 @@ export class UsuarioComponent implements OnInit {
     this.id = sessionStorage.getItem("userId");
     this.appCom.logeado = true;
     this.usuario = new Usuario();
-
     this.provincia = new Provincia();
     this.localidades = new Array<Provincia>();
     this.reservasCliente = new Array<Reserva>();

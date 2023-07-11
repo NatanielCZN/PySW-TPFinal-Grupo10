@@ -10,14 +10,15 @@ export class HeaderComponent implements OnInit {
 
 
   id: any;
-  tipo: any;
+  tipo!:string;
   constructor(public loginService: LoginService) {
   }
 
   ngOnInit(): void {    
 
     this.id = sessionStorage.getItem("userId");
-    this.tipo = sessionStorage.getItem("tipo");
+    this.tipo = sessionStorage.getItem("tipo") as string;
+    console.log("es: "+this.tipo);
   }
 
   logout() {
