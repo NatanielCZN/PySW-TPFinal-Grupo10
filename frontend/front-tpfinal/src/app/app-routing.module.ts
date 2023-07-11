@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'usuario-form/:id', component: UsuarioFormComponent },
   { path: "gestor", component: GestorComponent },
   { path: "gestor-form", component: GestorFormComponent },
-  { path: 'gestor-datos', component: GestorDatosComponent },
+  { path: 'gestor/datos', component: GestorDatosComponent },
   { path: "admin", component: AdminComponent },
 
   { path: 'home', component: HomeComponent },
