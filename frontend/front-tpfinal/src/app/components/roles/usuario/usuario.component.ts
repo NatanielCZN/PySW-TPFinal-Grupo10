@@ -8,6 +8,7 @@ import { Usuario } from 'src/app/models/usuario.model';
 import { CiudadesService } from 'src/app/services/ciudades.service';
 import { ReservaService } from 'src/app/services/reserva.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { HeaderComponent } from '../../layout/header/header.component';
 
 @Component({
   selector: 'app-usuario',
@@ -41,7 +42,7 @@ export class UsuarioComponent implements OnInit {
    ];
 
 
-  constructor(private appCom:AppComponent,private servicioU:UsuarioService, private _http: HttpClient,private reservaService:ReservaService, private ciudadService: CiudadesService, private router: Router) {
+  constructor(private appCom:AppComponent,private servicioU:UsuarioService,private reservaService:ReservaService, private ciudadService: CiudadesService, private router: Router) {
     this.id= sessionStorage.getItem("userId");
     this.appCom.logeado=true;
     this.usuario=new Usuario();

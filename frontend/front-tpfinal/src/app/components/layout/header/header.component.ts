@@ -8,13 +8,23 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class HeaderComponent implements OnInit {
 
+  tipo:any;
+  esUser:boolean=false;
+  esAdmin:boolean=false;
+  esGestor:boolean=false;
   constructor(public loginService: LoginService) {
   }
 
   ngOnInit(): void {
+    if (sessionStorage.getItem("tipo")=="user")
+          this.esUser=true;
+
+    
   }
 
   logout() {
     this.loginService.logout();
   }
+
+
 }

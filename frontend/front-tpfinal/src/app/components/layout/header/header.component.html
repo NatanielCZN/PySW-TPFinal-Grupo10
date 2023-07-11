@@ -22,14 +22,24 @@
                     </a>
 
                     <ul class="dropdown-menu dropdown-menu-end">
+                        <div *ngIf="esUser" >
                         <li><a class="dropdown-item" [routerLink]="['usuario/datos']">MIS DATOS</a></li>
 
                         <li><a class="dropdown-item" [routerLink]="['usuario']">MIS RESERVAS</a></li>
 
-                        <li><a class="dropdown-item" [routerLink]="['usuario']">MIS RESENIAS</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['usuario/resenias']">MIS RESENIAS</a></li>
 
                         <li class="dropdown-divider"></li>
-
+                        </div>
+                        <div *ngIf="esGestor" >
+                            <li><a class="dropdown-item" [routerLink]="['gestor/gestor-datos']">MIS DATOS</a></li>
+    
+                            <li><a class="dropdown-item" [routerLink]="['gestor']">MIS SERVICIOS</a></li>
+    
+                            <li><a class="dropdown-item" [routerLink]="['gestor/servicio']">AGREGAR SERVICIO</a></li>
+    
+                            <li class="dropdown-divider"></li>
+                            </div>
                         <li><a class="dropdown-item" [routerLink]="['home']" routerLinkActive="active" (click)="logout()">CERRAR SESION</a></li>
                     </ul>
                 </li>

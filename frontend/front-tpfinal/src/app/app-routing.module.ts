@@ -28,10 +28,12 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'usuario', component: UsuarioComponent },
   { path: 'usuario/datos', component: UsuarioDatosComponent },
+  { path: 'usuario/resenia', component: ReseniaComponent },
   { path: 'usuario-form/:id', component: UsuarioFormComponent },
   { path: "gestor", component: GestorComponent },
   { path: "gestor-form", component: GestorFormComponent },
-  { path: 'gestor-datos', component: GestorDatosComponent },
+  { path: 'gestor/gestor-datos', component: GestorDatosComponent },
+  { path: 'gestor/servicio', component: ServicioFormComponent },
   { path: "admin", component: AdminComponent },
 
   { path: 'home', component: HomeComponent },
