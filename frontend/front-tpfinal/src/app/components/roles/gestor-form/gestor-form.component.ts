@@ -12,12 +12,46 @@ import { GestorService } from 'src/app/services/gestor.service';
 export class GestorFormComponent implements OnInit {
 
   gestor!: Gestor;
+  accion:string="";
 
-  constructor(private gestorService: GestorService, private router: Router, private route: ActivatedRoute) {
+  constructor(private gestorService: GestorService,private activatedRoute: ActivatedRoute, private router: Router, private route: ActivatedRoute) {
     this.gestor = new Gestor();
   }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params=>{
+      if (params['id']=="0"){
+        this.accion = "new";
+      }else{
+        this.accion="update";
+        this.cargarGestor(params['id']);
+      }
+    })
+  }
+
+  cargarGestor(idGestor:string){
+    this.gestorService.getGestor(idGestor).subscribe(
+      result=>{
+        console.log(result)
+        Object.assign(this.gestor,result);
+      },
+      error=>{
+      }
+    );
+  }
+
+  modificarGestor(){
+    this.gestorService.putGestor(this.gestor).subscribe(
+      (result: any) => {
+        if (result.status == 1){
+          alert(result.msg);
+          this.router.navigate(["gestor/gestor-datos"])
+        }
+  },
+      error => {
+        alert(error.msg);
+      }
+    )
   }
 
   /**
