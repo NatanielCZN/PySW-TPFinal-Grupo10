@@ -21,6 +21,7 @@ import { UsuarioDatosComponent } from './components/roles/usuario-datos/usuario-
 import { ReseniaUsuarioComponent } from './components/resenias/resenia-usuario/resenia-usuario.component';
 import { ReseniaServicioComponent } from './components/resenias/resenia-servicio/resenia-servicio.component';
 import { GestorDatosComponent } from './components/roles/gestor-datos/gestor-datos.component';
+import { AdminFormComponent } from './components/roles/admin-form/admin-form.component';
 
 const routes: Routes = [
   { path: 'header', component: HeaderComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: "gestor-form/:id", component: GestorFormComponent },
   { path: 'gestor/datos', component: GestorDatosComponent },
   { path: "admin", component: AdminComponent },
+  { path: "admin-form/:id", component: AdminFormComponent },
 
   { path: 'home', component: HomeComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
