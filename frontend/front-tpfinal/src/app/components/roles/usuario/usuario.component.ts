@@ -9,6 +9,7 @@ import { Usuario } from 'src/app/models/usuario.model';
 import { CiudadesService } from 'src/app/services/ciudades.service';
 import { ReservaService } from 'src/app/services/reserva.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { HeaderComponent } from '../../layout/header/header.component';
 
 @Component({
   selector: 'app-usuario',
@@ -17,6 +18,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 
 export class UsuarioComponent implements OnInit {
+
   id: any;
   usuario: Usuario;
   tipo: any;

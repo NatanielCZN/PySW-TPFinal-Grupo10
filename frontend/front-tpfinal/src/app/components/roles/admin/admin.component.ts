@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Console, error } from 'console';
 import * as printJS from 'print-js';
 import { AppComponent } from 'src/app/app.component';
@@ -35,7 +36,7 @@ export class AdminComponent implements OnInit {
   token!: any;
   constructor(private appCom: AppComponent, private adminService: AdminService, private reseniaService: ReseniaService
     , private gestorServicio: GestorService, private usuarioService: UsuarioService, private servicioService: ServiciosService,
-    private reservaService: ReservaService) {
+    private reservaService: ReservaService , private router: Router) {
     this.appCom.logeado = true;
     this.cargarGestores();
     this.cargarUsuarios();
@@ -46,6 +47,7 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.appCom.logeado=true;
     this.id = sessionStorage.getItem("userId");
     this.tipo = sessionStorage.getItem("tipo");
     this.cargarAdministrador(this.id);
@@ -83,6 +85,7 @@ export class AdminComponent implements OnInit {
       }
     )
   }
+
 
 
 

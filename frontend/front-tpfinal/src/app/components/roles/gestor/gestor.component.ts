@@ -215,4 +215,45 @@ export class GestorComponent implements OnInit {
       }
     )
   }
+
+  
+
+  aceptarReserva(idReserva:string){
+    this.reservaService.getReserva(idReserva).subscribe(
+      (res:any)=>{
+           let unaReserva=new Reserva();
+           Object.assign(unaReserva,res);
+           unaReserva.reservado = true ;
+           this.reservaService.modificarReserva(unaReserva).subscribe(
+           )
+          // this.toastr.success('Reserva :'+ unaReserva.nombreServicio , 'aceptada!');
+          location. reload()
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+  }
+
+  cancelarReserva(idReserva:string){
+    this.reservaService.getReserva(idReserva).subscribe(
+      (res:any)=>{
+           let unaReserva=new Reserva();
+           Object.assign(unaReserva,res);
+           unaReserva.reservado = false ;
+           this.reservaService.modificarReserva(unaReserva).subscribe(
+            
+           )
+          // this.toastr.info('Reserva :'+ unaReserva.nombreServicio , 'rechazada');
+          location. reload()
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+  }
+
+
+
+
 }
