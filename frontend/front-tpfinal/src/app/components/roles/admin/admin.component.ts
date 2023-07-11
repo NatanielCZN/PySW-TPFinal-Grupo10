@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Console, error } from 'console';
+//import { Console, error } from 'console';
 import * as printJS from 'print-js';
 import { AppComponent } from 'src/app/app.component';
 import { Admin } from 'src/app/models/admin';

@@ -11,6 +11,8 @@ import { ReseniaService } from 'src/app/services/resenia.service';
 })
 export class ReseniaComponent implements OnInit {
   
+  id: any;
+  tipo: any;
   resenia!: Resenia;
   resenias!: Array<Resenia>;
   constructor(private reseniaService: ReseniaService,
@@ -22,6 +24,8 @@ export class ReseniaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.id = sessionStorage.getItem("userId");
+    this.tipo = sessionStorage.getItem("tipo");
   }
   ////////////
   cargar() {//produ:NgForm){
@@ -29,7 +33,7 @@ export class ReseniaComponent implements OnInit {
   }
   ////////////
   mostrarResenias() { 
-    this, this.reseniaService.getMostarResenia().subscribe(
+    this.reseniaService.getReseniaPorUsuario(this.id).subscribe(
       result => {
         this.resenias = new Array<Resenia>();
         result.forEach((element: any) => {

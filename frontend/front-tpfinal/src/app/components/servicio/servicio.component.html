@@ -29,7 +29,7 @@
                             type="button" class="botonContenedor"><i class="bi bi-caret-right-fill"></i>Siguiente</button>
                 </div>
                 <div class="col-12 text-center" style="float: left;">
-                    <img class="imagenProvincia" src="{{imagen}}" height="auto">
+                    <img class="imagenProvincia m-4" src="{{imagen}}" height="auto">
                 </div>
 
 
@@ -61,7 +61,7 @@
                     </div>
                     <div class="tabla-contenedor overflow-auto" *ngIf="mostrarCard">
                         <h2 style="text-align: center;">Localidades:</h2>
-                        <table class="table table-striped">
+                        <table class="table table-striped bg-white">
                             <thead>
                                 <tr>
                                     <th scope="col">Nombre</th>
@@ -73,7 +73,7 @@
                                 <tr>
                                     <th scope="row">{{s.nombre}}</th>
                                    <!--  <td colspan="2">{{s._id}}</td> -->
-                                    <button type="button" class="form-control botonLocalidad"
+                                    <button type="button" class="form-control botonLocalidad bg-success"
                                         (click)="seleccionarLocalidad(s)">Visitar</button>
                                 </tr>
                             </tbody>
