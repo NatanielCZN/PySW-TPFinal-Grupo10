@@ -1,12 +1,13 @@
 <body>
     <br>
     <div class="container-fluid">
+       
         <div class="row">
             <nav class="navbar navbar-expand">
                 <div class="container-fluid busquedaProvincia">
-                    <h3>Selecciona una Provincia :</h3>
+                    <h3 class="d-none d-lg-block">Selecciona una Provincia :</h3>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <select class="selectProvincia" [(ngModel)]="seleccion" name="seleccionProvincia"
+                        <select class=" selectProvincia" [(ngModel)]="seleccion" name="seleccionProvincia"
                             id="exampleFormControlSelect1" required>
                             <option *ngFor="let c of provincias" [value]="c.name">{{c.name}}</option>
                         </select>
@@ -15,19 +16,26 @@
                     </div>
                 </div>
             </nav>
-            <div *ngIf="mostrarCard" class="col-6 margen" style="float: left;">
-                <div class="col-1"  style="float: left; "><button *ngIf="indice>0" (click)="anterior()" type="button" class="botonImagen"><i
-                            class="bi bi-caret-left-fill"></i></button>
+            <div  style="width: 80%;margin-left: 30%;">
+                <div  class="col-md-12 mapa" id="map" style="width: 50%; height: 200px;margin: 30px;"></div>
+            </div>
+          
+            <div *ngIf="mostrarCard" class="col-md-12 col-xl-6 d-none d-xl-block margen" style="float: left;">
+                <div class="contenedor">
+                    <button [ngStyle]="{ 'visibility': indice > 0 ? 'visible' : 'hidden' }" (click)="anterior()" type="button"
+                            class="botonContenedor"><i class="bi bi-caret-left-fill"></i>Anterior</button>
+              
+                 <button [ngStyle]="{ 'visibility': indice < imagenes.length - 1 ? 'visible' : 'hidden' }" (click)="siguiente()"
+                            type="button" class="botonContenedor"><i class="bi bi-caret-right-fill"></i>Siguiente</button>
                 </div>
-                <div class="col-10 text-center" style="float: left;">
+                <div class="col-12 text-center" style="float: left;">
                     <img class="imagenProvincia" src="{{imagen}}" height="auto">
                 </div>
-                <div class="col-1" style="float: left;"><button *ngIf="indice<imagenes.length-1" (click)="siguiente()"
-                        type="button" class="botonImagen"><i class="bi bi-caret-right-fill"></i></button></div>
+
 
             </div>
 
-            <section class="col-6 ">
+            <section class="col-md-12 col-xl-6">
                 <div class="row">
                     <div class="col">
                         <div class="card" *ngIf="mostrarCard">
@@ -57,14 +65,14 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Id</th>
+                                    <!-- <th scope="col">Id</th> -->
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody *ngFor="let s of localidades">
                                 <tr>
                                     <th scope="row">{{s.nombre}}</th>
-                                    <td colspan="2">{{s._id}}</td>
+                                   <!--  <td colspan="2">{{s._id}}</td> -->
                                     <button type="button" class="form-control botonLocalidad"
                                         (click)="seleccionarLocalidad(s)">Visitar</button>
                                 </tr>
@@ -78,8 +86,7 @@
         </div>
     </div>
 
-    <div id="map" style="width: 50%; height: 200px;"></div>
 
     <br>
-    
+
 </body>
