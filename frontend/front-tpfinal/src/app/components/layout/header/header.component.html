@@ -19,45 +19,33 @@
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         MI PERFIL
                     </a>
-
-
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <div >
+                    <ul *ngIf="tipo =='user'" class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" [routerLink]="['usuario/datos']">MIS DATOS</a></li>
-
-                    <ul class="dropdown-menu dropdown-menu-end" style="background: unset;margin-right: 70%;">
-                        <li><a class="dropdown-item" [routerLink]="['admin-form/{{id}}']">MIS DATOS</a></li>
-
-
-                        <li><a  *ngIf="tipo !== 'admin'" class="dropdown-item" [routerLink]="['usuario']">MIS RESERVAS</a></li>
-
-
+                        <li><a class="dropdown-item" [routerLink]="['usuario']">MIS RESERVAS</a></li>
                         <li><a class="dropdown-item" [routerLink]="['usuario/resenias']">MIS RESENIAS</a></li>
-
-                        <li class="dropdown-divider"></li>
-                        </div>
-                        <div >
-                            <li><a class="dropdown-item" [routerLink]="['gestor/gestor-datos']">MIS DATOS</a></li>
-    
-                            <li><a class="dropdown-item" [routerLink]="['gestor']">MIS SERVICIOS</a></li>
-    
-                            <li><a class="dropdown-item" [routerLink]="['gestor/servicio']">AGREGAR SERVICIO</a></li>
-    
-                            <li class="dropdown-divider"></li>
-                            </div>
+                        <li class="dropdown-divider"></li>                                             
                         <li><a class="dropdown-item" [routerLink]="['home']" routerLinkActive="active" (click)="logout()">CERRAR SESION</a></li>
-
-                        <li><a *ngIf="tipo !== 'admin'" class="dropdown-item" [routerLink]="['usuario']">MIS RESENIAS</a></li>
-
-
-
                     </ul>
-                <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" aria-current="page" [routerLink]="['home']" routerLinkActive="active"
-                        (click)="logout()">CERRAR SESION</a>
-                </li>
-
+                    <ul *ngIf="tipo == 'gest'" class="dropdown-menu dropdown-menu-end">                              
+                            <li><a class="dropdown-item" [routerLink]="['gestor/gestor-datos']">MIS DATOS</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['gestor']">MIS SERVICIOS</a></li>    
+                            <li><a class="dropdown-item" [routerLink]="['gestor/servicio']">AGREGAR SERVICIO</a></li>    
+                            <li class="dropdown-divider"></li>                      
+                        <li><a class="dropdown-item" [routerLink]="['home']" routerLinkActive="active" (click)="logout()">CERRAR SESION</a></li>                                                
+                   </ul>
+                   <ul *ngIf="tipo == 'admin'" class="dropdown-menu dropdown-menu-end">                              
+                    <li><a class="dropdown-item" [routerLink]="['admin-form/{{id}}']">MIS DATOS</a></li>    
+                    <li class="dropdown-divider"></li>                      
+                <li><a class="dropdown-item" [routerLink]="['home']" routerLinkActive="active" (click)="logout()">CERRAR SESION</a></li>                                                
+           </ul>
             </ul>
         </div>
     </div>
 </nav>
+<!--<ul class="dropdown-menu dropdown-menu-end" style="background: unset;margin-right: 70%;">
+                        <li><a class="dropdown-item" [routerLink]="['admin-form/{{id}}']">MIS DATOS</a></li>
+<li class="nav-item" routerLinkActive="active">
+                        <a class="nav-link" aria-current="page" [routerLink]="['home']" routerLinkActive="active"
+                            (click)="logout()">CERRAR SESION</a>
+                    </li>
+                    -->

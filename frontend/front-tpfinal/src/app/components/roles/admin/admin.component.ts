@@ -47,6 +47,7 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.appCom.logeado=true;
     this.id = sessionStorage.getItem("userId");
     this.tipo = sessionStorage.getItem("tipo");
     this.cargarAdministrador(this.id);
