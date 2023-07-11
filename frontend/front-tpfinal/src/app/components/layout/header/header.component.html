@@ -29,6 +29,7 @@
                     <ul *ngIf="tipo == 'gest'" class="dropdown-menu dropdown-menu-end">                              
                             <li><a class="dropdown-item" [routerLink]="['gestor/gestor-datos']">MIS DATOS</a></li>
                             <li><a class="dropdown-item" [routerLink]="['gestor']">MIS SERVICIOS</a></li>    
+                            <li><a class="dropdown-item" [routerLink]="['gestor/estadistica']">MIS ESTADISTICAS</a></li>    
                             <li><a class="dropdown-item" [routerLink]="['gestor/servicio']">AGREGAR SERVICIO</a></li>    
                             <li class="dropdown-divider"></li>                      
                         <li><a class="dropdown-item" [routerLink]="['home']" routerLinkActive="active" (click)="logout()">CERRAR SESION</a></li>                                                
