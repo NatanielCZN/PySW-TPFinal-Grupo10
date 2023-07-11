@@ -38,6 +38,7 @@ export class ReservaService {
   }
 
 
+
   getReservaUsuarioAndReservado(usuario:string,reservado:boolean) : Observable<any>{
     const httpOptions={
       headers:new HttpHeaders(
@@ -70,6 +71,42 @@ export class ReservaService {
 
         }
       ),params: new HttpParams().append("usuario",usuario).append("nombreServicio",nombreServicio)
+
+    }
+    return this._http.get(this.urlBase+"reserva/",httpOptions);
+  }
+
+  getReservaPorServicio(servicio:string) : Observable<any>{
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+
+        }
+      ),params: new HttpParams().append("servicio",servicio)
+
+    }
+    return this._http.get(this.urlBase+"reserva/",httpOptions);
+  }
+
+  getReservaPorEstado(estado:boolean) : Observable<any>{
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+
+        }
+      ),params: new HttpParams().append("reservado",estado)
+
+    }
+    return this._http.get(this.urlBase+"reserva/",httpOptions);
+  }
+
+  getReservaPorCategoria(categoria:string) : Observable<any>{
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+
+        }
+      ),params: new HttpParams().append("categoria",categoria)
 
     }
     return this._http.get(this.urlBase+"reserva/",httpOptions);

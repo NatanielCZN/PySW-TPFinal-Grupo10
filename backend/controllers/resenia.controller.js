@@ -44,6 +44,18 @@ reseniaCtrl.getResenia = async (req, res) => {
 ///**** muestra todas las renesnias con los id de usuario q lo creo y el id del servicio q realizo la resenia *****/
 reseniaCtrl.getResenias = async (req, res) => {
     let criteria={};
+     //filtro por Usuario
+     if (req.query.usuario != null && req.query.usuario != "") {
+        criteria.usuario=req.query.usuario;
+     }
+     //filtro por Servicio
+     if (req.query.servicio != null && req.query.servicio != "") {
+        criteria.servicio=req.query.servicio;
+     }
+     //filtro por Usuario
+     if (req.query.valoracion != null && req.query.valoracion != "") {
+      criteria.valoracion=req.query.valoracion;
+   }
     var resenias = await Resenia.find(criteria).populate('servicio').populate('usuario');
     res.json(resenias);
 };

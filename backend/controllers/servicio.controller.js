@@ -7,6 +7,19 @@ const servicioCtrl = {}
 
 servicioCtrl.getServicios = async (req, res) => {
     let criteria={};
+
+    //filtro por ubicacion
+    if (req.query.ubicacion != null && req.query.ubicacion != "") {
+        criteria.ubicacion=req.query.ubicacion;
+    }
+    //filtro por categoria
+    if (req.query.categoria != null && req.query.categoria != "") {
+        criteria.categoria=req.query.categoria;
+    }
+    //filtro por gestor
+    if (req.query.gestor != null && req.query.gestor != "") {
+        criteria.gestor=req.query.gestor;
+    }
     var servicios = await Servicio.find(criteria);
     res.json(servicios);
   };
