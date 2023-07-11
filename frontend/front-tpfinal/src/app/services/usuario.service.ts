@@ -33,7 +33,6 @@ export class UsuarioService {
           }
         )
       }
-
       return this.http.get(this.hostBD+"/"+id,httpOptions);
   }
 
@@ -55,7 +54,7 @@ export class UsuarioService {
      }),
      }
      let body = JSON.stringify(usuario);
-     return this.http.put(this.hostBD+usuario._id,body,httpOptions);
+     return this.http.put(this.hostBD+"/"+usuario._id,body,httpOptions);
   }
 
   deleteUsuario(_id: string): Observable<any> {
