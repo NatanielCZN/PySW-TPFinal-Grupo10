@@ -28,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReseniaServicioComponent } from './components/resenias/resenia-servicio/resenia-servicio.component';
 import { ReseniaUsuarioComponent } from './components/resenias/resenia-usuario/resenia-usuario.component';
 import { UsuarioDatosComponent } from './components/roles/usuario-datos/usuario-datos.component';
+import { GestorDatosComponent } from './components/roles/gestor-datos/gestor-datos.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { UsuarioDatosComponent } from './components/roles/usuario-datos/usuario-
     ReservaFormComponent,
     ReseniaServicioComponent,
     ReseniaUsuarioComponent,
-    UsuarioDatosComponent
+    UsuarioDatosComponent,
+    GestorDatosComponent
   ],
   imports: [
     BrowserModule,
