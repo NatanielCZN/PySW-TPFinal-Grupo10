@@ -17,6 +17,40 @@ servicioCtrl.getServicio = async (req, res) => {
     const servicio = await Servicio.findById(req.params.id);
     res.json(servicio);
   };
+
+servicioCtrl.getServicioGestor= async(req,res)=>{
+    try {
+         let criteria={}
+         if((req.query.gestor!==null && req.query.gestor!=="") && (req.query.categoria!==null && req.query.gestor!=="")){
+            criteria.gestor=req.query.gestor;
+            criteria.categoria=req.query.categoria;
+         }
+         const servicio = await Servicio.find(criteria);
+        res.json(servicio);
+    } catch (error) {
+        res.json({
+            status:0,
+            msg:"Error al buscar servicios de gector"+error
+        })
+    }
+}
+
+servicioCtrl.getServicioNombre= async(req,res)=>{
+    try {
+           const criteria={}
+           if((req.query.gestor!== null && req.query.gestor!=="")&&(req.query.nombre!==null && req.query.nombre!=="")){
+            criteria.gestor= req.query.gestor;  
+            criteria.nombre=req.query.nombre
+           }
+          const servicio = await Servicio.find(criteria);
+          res.json(servicio)
+    } catch (error) {
+        res.json({
+            status:0,
+            msg:"Error al buscar Servicio por nombre "+error
+        })
+    }
+}
   
 
 servicioCtrl.getServiciosLocalidad = async (req, res) => {

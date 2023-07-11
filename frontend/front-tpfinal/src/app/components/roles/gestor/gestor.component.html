@@ -1,8 +1,7 @@
 <div class="font-usuario">
 <div class="container-fluid">
-    <button (click)="cargarServicios()">eeeeee</button>
     <div class="boton my-4 text-end">
-        <button type="button" class="btn btn-success fw-bold" (click)="irFormularioServicio()">Agregar Servicio</button>
+        <button type="button" class="btn btn-success fw-bold" (click)="irFormularioServicio()">Agregar Servicio</button><br>
     </div>
 <h1 class="title">Mis Servicios : </h1>
 <div class="row">
@@ -20,7 +19,7 @@
               </h2>
               <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                    <select class="form-select mt-1 mb-1 mx-1" aria-label="Default select example" id="cat" name="cat">
+                    <select class="form-select mt-1 mb-1 mx-1" aria-label="Default select example" id="cat" name="cat" [(ngModel)]="cat" (ngModelChange)="filtrarCategoria()" >
                         <option disabled selected value="">Categoria</option>
                         <option value="hotel">Hotel</option>
                         <option value="restaurante">Restaurante</option>
@@ -36,8 +35,8 @@
                 </h2>
                 <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                   <div class="accordion-body p-2">
-                     <input class="form-control" type="text" name="nombreServicio" id="nombreServicio"/>
-                     <button class="btn btn-info mt-2 mb-2 w-100">Filtrar Por Nombre de servicio</button>
+                     <input class="form-control" type="text" name="nombreServicio" id="nombreServicio" [(ngModel)]="nombreServicio">
+                     <button class="btn btn-info mt-2 mb-2 w-100" (click)="filtrarPorNombreServicio()">Filtrar Por Nombre de servicio</button>
                   </div>
                 </div>
               </div>
@@ -49,7 +48,7 @@
         
     
     </div>
-    <div class="tabla-contenedor col-lg-7 col-md-9 col-12">
+    <div class="tabla-contenedor col-12 col-md-9 col-lg-8">
         <table class="table table-hover" >
             <thead>
                 <tr>
@@ -68,8 +67,8 @@
                     <th >{{ser.nombre}}</th>
                     <td>{{ser.categoria}}</td>
                     <td>{{ser.calificacionTotal}}</td>
-                    <td> <button class="btn btn-info" (click)="cargarReservas(ser._id)">Ver Reservas</button> </td>
-                    <td> <button class="btn btn-info" (click)="cargarResenias(ser._id)">Ver Resenias</button> </td>
+                    <td> <a class="link" (click)="cargarReservas(ser._id)">Ver Reservas</a> </td>
+                    <td> <a class="link" (click)="cargarResenias(ser._id)">Ver Resenias</a> </td>
                     <td>
                         <button class="btn btn-info mx-1" >Modificar</button>
                         <button class="btn btn-danger mx-1">Dar de Baja</button>

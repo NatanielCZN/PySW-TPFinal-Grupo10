@@ -1,46 +1,33 @@
-<p>resenia-servicio works!</p>
- 
+<body>
+    <br>
+    <div class="row">
+        <div class="container mx-auto mt-3 col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12"
+            *ngFor="let resenia of resenias">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card border-primary" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Ussuario: {{resenia.usuario.username}}</h5>
+                            <h6 class="card-subtitle mb-2  "> servicio: {{resenia.servicio.nombre}} </h6>
+                            <h6> calificacion: {{resenia.valoracion}}&nbsp;&nbsp;&nbsp;&nbsp;{{resenia.fechaAlta}}
+                            </h6>
+                            <p class="card-text">{{resenia.comentario}}</p>
 
-<div class="container-fluid">
+                            <ng-container *ngIf="resenia.imagen">
+                                <img [src]="resenia.imagen" alt="Imagen de la reseña">
+                            </ng-container>
+                            <br>
+                            <br>
 
-    <!--div class="container justify-content-start align-content-start text-start">
-        <button type="button" class="btn btn-success mt-2 mb-3 fw-bold" (click)="cargar()">comentar <i
-                class="bi bi-clipboard2-plus"></i></button>
-    </div-->
-    <!--*****lista desplegable****-->
-    <table>
-        <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
-            aria-expanded="false" aria-controls="multiCollapseExample1">comentarios</a>
-
-    </table>
-
-    <div><!--class="collapse multi-collapse" id="multiCollapseExample1"-->
-        <table *ngFor="let resenia of resenias">
-            servicio: {{resenia.servicio.nombre}} 
-            <tbody>
-                <thead>
-                    <div class="card-header bg-success">
-                        <td>Ussuario: {{resenia.usuario.username}}</td>
-                        <td> {{resenia.fechaAlta}}</td>
-                        <td>calificacion {{resenia.valoracion}}</td>
-                    </div>
-                </thead>
-                <thead>
-                    <td>
-                        <div class="card-body text-success">
-                            <h5 class="card-title"> {{resenia.comentario}}</h5>
+                            <button *ngIf="tipo !== 'user'" class="btn btn-danger mx-1" (click)="eliminar(resenia._id)"><i class="bi bi-trash3 mx-1">Eliminar</i></button>
 
                         </div>
-                        <ng-container *ngIf="resenia.imagen">
-                            <img [src]="resenia.imagen" alt="Imagen de la reseña">
-                          </ng-container>
-                    </td>
-                </thead>
-                <button *ngIf="tipo !== 'user'" class="btn btn-danger mx-1" (click)="eliminar(resenia._id)"><i class="bi bi-trash3 mx-1">Eliminar</i></button>
 
-            </tbody>
-        </table>
-        <br>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
-    <br>
-</div>
+</body>

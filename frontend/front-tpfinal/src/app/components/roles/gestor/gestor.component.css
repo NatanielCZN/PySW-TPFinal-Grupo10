@@ -66,3 +66,29 @@
      border-radius: 8px;
      overflow-y: auto;
     }
+    .link{
+       cursor: pointer;
+       font-weight: bold;
+       font-style: italic;
+       text-decoration: none;
+    }
+    .link:hover{
+      cursor: pointer;
+      font-weight: bold;
+      font-style: italic;
+      text-decoration: none;
+      color:blue;
+      border-bottom: 2px dashed black;
+   }
+
+   @media only screen and (min-width: 0px){
+    .tabla-contenedor {
+        /* Establece la altura máxima que deseas para la tabla */
+      overflow-y: auto; /* Crea una barra de desplazamiento vertical cuando sea necesario */
+     background-color:rgba(240, 248, 255, 0.785);
+     border: 2px dashed black;
+     border-radius: 8px;
+     margin: 0;
+     margin-top: 20px;
+    }    
+   }
