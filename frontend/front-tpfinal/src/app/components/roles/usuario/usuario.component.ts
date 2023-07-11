@@ -106,7 +106,7 @@ export class UsuarioComponent implements OnInit {
         this.provincia.long = result.provincias[0].centroide.lon;
         this.cargarLocalidades(this.provincia._id);
         this.buscarImagen(this.provincia);
-        this.cargarClima(this.provincia);
+      //  this.cargarClima(this.provincia);
         this.mostrarTarjeta();
       },
       error => { alert("Error en la petición"); })

@@ -51,8 +51,10 @@ body {
 }
 
 .imagenProvincia {
-    width: 80%;
-    margin: 10%;
+    height: 400px;
+    width: 450px;
+    border: 1px solid ;
+    border-radius: 5px;
 }
 
 .btn {
@@ -79,7 +81,6 @@ body {
 }
 
 .margen {
-    background: #000000c9;
     border-radius: 10px;
     height: max-content;
 }
