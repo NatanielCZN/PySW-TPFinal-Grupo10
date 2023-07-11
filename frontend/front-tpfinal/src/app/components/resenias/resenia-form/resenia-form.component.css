@@ -11,3 +11,10 @@
  
 .btn{ color: black;
 background-color: aqua;}
+body {
+    background-image: url("/assets/fondo-servicio/arg.jpg");
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    margin-top: -24px;
+}
