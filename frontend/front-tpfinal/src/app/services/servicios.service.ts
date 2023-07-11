@@ -85,4 +85,39 @@ export class ServiciosService {
     }
     return this._http.get(this.urlBase+"servicio/"+_id,httpOptions);
   }
+
+  getServicioPorCategoria(categoria:string) : Observable<any>{
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+
+        }
+      ),params: new HttpParams().append("categoria",categoria)
+    }
+    return this._http.get(this.urlBase+"servicio/",httpOptions);
+  }
+
+  getServicioPorGestor(gestor:string) : Observable<any>{
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+
+        }
+      ),params: new HttpParams().append("gestor",gestor)
+    }
+    return this._http.get(this.urlBase+"servicio/",httpOptions);
+  }
+
+  getServicioPorUbicacion(ubicacion:string) : Observable<any>{
+    const httpOptions={
+      headers:new HttpHeaders(
+        {
+
+        }
+      ),params: new HttpParams().append("ubicacion",ubicacion)
+    }
+    return this._http.get(this.urlBase+"servicio/",httpOptions);
+  }
+
+
 }

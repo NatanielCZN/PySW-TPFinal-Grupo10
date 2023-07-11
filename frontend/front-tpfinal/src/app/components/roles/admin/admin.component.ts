@@ -36,12 +36,13 @@ export class AdminComponent implements OnInit {
      ,private gestorServicio:GestorService, private usuarioService:UsuarioService, private servicioService:ServiciosService,
       private reservaService:ReservaService) {
    this.appCom.logeado=true;
+  
    this.cargarGestores();
    this.cargarUsuarios();
    this.cargarReservas();
    this.cargarServicios();
-   this.cargarResenias()
-
+   this.cargarResenias();
+   this.buscarReservasPorUsuario()
   }
 
   ngOnInit(): void {
@@ -52,6 +53,15 @@ export class AdminComponent implements OnInit {
     console.log(this.administrador);
   }
 
+  cargarTodaslasFunciones(){
+    this.cargarGestores();
+    this.cargarUsuarios();
+    this.cargarReservas();
+    this.cargarServicios();
+    this.cargarResenias();
+  }
+
+ 
   cargarAdministrador(id:string){
     this.administrador = new Admin();
     this.adminService.getAdmin(id).subscribe(
@@ -179,7 +189,7 @@ export class AdminComponent implements OnInit {
           }
         )
       },error=>{
-        alert("No se pueden cargar las Reservas")
+        alert("No se pueden cargar las Resenias")
       }
     )
 
@@ -220,7 +230,7 @@ export class AdminComponent implements OnInit {
           usuario = new Usuario();
         });
       },error=>{
-        console.log("error en recuperar la informacion")
+        console.log("error al recuperar la informacion")
       }
     )
   }
@@ -237,7 +247,7 @@ export class AdminComponent implements OnInit {
           usuario = new Usuario();
         });
       },error=>{
-        console.log("error en recuperar la informacion")
+        console.log("error al recuperar la informacion")
       }
     )
   }
@@ -254,7 +264,7 @@ export class AdminComponent implements OnInit {
           usuario = new Usuario();
         });
       },error=>{
-        console.log("error en recuperar la informacion")
+        console.log("error al recuperar la informacion")
       }
     )
   }
@@ -274,7 +284,7 @@ export class AdminComponent implements OnInit {
           gestor = new Gestor();
         });
       },error=>{
-        console.log("error en recuperar la informacion")
+        console.log("error al recuperar la informacion")
       }
     )
   }
@@ -291,7 +301,7 @@ export class AdminComponent implements OnInit {
           gestor = new Gestor();
         });
       },error=>{
-        console.log("error en recuperar la informacion")
+        console.log("error al recuperar la informacion")
       }
     )
   }
@@ -308,11 +318,192 @@ export class AdminComponent implements OnInit {
           gestor = new Gestor();
         });
       },error=>{
-        console.log("error en recuperar la informacion")
+        console.log("error al recuperar la informacion")
       }
     )
   }
 
+
+  //Filtros Para Reservas
+  
+  idUser!:string;
+  buscarReservasPorUsuario(){
+    this.cargarUsuarios();
+    this.reservas= new Array<Reserva>();
+    this.reservaService.getReservaUsuario(this.idUser).subscribe(
+      res=>{
+        let reserva=new Reserva();
+        res.forEach((element: any) => {
+          Object.assign(reserva, element);
+          this.reservas.push(reserva);
+          reserva = new Reserva();
+        });
+      },error=>{
+        console.log("error al recuperar la informacion")
+      }
+    )
+  }
+
+  idService!:string;
+  buscarReservasPorServicio(){
+    this.cargarServicios();
+    this.reservas= new Array<Reserva>();
+    this.reservaService.getReservaPorServicio(this.idService).subscribe(
+      res=>{
+        let reserva=new Reserva();
+        res.forEach((element: any) => {
+          Object.assign(reserva, element);
+          this.reservas.push(reserva);
+          reserva = new Reserva();
+        });
+      },error=>{
+        console.log("error al recuperar la informacion")
+      }
+    )
+  }
+
+  estadoReserva!:boolean;
+  buscarReservaPorEstadoDeReservacion(){
+    this.reservas= new Array<Reserva>();
+    this.reservaService.getReservaPorEstado(this.estadoReserva).subscribe(
+      res=>{
+        let reserva=new Reserva();
+        res.forEach((element: any) => {
+          Object.assign(reserva, element);
+          this.reservas.push(reserva);
+          reserva = new Reserva();
+        });
+      },error=>{
+        console.log("error al recuperar la informacion")
+      }
+    )
+  }
+
+  categoriaReserva!:string;
+  buscarReservaPorCategoria(){
+    this.reservas= new Array<Reserva>();
+    this.reservaService.getReservaPorCategoria(this.categoriaReserva).subscribe(
+      res=>{
+        let reserva=new Reserva();
+        res.forEach((element: any) => {
+          Object.assign(reserva, element);
+          this.reservas.push(reserva);
+          reserva = new Reserva();
+        });
+      },error=>{
+        console.log("error al recuperar la informacion")
+      }
+    )
+  }
+
+  //Filtros Para Servicios
+  ubicacionServicio:string="";
+  buscarServicioPorUbicacion(){
+    this.servicios= new Array<Servicio>();
+    this.servicioService.getServicioPorUbicacion(this.ubicacionServicio).subscribe(
+      res=>{
+        let servicio=new Servicio();
+        res.forEach((element: any) => {
+          Object.assign(servicio, element);
+          this.servicios.push(servicio);
+          servicio = new Servicio();
+        });
+      },error=>{
+        console.log("error al recuperar la informacion")
+      }
+    );
+  }
+
+  categoriaServicio:string="";
+  buscarServicioCategoria(){
+    this.servicios= new Array<Servicio>();
+    this.servicioService.getServicioPorCategoria(this.categoriaServicio).subscribe(
+      res=>{
+        let servicio=new Servicio();
+        res.forEach((element: any) => {
+          Object.assign(servicio, element);
+          this.servicios.push(servicio);
+          servicio = new Servicio();
+        });
+      },error=>{
+        console.log("error al recuperar la informacion")
+      }
+    );
+  }
+
+  gesServicio!:string;
+  buscarServicioGestor(){
+    this.servicios= new Array<Servicio>();
+    this.servicioService.getServicioPorGestor(this.gesServicio).subscribe(
+      res=>{
+        let servicio=new Servicio();
+        res.forEach((element: any) => {
+          Object.assign(servicio, element);
+          this.servicios.push(servicio);
+          servicio = new Servicio();
+        });
+      },error=>{
+        console.log("error al recuperar la informacion")
+      }
+    );
+  }
+
+
+  //Filtros para Resenias
+
+  resServicio!:string;
+  buscarReseniasPorServicio(){
+    this.cargarServicios();
+    this.resenias= new Array<Resenia>();
+    this.reseniaService.getReseniaPorServicio(this.resServicio).subscribe(
+      res=>{
+        let resenia=new Resenia();
+        res.forEach((element: any) => {
+          Object.assign(resenia, element);
+          this.resenias.push(resenia);
+          resenia = new Resenia();
+        });
+      },error=>{
+        console.log("error al recuperar la informacion")
+      }
+    );
+  }
+
+  reseniaUser!:string;
+  buscarReseniasPorUsuario(){
+    this.cargarUsuarios();
+    this.resenias= new Array<Resenia>();
+    this.reseniaService.getReseniaPorUsuario(this.reseniaUser).subscribe(
+      res=>{
+        let resenia=new Resenia();
+        res.forEach((element: any) => {
+          Object.assign(resenia, element);
+          this.resenias.push(resenia);
+          resenia = new Resenia();
+        });
+      },error=>{
+        console.log("error al recuperar la informacion")
+      }
+    );
+  }
+
+  reseniaValoracion!:string;
+  buscarReseniasPorValoracion(){
+    this.resenias= new Array<Resenia>();
+    this.reseniaService.getReseniaPorValoracion(this.reseniaValoracion).subscribe(
+      res=>{
+        let resenia=new Resenia();
+        res.forEach((element: any) => {
+          Object.assign(resenia, element);
+          this.resenias.push(resenia);
+          resenia = new Resenia();
+        });
+      },error=>{
+        console.log("error al recuperar la informacion")
+      }
+    );
+  }
+  
 }
 
 

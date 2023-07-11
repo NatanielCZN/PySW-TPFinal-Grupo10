@@ -21,15 +21,36 @@ reservaCtrl.getReservas = async (req, res) => {
         criteria.categoria=req.query.categoria;
     }
 
-    //filtro por nombre de servicio servicio y usuario
+    //filtro por nombre de servicio y usuario
     if ((req.query.usuario != null && req.query.usuario != "") && (req.query.nombreServicio != null && req.query.nombreServicio != "")) {
         criteria.usuario=req.query.usuario;
         criteria.nombreServicio=req.query.nombreServicio;
     }
 
-    //filtro por nombre de servicio servicio y usuario
+    //filtro por usuario
     if (req.query.usuario != null && req.query.usuario != "") {
         criteria.usuario=req.query.usuario;     
+    }
+
+    //filtro por estado de reserva y servicio
+    if ((req.query.servicio != null && req.query.servicio != "") && (req.query.reservado != null && req.query.reservado != "")) {
+        criteria.servicio=req.query.servicio;
+        criteria.reservado=req.query.reservado;
+    }
+
+     //filtro por servicio
+     if (req.query.servicio != null && req.query.servicio != "") {
+        criteria.servicio=req.query.servicio;
+    }
+
+     //filtro por Estado de Reserva
+     if (req.query.reservado != null && req.query.reservado != "") {
+        criteria.reservado=req.query.reservado;
+    }
+
+    //filtro por categoria
+     if (req.query.categoria != null && req.query.categoria != "") {
+        criteria.categoria=req.query.categoria;
     }
 
     var reservas = await Reserva.find(criteria);
