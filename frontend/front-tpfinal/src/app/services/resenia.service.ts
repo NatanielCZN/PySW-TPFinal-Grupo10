@@ -98,4 +98,43 @@ export class ReseniaService {
     }
     return this._http.get(this.urlbase + "resenia/"+id, httpOption)
   }
+
+  getReseniaPorUsuario(usuario:string): Observable<any> {
+    let httpOption = {
+      headers: new HttpHeaders(
+        {
+          'Content-type': 'application/json'
+        }
+      ),
+      params: new HttpParams().append("usuario",usuario)
+    }
+    return this._http.get(this.urlbase + "resenia/", httpOption)
+  }
+
+  getReseniaPorServicio(servicio:string): Observable<any> {
+    let httpOption = {
+      headers: new HttpHeaders(
+        {
+          'Content-type': 'application/json'
+        }
+      ),
+      params: new HttpParams().append("servicio",servicio)
+    }
+    return this._http.get(this.urlbase + "resenia/", httpOption)
+  }
+
+
+  getReseniaPorValoracion(valoracion:string): Observable<any> {
+    let httpOption = {
+      headers: new HttpHeaders(
+        {
+          'Content-type': 'application/json'
+        }
+      ),
+      params: new HttpParams().append("valoracion",valoracion)
+    }
+    return this._http.get(this.urlbase + "resenia/", httpOption)
+  }
+
+
 }
