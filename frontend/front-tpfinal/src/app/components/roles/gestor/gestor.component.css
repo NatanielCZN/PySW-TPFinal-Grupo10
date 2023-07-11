@@ -1,11 +1,9 @@
 .font-usuario{
-    background-image: url('../../../../assets/fondo-usuario/al-mundo.jpg');
-    width: 100%;
-    height: 100%;  
-    position: fixed;
+    background-image: url("/assets/fondo-usuario/fondo-usuario.jpg");
     background-position: center;
     background-size: cover;
-    overflow-y: auto;
+    min-height: 100vh;
+    margin-top: -24px;
   }
 
   .btn{
@@ -17,14 +15,28 @@
       text-decoration:underline;
   }
   .tabla-contenedor {
-      max-height: 400px; /* Establece la altura máxima que deseas para la tabla */
+     max-height: 400px; /* Establece la altura máxima que deseas para la tabla */ 
       overflow-y: auto; /* Crea una barra de desplazamiento vertical cuando sea necesario */
+      overflow-x: auto;
      background-color:rgba(240, 248, 255, 0.785);
      border: 2px dashed black;
      border-radius: 8px;
-     margin-left: 40px;
     }
-  
+    .columna{
+      white-space: break-spaces;
+      word-break: break-all;
+      margin: auto;
+      font-size: 18px;
+     }
+     .columna th{
+      height: 30%;
+     }
+     .fila{
+      white-space: break-spaces;
+      word-break: break-all;
+      margin: auto;
+      font-size: 18px;
+     }
     thead{
       background-color: rgba(24, 24, 211, 0.577);
       font-size: larger;

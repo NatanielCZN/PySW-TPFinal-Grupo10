@@ -1,12 +1,9 @@
 .fondo-usuario{
-    background-image: url("../../../../assets/fondo-home/fondo-buenosaires.jpg");
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    left: 0;
+    background-image: url("/assets/fondo-home/fondo-buenosaires.jpg");
     background-position: center;
-    padding-top: 20px;
+    background-size: cover;
+    min-height: 100vh;
+    margin-top: -24px;
 }
 
 .tabla{
