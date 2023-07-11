@@ -1,6 +1,6 @@
 <div class="fondo-login">
 <div class="container">
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-md-6 mx-auto">
       <div class="login-form">
         <h2 class="text-center">Inicio de sesión turismo</h2>
@@ -23,6 +23,37 @@
         </form>
       </div>
     </div>
+  </div> --><div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="/assets/logo-turismoapp2.png"
+          class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form>
+    <!-- Email input -->
+          <div class="form-outline mb-4">
+            <input type="username" name="username" class="form-control form-control-lg" [(ngModel)]="log.username"
+              placeholder="Nombre de Usuario" />
+            <label class="form-label" for="form3Example3">Usuario</label>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <input type="password" name="password" class="form-control form-control-lg" [(ngModel)]="log.password"
+            placeholder="Contrase&ntilde;a">
+            <label class="form-label" for="form3Example4">Contrase&ntilde;a</label>
+          </div>
+
+          <p *ngIf="falloLogin" class="error">{{msgError}}</p>
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="boton" (click)="login()">Iniciar sesión</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 </div>
+
+  

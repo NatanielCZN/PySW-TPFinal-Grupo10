@@ -5,30 +5,35 @@ body {
     min-height: 100vh;
     margin-top: -24px;
 }
-.tabla-contenedor{
+
+.tabla-contenedor {
     max-height: 50vh;
     float: right;
     border: 1px solid black;
     border-radius: 10px;
     padding: 30px;
 }
-.busquedaProvincia{
+
+.busquedaProvincia {
     background: #727272bd;
     border-radius: 15px;
     width: 60%;
     margin-left: 20%;
     margin-right: 20%;
 }
-.btn-search{
+
+.btn-search {
     border: 2px solid;
     width: 46%;
     border-radius: 15px;
     background: #d58d01c4;
 }
-.botonLocalidad{
+
+.botonLocalidad {
     margin: 5%;
 }
-.selectProvincia{
+
+.selectProvincia {
     margin-left: 10%;
     width: 80%;
     margin-right: 10%;
@@ -36,17 +41,20 @@ body {
     text-align: center;
     background: #c4c1bcba;
 }
+
 .card {
-    background: linear-gradient(to right,  #664d03e0, #664d038f);
+    background: linear-gradient(to right, #664d03e0, #664d038f);
     border: 1px solid #4e4e4e;
     color: rgba(250, 250, 250, 0.8);
     margin-bottom: 2rem;
     max-width: 100%;
 }
-.imagenProvincia{
-    width: 50%;
+
+.imagenProvincia {
+    width: 80%;
     margin: 10%;
 }
+
 .btn {
     border: 2px solid;
     text-decoration: none;
@@ -63,13 +71,34 @@ body {
     box-shadow: #222 1px 0 10px;
     background: #664d03e0;
 }
-.botonImagen{
+
+.botonImagen {
     border-radius: 10px;
     background: #c78501a8;
-    margin: 2%;
+    margin-right: 100px;
 }
-.margen{
+
+.margen {
     background: #000000c9;
     border-radius: 10px;
     height: max-content;
+}
+
+.contenedor {
+    width: 60%;
+    margin-left: 20%;
+}
+
+.botonContenedor {
+    width: 30%;
+    margin-left: 15%;
+    border-radius: 10px;
+    background: #c78501a8;
+    margin-top: 5px;
+}
+
+.mapa {
+    width: 50%;
+    height: 200px;
+    margin: 30px;
 }

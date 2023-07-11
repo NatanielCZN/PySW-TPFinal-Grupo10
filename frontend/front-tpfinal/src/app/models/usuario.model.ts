@@ -15,7 +15,6 @@ export class Usuario extends Login {
 
     constructor() {
         super();
-        //this._id = '';
         this.nombre = '';
         this.apellido = '';
         this.email = '';

@@ -8,18 +8,16 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class HeaderComponent implements OnInit {
 
-  tipo:any;
-  esUser:boolean=false;
-  esAdmin:boolean=false;
-  esGestor:boolean=false;
+
+  id: any;
+  tipo: any;
   constructor(public loginService: LoginService) {
   }
 
-  ngOnInit(): void {
-    if (sessionStorage.getItem("tipo")=="user")
-          this.esUser=true;
+  ngOnInit(): void {    
 
-    
+    this.id = sessionStorage.getItem("userId");
+    this.tipo = sessionStorage.getItem("tipo");
   }
 
   logout() {

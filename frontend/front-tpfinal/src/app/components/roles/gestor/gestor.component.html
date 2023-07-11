@@ -107,6 +107,7 @@
                 <th scope="col">Fecha de Ingreso</th>
                 <th scope="col">Fecha de Egreso</th>
                 <th scope="col">Precio</th>
+                <th scope="col">Opciones</th>
             </tr>
         </thead>
         <tbody >
@@ -117,6 +118,10 @@
                 <td>{{reserva.fechaIngreso}}</td>
                 <td>{{reserva.fechaEgreso}}</td>
                 <td>{{reserva.precio | currency}}</td>
+                <td>
+                    <button class="btn btn-info mx-1" (click)="aceptarReserva(reserva._id)">Aceptar Reserva</button>
+                    <button class="btn btn-danger mx-1" (click)="cancelarReserva(reserva._id)">Rechazar Reserva</button>    
+                </td>
             </tr>
         </tbody>
     </table>
