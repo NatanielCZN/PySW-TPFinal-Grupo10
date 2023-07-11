@@ -145,6 +145,9 @@ export class AdminComponent implements OnInit {
     location.reload();
   }
 
+  modificarUsuario(usuario:Usuario) {
+      this.router.navigate(['usuario-form',usuario._id]);
+  }
 
   cargarReservas() {
     this.reservas = new Array<Reserva>();
