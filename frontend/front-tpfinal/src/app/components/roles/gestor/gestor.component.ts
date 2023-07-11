@@ -59,6 +59,8 @@ export class GestorComponent implements OnInit {
   }
 
   cargarServicios(){
+    this.verResenia=false;
+    this.verReserva=false;
     this.servicios=[]
     this.gestorService.getGestor(this.id).pipe(
       map((res: any) => res.servicio),
@@ -172,5 +174,45 @@ export class GestorComponent implements OnInit {
         );
     });
   }
+  
+  cat:string="";
+  filtrarCategoria(){
+    this.verResenia=false;
+    this.verReserva=false;
+    this.servicios=[]
+    this.servicioService.getServicioGestor(this.id,this.cat)
+    .subscribe(
+      (res:any)=>{
+        res.forEach((element:any) => {
+            let servicio=new Servicio();
+            Object.assign(servicio,element);
+            this.servicios.push(servicio);
+        });
+        console.log(res[0]);
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+  }
 
+  nombreServicio:string="";
+  filtrarPorNombreServicio(){
+    this.verResenia=false;
+    this.verReserva=false;
+    this.servicios=[];
+    this.servicioService.getServicioNombre(this.id,this.nombreServicio)
+    .subscribe(
+      (res:any)=>{
+        res.forEach((element:any)=>{
+           let servicio=new Servicio();
+           Object.assign(servicio,element);
+           this.servicios.push(servicio);
+        })
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+  }
 }
