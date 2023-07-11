@@ -8,12 +8,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link"  *ngIf="tipo !== 'admin'" aria-current="page" [routerLink]="['servicio']">SERVICIOS</a>
+                    <a class="nav-link"  *ngIf="tipo !== 'admin'  && tipo !== 'gest'" aria-current="page" [routerLink]="['servicio']">SERVICIOS</a>
                 </li>
 
-                <li class="nav-item" routerLinkActive="active">
+                <!-- <li class="nav-item" routerLinkActive="active">
                     <a class="nav-link"  *ngIf="tipo !== 'admin' && tipo !== 'user'" aria-current="page">INFORMACION</a>
-                </li>
+                </li> -->
 
                 <li class="nav-item dropdown" routerLinkActive="active">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -29,6 +29,7 @@
                     <ul *ngIf="tipo == 'gest'" class="dropdown-menu dropdown-menu-end">                              
                             <li><a class="dropdown-item" [routerLink]="['gestor/gestor-datos']">MIS DATOS</a></li>
                             <li><a class="dropdown-item" [routerLink]="['gestor']">MIS SERVICIOS</a></li>    
+                            <li><a class="dropdown-item" [routerLink]="['gestor/estadistica']">MIS ESTADISTICAS</a></li>    
                             <li><a class="dropdown-item" [routerLink]="['gestor/servicio']">AGREGAR SERVICIO</a></li>    
                             <li class="dropdown-divider"></li>                      
                         <li><a class="dropdown-item" [routerLink]="['home']" routerLinkActive="active" (click)="logout()">CERRAR SESION</a></li>                                                

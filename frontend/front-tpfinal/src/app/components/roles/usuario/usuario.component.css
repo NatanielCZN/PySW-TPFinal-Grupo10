@@ -1,11 +1,11 @@
 .font-usuario{
-  background-image: url('../../../../assets/fondo-usuario/al-mundo.jpg');
+  background-image: url('/assets/fondo-usuario/al-mundo.jpg');
   width: 100%;
-  height: 100%;  
-  position: fixed;
   background-position: center;
   background-size: cover;
   overflow-y: auto;
+  height: 100%;
+  position: absolute;
 }
 .title{
     font-style: italic;
@@ -18,7 +18,7 @@
    background-color:rgba(240, 248, 255, 0.785);
    border: 2px dashed black;
    border-radius: 8px;
-   margin-left: 40px;
+   
   }
 
   thead{

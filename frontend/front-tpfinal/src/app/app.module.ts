@@ -30,6 +30,7 @@ import { ReseniaUsuarioComponent } from './components/resenias/resenia-usuario/r
 import { UsuarioDatosComponent } from './components/roles/usuario-datos/usuario-datos.component';
 import { GestorDatosComponent } from './components/roles/gestor-datos/gestor-datos.component';
 import { AdminFormComponent } from './components/roles/admin-form/admin-form.component';
+import { GestorEstadisticaComponent } from './components/roles/gestor-estadistica/gestor-estadistica.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AdminFormComponent } from './components/roles/admin-form/admin-form.com
     ReseniaUsuarioComponent,
     UsuarioDatosComponent,
     GestorDatosComponent,
-    AdminFormComponent
+    AdminFormComponent,
+    GestorEstadisticaComponent
   ],
   imports: [
     BrowserModule,

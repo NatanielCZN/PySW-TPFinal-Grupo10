@@ -126,7 +126,7 @@
                 </div>
 
                 <!-- Password -->
-                <div class="mb-4">
+                <div class="mb-4"  *ngIf="accion =='new'">
                     <label for="idPassword" class="form-label">Password (<span
                             class="text-danger fw-bold">*</span>)</label>
 
@@ -145,9 +145,13 @@
 
                 <!-- Button Conversion -->
                 <div class="mb-4 d-grid">
-                    <button type="submit" class="btn btn-warning fw-bold mt-2" (click)="guardarGestor(gestorForm)"
+                    <button type="submit" class="btn btn-warning fw-bold mt-2" *ngIf="accion =='new'" (click)="guardarGestor(gestorForm)"
                         [disabled]="gestorForm.invalid">Crear Gestor
                     </button>
+                    <button type="submit" class="btn btn-success fw-bold mt-2" *ngIf="accion =='update'" (click)="modificarGestor()"
+                    [disabled]="gestorForm.invalid">Modificar
+                </button>
+                    
                 </div>
             </fieldset>
         </form>

@@ -7,7 +7,21 @@
     background: #b4b4b4a4;
     width: auto;
     height: auto;
+    
 }
- 
+body {
+    background-image: url("/assets/fondo-servicio/fondo-servicio.jpg");
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    margin-top: -24px;
+}
 .btn{ color: black;
 background-color: aqua;}
+body {
+    background-image: url("/assets/fondo-servicio/arg.jpg");
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    margin-top: -24px;
+}
