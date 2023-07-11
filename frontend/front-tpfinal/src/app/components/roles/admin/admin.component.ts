@@ -40,6 +40,7 @@ export class AdminComponent implements OnInit {
    this.cargarUsuarios();
    this.cargarReservas();
    this.cargarServicios();
+   this.cargarResenias()
 
   }
 
@@ -167,6 +168,20 @@ export class AdminComponent implements OnInit {
 
   cargarResenias(){
     this.resenias= new Array<Resenia>();
+    this.reseniaService.getMostarResenia().subscribe(
+      res =>{
+        let resenia=new Resenia();
+        res.forEach(
+          (e:any)=>{
+            Object.assign(resenia,e);
+            this.resenias.push(resenia);
+            resenia= new Resenia();
+          }
+        )
+      },error=>{
+        alert("No se pueden cargar las Reservas")
+      }
+    )
 
   }
 

@@ -8,6 +8,7 @@ const router = express.Router();
 router.post('/', servicioCtrl.createServicio); //Dar de alta un servicio
 router.get('/ubicacion', servicioCtrl.getServiciosLocalidad); // Obtener todas los servicios de una localidad
 router.get('/:id', servicioCtrl.getServicio); // Obtener un servicio por ID
+router.get('/', servicioCtrl.getServicios); 
 router.delete('/:id', servicioCtrl.deleteServicio); //Eliminar un servicio
 router.put('/:id',servicioCtrl.editServicio); //Modificar un servicio
 //exportamos el modulo de rutas

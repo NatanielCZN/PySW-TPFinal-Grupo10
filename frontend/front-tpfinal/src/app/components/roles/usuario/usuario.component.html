@@ -105,7 +105,7 @@
                     <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                       <div class="accordion-body">
                         <select class="form-select mt-1 mb-1 mx-1" aria-label="Default select example" id="reservado" name="reservado" [(ngModel)]="reservado" (ngModelChange)="filtrarReservaPorReservado()">
-                          <option disabled>Estado de Reserva</option>
+                  
                           <option value="true">Reservas Confirmadas</option>
                           <option value="false">Reservas Sin Confirmar</option>
                         </select>
@@ -122,7 +122,6 @@
                   <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <select class="form-select mt-1 mb-1 mx-1" aria-label="Default select example" id="cat" name="cat" [(ngModel)]="cat" (ngModelChange)="filtrarPorCategoria()">
-                            <option disabled selected value="">Categoria</option>
                             <option value="hotel">Hotel</option>
                             <option value="restaurante">Restaurante</option>
                         </select>
@@ -138,7 +137,7 @@
                     <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                       <div class="accordion-body p-2">
                          <input class="form-control" type="text" name="nombreServicio" id="nombreServicio" [(ngModel)]="nomServicio">
-                         <button class="btn btn-info mt-2 mb-2 w-100" (click)="filtrarPorNombreDeServicio()">Filtrar Por Nombre de servicio</button>
+                         <button *ngIf="nomServicio!=null" class="btn btn-info mt-2 mb-2 w-100" (click)="filtrarPorNombreDeServicio()">Filtrar Por Nombre de servicio</button>
                       </div>
                     </div>
                   </div>

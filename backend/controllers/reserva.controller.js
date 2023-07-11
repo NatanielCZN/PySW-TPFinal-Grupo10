@@ -27,6 +27,11 @@ reservaCtrl.getReservas = async (req, res) => {
         criteria.nombreServicio=req.query.nombreServicio;
     }
 
+    //filtro por nombre de servicio servicio y usuario
+    if (req.query.usuario != null && req.query.usuario != "") {
+        criteria.usuario=req.query.usuario;     
+    }
+
     var reservas = await Reserva.find(criteria);
     res.json(reservas);
 };
