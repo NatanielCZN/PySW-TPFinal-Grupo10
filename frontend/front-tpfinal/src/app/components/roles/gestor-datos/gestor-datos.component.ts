@@ -13,12 +13,12 @@ export class GestorDatosComponent implements OnInit {
   id!: any;
   tipo!: any;
 
-  usuario!: Gestor;
+  gestor!: Gestor;
 
   constructor(private appCom: AppComponent, private gestorService: GestorService) {
     this.appCom.logeado = true;
 
-    this.usuario = new Gestor();
+    this.gestor = new Gestor();
   }
 
   ngOnInit(): void {
@@ -35,7 +35,7 @@ export class GestorDatosComponent implements OnInit {
   cargarGestor() {
     this.gestorService.getGestor(this.id).subscribe(
       (result: any) => {
-        Object.assign(this.usuario, result);
+        Object.assign(this.gestor, result);
 
         console.log(result);
       },
