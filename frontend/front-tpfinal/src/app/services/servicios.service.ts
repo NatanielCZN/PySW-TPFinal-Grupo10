@@ -93,15 +93,15 @@ export class ServiciosService {
    return this._http.post(this.urlBase+"servicio/",body, httpOptions);
   }
 
-  deleteServicio(_id:string):Observable<any>{
+  deleteServicio(id:string):Observable<any>{
     const httpOptions={
       headers:new HttpHeaders(
         {
 
         }
-      ),params: new HttpParams().append("id",_id)
+      )
     }
-    return this._http.get(this.urlBase+"servicio/"+_id,httpOptions);
+    return this._http.delete(this.urlBase+"servicio/"+id,httpOptions);
   }
 
   getServicioPorCategoria(categoria:string) : Observable<any>{
