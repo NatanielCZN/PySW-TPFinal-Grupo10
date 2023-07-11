@@ -22,6 +22,7 @@ import { ReseniaUsuarioComponent } from './components/resenias/resenia-usuario/r
 import { ReseniaServicioComponent } from './components/resenias/resenia-servicio/resenia-servicio.component';
 import { GestorDatosComponent } from './components/roles/gestor-datos/gestor-datos.component';
 import { AdminFormComponent } from './components/roles/admin-form/admin-form.component';
+import { GestorEstadisticaComponent } from './components/roles/gestor-estadistica/gestor-estadistica.component';
 
 const routes: Routes = [
   { path: 'header', component: HeaderComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'gestor/gestor-datos', component: GestorDatosComponent },
   { path: 'gestor/servicio', component: ServicioFormComponent },
   { path: "gestor-form/:id", component: GestorFormComponent },
+  { path: 'gestor/estadistica', component: GestorEstadisticaComponent },
 
   { path: "admin", component: AdminComponent },
   { path: "admin-form/:id", component: AdminFormComponent },
