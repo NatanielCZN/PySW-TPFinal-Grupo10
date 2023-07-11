@@ -64,6 +64,14 @@ export class AdminComponent implements OnInit {
     )
   }
 
+  cargarTodaslasFunciones(){
+    this.cargarGestores();
+    this.cargarUsuarios();
+    this.cargarReservas();
+    this.cargarServicios();
+    this.cargarResenias();
+  }
+
   cargarReseniasUsuario(idUsuario: string) {
     this.reseniaService.getReseniaUsuario(idUsuario).subscribe(
       result => {
@@ -314,9 +322,11 @@ export class AdminComponent implements OnInit {
     )
   }
 
+
+
   /**
    * Imprime los datos de un Gestor
-   * @param gestor 
+   * @param gestor
    */
   imprimirGestor(gestor: Gestor): void {
     const gestorHTML = `
@@ -332,29 +342,29 @@ export class AdminComponent implements OnInit {
           background-size: 200px;
           background-position: center;
         }
-  
+
         .gestor-title {
           text-align: center;
           font-size: 30px;
           margin-bottom: 30px;
         }
-  
+
         .gestor-item {
           margin-bottom: 20px;
         }
-  
+
         .gestor-item-label {
           font-weight: bold;
           width: 150px;
           display: inline-block;
         }
-  
+
         .gestor-item-value {
           display: inline-block;
           margin-left: 20px;
         }
       </style>
-  
+
       <div class="gestor-container">
         <h1 class="gestor-title">Gestor</h1>
         <div class="gestor-item">
@@ -409,7 +419,7 @@ export class AdminComponent implements OnInit {
 
   /**
    * Imprime los datos de un Usuario
-   * @param usuario 
+   * @param usuario
    */
   imprimirUsuario(usuario: Usuario): void {
     const gestorHTML = `
@@ -503,4 +513,187 @@ export class AdminComponent implements OnInit {
       documentTitle: 'Gestor'
     });
   }
+
+
+
+
+   //Filtros Para Reservas
+
+   idUser!:string;
+   buscarReservasPorUsuario(){
+     this.cargarUsuarios();
+     this.reservas= new Array<Reserva>();
+     this.reservaService.getReservaUsuario(this.idUser).subscribe(
+       res=>{
+         let reserva=new Reserva();
+         res.forEach((element: any) => {
+           Object.assign(reserva, element);
+           this.reservas.push(reserva);
+           reserva = new Reserva();
+         });
+       },error=>{
+         console.log("error al recuperar la informacion")
+       }
+     )
+   }
+
+   idService!:string;
+   buscarReservasPorServicio(){
+     this.cargarServicios();
+     this.reservas= new Array<Reserva>();
+     this.reservaService.getReservaPorServicio(this.idService).subscribe(
+       res=>{
+         let reserva=new Reserva();
+         res.forEach((element: any) => {
+           Object.assign(reserva, element);
+           this.reservas.push(reserva);
+           reserva = new Reserva();
+         });
+       },error=>{
+         console.log("error al recuperar la informacion")
+       }
+     )
+   }
+
+   estadoReserva!:boolean;
+   buscarReservaPorEstadoDeReservacion(){
+     this.reservas= new Array<Reserva>();
+     this.reservaService.getReservaPorEstado(this.estadoReserva).subscribe(
+       res=>{
+         let reserva=new Reserva();
+         res.forEach((element: any) => {
+           Object.assign(reserva, element);
+           this.reservas.push(reserva);
+           reserva = new Reserva();
+         });
+       },error=>{
+         console.log("error al recuperar la informacion")
+       }
+     )
+   }
+
+   categoriaReserva!:string;
+   buscarReservaPorCategoria(){
+     this.reservas= new Array<Reserva>();
+     this.reservaService.getReservaPorCategoria(this.categoriaReserva).subscribe(
+       res=>{
+         let reserva=new Reserva();
+         res.forEach((element: any) => {
+           Object.assign(reserva, element);
+           this.reservas.push(reserva);
+           reserva = new Reserva();
+         });
+       },error=>{
+         console.log("error al recuperar la informacion")
+       }
+     )
+   }
+
+    //Filtros Para Servicios
+  ubicacionServicio:string="";
+  buscarServicioPorUbicacion(){
+    this.servicios= new Array<Servicio>();
+    this.servicioService.getServicioPorUbicacion(this.ubicacionServicio).subscribe(
+      res=>{
+        let servicio=new Servicio();
+        res.forEach((element: any) => {
+          Object.assign(servicio, element);
+          this.servicios.push(servicio);
+          servicio = new Servicio();
+        });
+      },error=>{
+        console.log("error al recuperar la informacion")
+      }
+    );
+  }
+
+  categoriaServicio:string="";
+  buscarServicioCategoria(){
+    this.servicios= new Array<Servicio>();
+    this.servicioService.getServicioPorCategoria(this.categoriaServicio).subscribe(
+      res=>{
+        let servicio=new Servicio();
+        res.forEach((element: any) => {
+          Object.assign(servicio, element);
+          this.servicios.push(servicio);
+          servicio = new Servicio();
+        });
+      },error=>{
+        console.log("error al recuperar la informacion")
+      }
+    );
+  }
+
+  gesServicio!:string;
+  buscarServicioGestor(){
+    this.servicios= new Array<Servicio>();
+    this.servicioService.getServicioPorGestor(this.gesServicio).subscribe(
+      res=>{
+        let servicio=new Servicio();
+        res.forEach((element: any) => {
+          Object.assign(servicio, element);
+          this.servicios.push(servicio);
+          servicio = new Servicio();
+        });
+      },error=>{
+        console.log("error al recuperar la informacion")
+      }
+    );
+  }
+
+//Filtros para Resenias
+
+resServicio!:string;
+buscarReseniasPorServicio(){
+  this.cargarServicios();
+  this.resenias= new Array<Resenia>();
+  this.reseniaService.getReseniaPorServicio(this.resServicio).subscribe(
+    res=>{
+      let resenia=new Resenia();
+      res.forEach((element: any) => {
+        Object.assign(resenia, element);
+        this.resenias.push(resenia);
+        resenia = new Resenia();
+      });
+    },error=>{
+      console.log("error al recuperar la informacion")
+    }
+  );
+}
+
+reseniaUser!:string;
+buscarReseniasPorUsuario(){
+  this.cargarUsuarios();
+  this.resenias= new Array<Resenia>();
+  this.reseniaService.getReseniaPorUsuario(this.reseniaUser).subscribe(
+    res=>{
+      let resenia=new Resenia();
+      res.forEach((element: any) => {
+        Object.assign(resenia, element);
+        this.resenias.push(resenia);
+        resenia = new Resenia();
+      });
+    },error=>{
+      console.log("error al recuperar la informacion")
+    }
+  );
+}
+
+reseniaValoracion!:string;
+buscarReseniasPorValoracion(){
+  this.resenias= new Array<Resenia>();
+  this.reseniaService.getReseniaPorValoracion(this.reseniaValoracion).subscribe(
+    res=>{
+      let resenia=new Resenia();
+      res.forEach((element: any) => {
+        Object.assign(resenia, element);
+        this.resenias.push(resenia);
+        resenia = new Resenia();
+      });
+    },error=>{
+      console.log("error al recuperar la informacion")
+    }
+  );
+}
+
 }
