@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { Gestor } from 'src/app/models/gestor';
 import { GestorService } from 'src/app/services/gestor.service';
@@ -15,7 +16,7 @@ export class GestorDatosComponent implements OnInit {
 
   gestor!: Gestor;
 
-  constructor(private appCom: AppComponent, private gestorService: GestorService) {
+  constructor(private appCom: AppComponent, private gestorService: GestorService, private router:Router) {
     this.appCom.logeado = true;
 
     this.gestor = new Gestor();
@@ -43,5 +44,9 @@ export class GestorDatosComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  modificarGestor(idGestor:string){
+    this.router.navigate(['gestor-form',idGestor]);
   }
 }
